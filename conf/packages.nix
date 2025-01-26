@@ -59,14 +59,9 @@
 
   programs.nix-ld.enable = true;
   programs.firefox.enable = true;
-  # programs.nix-ld.libraries = with pkgs; [
-  #   gtk3
-  #   pango
-  #   cairo
-  #   atk
-  #   gdk-pixbuf
-  #   glib
-  # ];
+  programs.nix-ld.libraries = with pkgs; [
+    icu
+  ];
 
   virtualisation.libvirtd = {
     enable = true;
