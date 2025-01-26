@@ -80,6 +80,7 @@
         $env.config.edit_mode = "vi"
         $env.config.show_banner = false
 
+        catnap
         source ~/.oh-my-posh.nu
         source ~/.cache/carapace/init.nu
       '';
