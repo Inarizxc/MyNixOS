@@ -59,7 +59,6 @@
 
   programs.nix-ld.enable = true;
   programs.firefox.enable = true;
-  programs.virt-manager.enable = true;
   # programs.nix-ld.libraries = with pkgs; [
   #   gtk3
   #   pango
