@@ -23,7 +23,7 @@
   catppuccin = {
     tty.enable = true;
     grub.enable = true;
-    # plymouth.enable = true;
+    plymouth.enable = true;
   };
 
   boot.loader = {
@@ -39,7 +39,7 @@
       useOSProber = false;
     };
   };
-  # boot.plymouth.enable = true;
+  boot.plymouth.enable = true;
 
   networking.hostName = "nixos";
 
