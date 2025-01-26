@@ -70,6 +70,7 @@
         alias up = sudo nix flake update --flake ${flakeDir}
         alias hm = home-manager switch --flake ${flakeDir}
         alias nb = sudo nix-build -E 'with import <nixpkgs> { }; callPackage ./default.nix { }'
+        alias nix-profile-collect-garbage = sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-than
         alias conf = sudo -E nvim ${flakeDir}
 
         alias ns = nix-shell --command nu
@@ -79,7 +80,6 @@
         $env.config.edit_mode = "vi"
         $env.config.show_banner = false
 
-        catnap
         source ~/.oh-my-posh.nu
         source ~/.cache/carapace/init.nu
       '';
