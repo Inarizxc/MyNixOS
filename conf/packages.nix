@@ -1,3 +1,5 @@
+# TODO
+# Cделать это читабельнее
 {
   pkgs,
   inputs,
@@ -45,6 +47,8 @@
     alejandra
     carapace
     ghostty
+    nix-output-monitor
+    nvd
 
     gnomeExtensions.dash-to-dock
     gnomeExtensions.blur-my-shell
@@ -62,6 +66,7 @@
   programs.nix-ld.libraries = with pkgs; [
     icu
   ];
+  programs.nh.enable = true;
 
   virtualisation.libvirtd = {
     enable = true;
