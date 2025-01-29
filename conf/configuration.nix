@@ -90,8 +90,9 @@
       "wheel"
       "libvirtd"
     ];
-    shell = pkgs.nushell;
+    shell = pkgs.fish;
   };
+  programs.fish.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 

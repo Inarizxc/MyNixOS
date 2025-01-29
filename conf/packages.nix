@@ -49,6 +49,7 @@
     ghostty
     nix-output-monitor
     nvd
+    eza
 
     gnomeExtensions.dash-to-dock
     gnomeExtensions.blur-my-shell
