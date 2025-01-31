@@ -76,17 +76,13 @@
         less = "bat";
         ls = "eza --tree --icons always --level 1";
 
-        nv = "nvim";
-        snv = "sudo -E nvim";
+        nv = "nix run ${flakeDir}/NVF/ --";
+        snv = "sudo nix run ${flakeDir}/NVF/ --";
 
-        nvf = "nix run ${flakeDir}/NVF/ --";
-        snvf = "sudo nix run ${flakeDir}/NVF/ --";
-
-        bconf = "sudo nix run ${flakeDir}/NVF ${flakeDir}";
+        conf = "sudo nix run ${flakeDir}/NVF ${flakeDir}";
 
         nb = "sudo nix-build -E 'with import <nixpkgs> { }; callPackage ./default.nix { }'";
         nix-profile-collect-garbage = "sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-than";
-        conf = "sudo -E nvim ${flakeDir}";
       };
       shellInit = ''
         catnap
