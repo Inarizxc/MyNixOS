@@ -1,4 +1,4 @@
-# TODO
+# !TODO
 # Cделать это читабельнее
 {
   pkgs,
@@ -50,6 +50,7 @@
     nix-output-monitor
     nvd
     eza
+    virglrenderer
 
     gnomeExtensions.dash-to-dock
     gnomeExtensions.blur-my-shell
@@ -60,6 +61,10 @@
     gnomeExtensions.rounded-window-corners-reborn
     gnomeExtensions.solaar-extension
     # gnomeExtensions.pop-shell
+    gnomeExtensions.open-bar
+    gnomeExtensions.space-bar
+    gnomeExtensions.quick-settings-tweaker
+    gnomeExtensions.just-perfection
   ];
 
   programs.nix-ld.enable = true;

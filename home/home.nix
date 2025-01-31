@@ -42,6 +42,9 @@
         "gsconnect@andyholmes.github.io"
         "rounded-window-corners@fxgn"
         "solaar-extension@sidevesh"
+        "space-bar@luchrioh"
+        "openbar@neuromorph"
+        "just-perfection-desktop@just-perfection"
       ];
     };
   };
@@ -60,7 +63,9 @@
           };
         }
       ];
-      shellAliases = {
+      shellAliases = let
+        flakeDir = "~/NixOS/";
+      in {
         cd = "z";
         c = "clear";
         rmdir = "rm -rf";
@@ -74,9 +79,14 @@
         nv = "nvim";
         snv = "sudo -E nvim";
 
+        nvf = "nix run ${flakeDir}/NVF/ --";
+        snvf = "sudo nix run ${flakeDir}/NVF/ --";
+
+        bconf = "sudo nix run ${flakeDir}/NVF ${flakeDir}";
+
         nb = "sudo nix-build -E 'with import <nixpkgs> { }; callPackage ./default.nix { }'";
         nix-profile-collect-garbage = "sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-than";
-        conf = "sudo -E nvim ~/NixOS/";
+        conf = "sudo -E nvim ${flakeDir}";
       };
       shellInit = ''
         catnap
@@ -102,55 +112,6 @@
         theme = "catppuccin-mocha";
       };
     };
-
-    nushell = {
-      enable = true;
-      extraConfig = let
-        flakeDir = "~/NixOS/";
-      in ''
-        source ~/.zoxide.nu
-
-        alias cat = bat
-        alias cd = z
-        alias c = clear
-        alias rmdir = rm -rf
-        alias cat = bat
-        alias grep = rg
-        alias find = fd
-        alias du = dua  i
-        alias less = bat
-
-        alias nv = nvim
-        alias snv = sudo -E nvim
-
-        alias rb = sudo nixos-rebuild switch --flake ${flakeDir}
-        alias up = sudo nix flake update --flake ${flakeDir}
-        alias hm = home-manager switch --flake ${flakeDir}
-        alias nb = sudo nix-build -E 'with import <nixpkgs> { }; callPackage ./default.nix { }'
-        alias nix-profile-collect-garbage = sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-than
-        alias conf = sudo -E nvim ${flakeDir}
-
-        alias ns = nix-shell --command nu
-
-        alias fuck = thefuck $"(history | last 1 | get command | get 0)"
-
-        $env.config.edit_mode = "vi"
-        $env.config.show_banner = false
-
-        catnap
-        source ~/.oh-my-posh.nu
-        source ~/.cache/carapace/init.nu
-      '';
-      extraEnv = ''
-        $env.EDITOR = "nvim"
-        $env.STEAM_EXTRA_COMPAT_TOOLS_PATHS = "/home/inari/.steam/root/compatibilitytools.d"
-
-        zoxide init nushell | save -f ~/.zoxide.nu
-        $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
-        mkdir ~/.cache/carapace
-        carapace _carapace nushell | save --force ~/.cache/carapace/init.nu
-      '';
-    };
     fzf = {
       enable = true;
       enableFishIntegration = true;
@@ -174,6 +135,9 @@
     oh-my-posh = {
       enable = true;
       enableFishIntegration = true;
+    };
+    bat = {
+      enable = true;
     };
   };
 
