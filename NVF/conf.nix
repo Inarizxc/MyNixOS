@@ -14,10 +14,11 @@
       name = "catppuccin";
       style = "mocha";
     };
-
     options = {
       shiftwidth = 2;
       tabstop = 2;
+
+      cmdheight = 0;
 
       wrap = false;
     };
@@ -31,6 +32,12 @@
       nix.enable = true;
       zig.enable = true;
       python.enable = true;
+
+      ts.enable = true;
+      svelte.enable = true;
+      tailwind.enable = true;
+      css.enable = true;
+
       markdown = {
         enable = true;
         extensions.render-markdown-nvim.enable = true;
@@ -40,6 +47,7 @@
     filetree.neo-tree = {
       enable = true;
       setupOpts = {
+      files.enable = true;
         enable_cursor_hijack = true;
       };
     };
@@ -52,6 +60,7 @@
       bracketed.enable = true;
       splitjoin.enable = true;
       move.enable = true;
+      hipatterns.enable = true;
       indentscope = {
         enable = true;
         setupOpts = {
@@ -63,7 +72,6 @@
     ui.noice.enable = true;
     binds.whichKey.enable = true;
     git.vim-fugitive.enable = true;
-    ui.colorizer.enable = true;
     visuals.fidget-nvim.enable = true;
     lsp.null-ls.enable = true;
 

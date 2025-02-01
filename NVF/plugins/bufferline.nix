@@ -16,8 +16,8 @@
       diagnostics = false;
       numbers = "none";
       sort_by = "insert_at_end";
-      indicator.style = "icon";
+      indicator.style = "none";
       always_show_bufferline = false;
-     };
+    };
   };
 }
