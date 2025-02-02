@@ -40,6 +40,7 @@
       svelte.enable = true;
       tailwind.enable = true;
       css.enable = true;
+      html.enable = true;
 
       markdown = {
         enable = true;
@@ -53,6 +54,7 @@
 
       lsplines.enable = true;
     };
+    snippets.luasnip.enable = true;
 
     filetree.neo-tree = {
       enable = true;
@@ -90,12 +92,10 @@
     };
 
     ui.borders.enable = true;
-    ui.borders.plugins = {
-      nvim-cmp.enable = true;
-      which-key.enable = true;
-    };
 
     undoFile.enable = true;
     visuals.highlight-undo.enable = true;
+
+    spellcheck.languages = ["en" "ru"];
   };
 }
