@@ -73,12 +73,6 @@
       splitjoin.enable = true;
       move.enable = true;
       hipatterns.enable = true;
-      # indentscope = {
-      #   enable = true;
-      #   setupOpts = {
-      #     symbol = "▏";
-      #   };
-      # };
     };
     autocomplete.nvim-cmp.enable = true;
     ui.noice.enable = true;
