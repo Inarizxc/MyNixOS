@@ -68,6 +68,13 @@
         };
       };
     };
+    git = {
+      enable = true;
+      gitsigns = {
+        enable = true;
+        codeActions.enable = true;
+      };
+    };
     autocomplete.nvim-cmp.enable = true;
     ui.noice.enable = true;
     binds.whichKey.enable = true;
