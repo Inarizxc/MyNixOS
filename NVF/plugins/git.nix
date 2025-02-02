@@ -5,7 +5,18 @@
       enable = true;
       mappings = {
         blameLine = null;
-        diffProject = "<leader>gd";
+        diffProject = null;
+        diffThis = null;
+        nextHunk = null;
+        previewHunk = null;
+        previousHunk = null;
+        resetBuffer = null;
+        resetHunk = null;
+        stageBuffer = null;
+        stageHunk = null;
+        toggleBlame = null;
+        toggleDeleted = null;
+        undoStageHunk = null;
       };
     };
   };

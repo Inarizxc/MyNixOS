@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{...}: {
   vim.keymaps = [
     {
       key = "\\";
@@ -76,5 +72,17 @@
       silent = true;
       action = ":vertical resize +2<CR>";
     }
-    ];
+    {
+      key = "<leader>v";
+      mode = "n";
+      silent = true;
+      action = "<C-w>v";
+    }
+    {
+      key = "<leader>h";
+      mode = "n";
+      silent = true;
+      action = "<C-w>s";
+    }
+  ];
 }

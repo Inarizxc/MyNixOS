@@ -2,13 +2,16 @@
   pkgs,
   lib,
   ...
-}: {
+}
+: {
   imports = [
     ./keymaps.nix
     ./plugins/lualine.nix
     ./plugins/bufferline.nix
+    ./plugins/git.nix
   ];
   vim = {
+    package = pkgs.neovim-unwrapped;
     theme = {
       enable = true;
       name = "catppuccin";
@@ -44,48 +47,55 @@
       };
     };
 
+    lsp = {
+      enable = true;
+      formatOnSave = true;
+
+      lsplines.enable = true;
+    };
+
     filetree.neo-tree = {
       enable = true;
       setupOpts = {
-      files.enable = true;
+        enable_diagnostics = false;
         enable_cursor_hijack = true;
       };
     };
+
     mini = {
       animate.enable = true;
       ai.enable = true;
-      icons.enable = true;
       surround.enable = true;
       pairs.enable = true;
       bracketed.enable = true;
       splitjoin.enable = true;
       move.enable = true;
       hipatterns.enable = true;
-      indentscope = {
-        enable = true;
-        setupOpts = {
-          symbol = "▏";
-        };
-      };
-    };
-    git = {
-      enable = true;
-      gitsigns = {
-        enable = true;
-        codeActions.enable = true;
-      };
+      # indentscope = {
+      #   enable = true;
+      #   setupOpts = {
+      #     symbol = "▏";
+      #   };
+      # };
     };
     autocomplete.nvim-cmp.enable = true;
     ui.noice.enable = true;
     binds.whichKey.enable = true;
-    git.vim-fugitive.enable = true;
-    visuals.fidget-nvim.enable = true;
-    lsp.null-ls.enable = true;
+    ui.colorizer.enable = true;
+    telescope.enable = true;
+
+    visuals.indent-blankline = {
+      enable = true;
+      setupOpts.indent.char = "▏";
+    };
 
     ui.borders.enable = true;
     ui.borders.plugins = {
       nvim-cmp.enable = true;
       which-key.enable = true;
     };
+
+    undoFile.enable = true;
+    visuals.highlight-undo.enable = true;
   };
 }
