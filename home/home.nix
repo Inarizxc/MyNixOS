@@ -21,6 +21,7 @@
     bat.enable = true;
     fzf.enable = true;
     fish.enable = true;
+    lazygit.enable = true;
     gtk = {
       enable = true;
       gnomeShellTheme = true;
@@ -133,6 +134,9 @@
       enableFishIntegration = true;
     };
     bat = {
+      enable = true;
+    };
+    lazygit = {
       enable = true;
     };
   };

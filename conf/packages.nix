@@ -34,7 +34,6 @@
     libreoffice
     qemu
     qemu_kvm
-    github-desktop
     NeoHtop
     neovim
     ModrinthApp
@@ -51,6 +50,7 @@
     nvd
     eza
     virglrenderer
+    lazygit
 
     gnomeExtensions.dash-to-dock
     gnomeExtensions.blur-my-shell
