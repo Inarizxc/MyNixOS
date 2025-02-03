@@ -68,7 +68,7 @@
       gnomeExtensions.just-perfection
     ])
     ++ [
-      inputs.zen-browser.packages."x86_64-linux".default
+      inputs.zen-browser.packages."x86_64-linux".beta
     ];
 
   programs.nix-ld.enable = true;
@@ -84,17 +84,7 @@
       package = pkgs.qemu_kvm;
       runAsRoot = true;
       swtpm.enable = true;
-      ovmf = {
-        enable = true;
-        packages = [
-          # (pkgs.OVMF.override {
-          #   secureBoot = true;
-          #   tpmSupport = true;
-          # })
-          # .fd
-          pkgs.OVMFFull.fd
-        ];
-      };
+      ovmf.enable = true;
     };
     allowedBridges = [
       "nm-bridge"
