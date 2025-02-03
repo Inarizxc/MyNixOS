@@ -5,67 +5,71 @@
   inputs,
   ...
 }: {
-  environment.systemPackages = with pkgs; [
-    home-manager
-    nautilus
-    gnome-boxes
-    gnome-calculator
-    gnome-disk-utility
-    fragments
-    nautilus-open-in-blackbox
-    gnome-tweaks
-    protonup-rs
-    solaar
-    heroic
-    # ollama-cuda
-    bat
-    ripgrep
-    fzf
-    zoxide
-    telegram-desktop
-    oh-my-posh
-    fd
-    dua
-    epapirus-icon-theme
-    catnap
-    yazi
-    nixd
-    piper
-    libreoffice
-    qemu
-    qemu_kvm
-    NeoHtop
-    neovim
-    ModrinthApp
-    eog
-    git
-    wl-clipboard
-    thefuck
-    showtime
-    papers
-    alejandra
-    carapace
-    ghostty
-    nix-output-monitor
-    nvd
-    eza
-    virglrenderer
-    lazygit
+  environment.systemPackages =
+    (with pkgs; [
+      home-manager
+      nautilus
+      gnome-boxes
+      gnome-calculator
+      gnome-disk-utility
+      fragments
+      nautilus-open-in-blackbox
+      gnome-tweaks
+      protonup-rs
+      solaar
+      heroic
+      # ollama-cuda
+      bat
+      ripgrep
+      fzf
+      zoxide
+      telegram-desktop
+      oh-my-posh
+      fd
+      dua
+      epapirus-icon-theme
+      catnap
+      yazi
+      nixd
+      piper
+      libreoffice
+      qemu
+      qemu_kvm
+      NeoHtop
+      neovim
+      ModrinthApp
+      eog
+      git
+      wl-clipboard
+      thefuck
+      showtime
+      papers
+      alejandra
+      carapace
+      ghostty
+      nix-output-monitor
+      nvd
+      eza
+      virglrenderer
+      lazygit
 
-    gnomeExtensions.dash-to-dock
-    gnomeExtensions.blur-my-shell
-    gnomeExtensions.appindicator
-    gnomeExtensions.vitals
-    gnomeExtensions.gsconnect
-    gnomeExtensions.clipboard-indicator
-    gnomeExtensions.rounded-window-corners-reborn
-    gnomeExtensions.solaar-extension
-    # gnomeExtensions.pop-shell
-    gnomeExtensions.open-bar
-    gnomeExtensions.space-bar
-    gnomeExtensions.quick-settings-tweaker
-    gnomeExtensions.just-perfection
-  ];
+      gnomeExtensions.dash-to-dock
+      gnomeExtensions.blur-my-shell
+      gnomeExtensions.appindicator
+      gnomeExtensions.vitals
+      gnomeExtensions.gsconnect
+      gnomeExtensions.clipboard-indicator
+      gnomeExtensions.rounded-window-corners-reborn
+      gnomeExtensions.solaar-extension
+      # gnomeExtensions.pop-shell
+      gnomeExtensions.open-bar
+      gnomeExtensions.space-bar
+      gnomeExtensions.quick-settings-tweaker
+      gnomeExtensions.just-perfection
+    ])
+    ++ [
+      inputs.zen-browser.packages."x86_64-linux".default
+    ];
 
   programs.nix-ld.enable = true;
   programs.firefox.enable = true;

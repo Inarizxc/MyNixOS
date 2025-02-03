@@ -10,12 +10,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin.url = "github:catppuccin/nix";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
   outputs = {
     nixpkgs,
     home-manager,
     catppuccin,
     solaar,
+    zen-browser,
     ...
   } @ inputs: let
     system = "x86_64-linux";
