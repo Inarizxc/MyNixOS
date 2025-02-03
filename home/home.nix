@@ -81,6 +81,7 @@
         snv = "sudo nix run ${flakeDir}/NVF/ --";
 
         conf = "sudo nix run ${flakeDir}/NVF ${flakeDir}";
+        nd = "nom develop --command fish";
 
         nb = "sudo nix-build -E 'with import <nixpkgs> { }; callPackage ./default.nix { }'";
         nix-profile-collect-garbage = "sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-than";
