@@ -51,8 +51,6 @@
     lsp = {
       enable = true;
       formatOnSave = true;
-
-      lsplines.enable = true;
     };
     snippets.luasnip.enable = true;
 
