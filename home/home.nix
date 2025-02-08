@@ -63,6 +63,15 @@
             sha256 = "sha256-T8KYLA/r/gOKvAivKRoeqIwE2pINlxFQtZJHpOy9GMM=";
           };
         }
+        {
+          name = "fifc";
+          src = pkgs.fetchFromGitHub {
+            owner = "gazorby";
+            repo = "fifc";
+            rev = "a01650cd432becdc6e36feeff5e8d657bd7ee84a";
+            sha256 = "sha256-Ynb0Yd5EMoz7tXwqF8NNKqCGbzTZn/CwLsZRQXIAVp4=";
+          };
+        }
       ];
       shellAliases = let
         flakeDir = "~/NixOS/";
