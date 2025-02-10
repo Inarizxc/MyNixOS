@@ -5,10 +5,10 @@
 }: {
   vim.statusline.lualine = {
     enable = true;
-    ignoreFocus = [ "Neotree" ];
+    ignoreFocus = ["Neotree"];
     activeSection = {
       a = [
-         ''
+        ''
           {
             "mode",
             icons_enabled= true,
@@ -61,7 +61,7 @@
               modified = 'DiffChange', -- Changes the diff's modified color
               removed  = 'DiffDelete', -- Changes the diff's removed color you
             },
-            symbols = {added = '+', modified = '~', removed = '-'}, -- Changes the diff symbols
+            symbols = {added = ' ', modified = '~ ', removed = ' '}, -- Changes the diff symbols
             separator = {right = ''}
           }
         ''
@@ -72,33 +72,33 @@
             -- Lsp server name
             function()
               local buf_ft = vim.api.nvim_get_option_value('filetype', {})
-          
+
               -- List of buffer types to exclude
               local excluded_buf_ft = {"toggleterm", "NvimTree", "neo-tree", "TelescopePrompt"}
-          
+
               -- Check if the current buffer type is in the excluded list
               for _, excluded_type in ipairs(excluded_buf_ft) do
                 if buf_ft == excluded_type then
                   return ""
                 end
               end
-          
+
               -- Get the name of the LSP server active in the current buffer
               local clients = vim.lsp.get_active_clients()
               local msg = 'No Active Lsp'
-          
+
               -- if no lsp client is attached then return the msg
               if next(clients) == nil then
                 return msg
               end
-          
+
               for _, client in ipairs(clients) do
                 local filetypes = client.config.filetypes
                 if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
                   return client.name
                 end
               end
-          
+
               return msg
             end,
             icon = ' ',
@@ -156,10 +156,10 @@
           {
             "",
             draw_empty = true,
-            separator = { left = '', right = '' }
+            separator = { left = '', right = '' }
           }
         ''
-        
+
         ''
           {"location"}
         ''

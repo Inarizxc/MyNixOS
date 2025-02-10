@@ -6,9 +6,11 @@
 : {
   imports = [
     ./keymaps.nix
+
     ./plugins/lualine.nix
     ./plugins/bufferline.nix
     ./plugins/git.nix
+    ./plugins/neo-tree.nix
   ];
   vim = {
     package = pkgs.neovim-unwrapped;
@@ -54,14 +56,6 @@
     };
     snippets.luasnip.enable = true;
 
-    filetree.neo-tree = {
-      enable = true;
-      setupOpts = {
-        enable_diagnostics = false;
-        enable_cursor_hijack = true;
-      };
-    };
-
     mini = {
       animate.enable = true;
       ai.enable = true;
@@ -77,6 +71,7 @@
     binds.whichKey.enable = true;
     ui.colorizer.enable = true;
     telescope.enable = true;
+    notes.todo-comments.enable = true;
 
     visuals.indent-blankline = {
       enable = true;

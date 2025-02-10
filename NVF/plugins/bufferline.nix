@@ -13,6 +13,7 @@
     setupOpts.options = {
       buffer_close_icon = "";
       close_icon = "";
+      modified_icon = "●";
       diagnostics = false;
       numbers = "none";
       sort_by = "insert_at_end";
