@@ -53,25 +53,29 @@
     lsp = {
       enable = true;
       formatOnSave = true;
+      otter-nvim.enable = true;
+
+      null-ls.enable = true;
     };
     snippets.luasnip.enable = true;
 
     mini = {
       animate.enable = true;
       ai.enable = true;
-      surround.enable = true;
-      pairs.enable = true;
       bracketed.enable = true;
       splitjoin.enable = true;
       move.enable = true;
       hipatterns.enable = true;
     };
-    autocomplete.nvim-cmp.enable = true;
+    autocomplete.blink-cmp.enable = true;
     ui.noice.enable = true;
     binds.whichKey.enable = true;
     ui.colorizer.enable = true;
     telescope.enable = true;
     notes.todo-comments.enable = true;
+    comments.comment-nvim.enable = true;
+    autopairs.nvim-autopairs.enable = true;
+    utility.surround.enable = true;
 
     visuals.indent-blankline = {
       enable = true;

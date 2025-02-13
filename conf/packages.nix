@@ -52,6 +52,7 @@
       eza
       virglrenderer
       lazygit
+      gedit
 
       gnomeExtensions.dash-to-dock
       gnomeExtensions.blur-my-shell
