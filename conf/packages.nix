@@ -29,7 +29,7 @@
       dua
       epapirus-icon-theme
       catnap
-      yazi
+      joshuto
       nixd
       piper
       libreoffice

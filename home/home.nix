@@ -17,7 +17,6 @@
 
   catppuccin = {
     enable = true;
-    yazi.enable = true;
     bat.enable = true;
     fzf.enable = true;
     fish.enable = true;
@@ -91,9 +90,10 @@
 
         conf = "sudo nix run ${flakeDir}/NVF ${flakeDir}";
         nd = "nom develop --command fish";
+        ns = "nom-shell --command fish";
+        nsp = "nom-shell --command fish -p";
 
-        nb = "sudo nix-build -E 'with import <nixpkgs> { }; callPackage ./default.nix { }'";
-        nix-profile-collect-garbage = "sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-than";
+        nb = "sudo nom-build -E 'with import <nixpkgs> { }; callPackage ./default.nix { }'";
       };
       shellInit = ''
         catnap
@@ -124,10 +124,6 @@
       enableFishIntegration = true;
     };
     eza = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-    yazi = {
       enable = true;
       enableFishIntegration = true;
     };
