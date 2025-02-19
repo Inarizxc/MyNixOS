@@ -1,8 +1,15 @@
-{appimageTools, ...}: let
+{
+  appimageTools,
+  fetchurl,
+  ...
+}: let
   pname = "ModrinthApp";
-  version = "0.9.2";
+  version = "0.9.3";
 
-  src = ./src/file.AppImage;
+  src = fetchurl {
+    url = "https://github.com/DIDIRUS4/AstralRinth/releases/download/ARF-v${version}/AstralRinth.App_0.9.301_amd64.AppImage";
+    hash = "sha256-Y/DxQCEC7uXIP24MiskR0tBdD16od5odnaWc/VRS07Y=";
+  };
 
   appimageContents = appimageTools.extractType2 {
     inherit pname version src;

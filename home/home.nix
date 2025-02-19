@@ -71,6 +71,33 @@
             sha256 = "sha256-Ynb0Yd5EMoz7tXwqF8NNKqCGbzTZn/CwLsZRQXIAVp4=";
           };
         }
+        {
+          name = "puffer-fish";
+          src = pkgs.fetchFromGitHub {
+            owner = "nickeb96";
+            repo = "puffer-fish";
+            rev = "12d062eae0ad24f4ec20593be845ac30cd4b5923";
+            sha256 = "sha256-Ynb0Yd5EMoz7tXwqF8NNKqCGbzTZn/CwLsZRQXIAVp4=";
+          };
+        }
+        {
+          name = "pisces";
+          src = pkgs.fetchFromGitHub {
+            owner = "laughedelic";
+            repo = "pisces";
+            rev = "e45e0869855d089ba1e628b6248434b2dfa709c4";
+            sha256 = "sha256-Ynb0Yd5EMoz7tXwqF8NNKqCGbzTZn/CwLsZRQXIAVp4=";
+          };
+        }
+        {
+          name = "bass";
+          src = pkgs.fetchFromGitHub {
+            owner = "edc";
+            repo = "bass";
+            rev = "79b62958ecf4e87334f24d6743e5766475bcf4d0";
+            sha256 = "sha256-Ynb0Yd5EMoz7tXwqF8NNKqCGbzTZn/CwLsZRQXIAVp4=";
+          };
+        }
       ];
       shellAliases = let
         flakeDir = "~/NixOS/";
@@ -95,22 +122,46 @@
 
         nb = "sudo nom-build -E 'with import <nixpkgs> { }; callPackage ./default.nix { }'";
       };
-      shellInit = ''
-        catnap
-        oh-my-posh init fish --config ~/.config/oh-my-posh/catppuccin.omp.json | source
-        thefuck --alias | source
-        zoxide init fish | source
+      shellInit =
+        /*
+        BASH
+        */
+        ''
+          if status is-interactive
+            catnap
+          end
+          carapace _carapace fish | source
+          oh-my-posh init fish --config ~/.config/oh-my-posh/catppuccin.omp.json | source
+          thefuck --alias | source
+          zoxide init fish | source
 
-        function rerender_on_bind_mode_change --on-variable fish_bind_mode
-            if test "$fish_bind_mode" != paste -a "$fish_bind_mode" != "$FISH__BIND_MODE"
-                set -gx FISH__BIND_MODE $fish_bind_mode
-                omp_repaint_prompt
-            end
-        end
-        function fish_default_mode_prompt --description "Display vi prompt mode"
-            # This function is masked and does nothing
-        end
-      '';
+          function rerender_on_bind_mode_change --on-variable fish_bind_mode
+              if test "$fish_bind_mode" != paste -a "$fish_bind_mode" != "$FISH__BIND_MODE"
+                  set -gx FISH__BIND_MODE $fish_bind_mode
+                  omp_repaint_prompt
+              end
+          end
+          function fish_default_mode_prompt --description "Display vi prompt mode"
+              # This function is masked and does nothing
+          end
+
+          set -Ux fifc_editor nvim
+
+          set -gx fifc_spinner '⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏'
+
+          set -gx FZF_DEFAULT_OPTS "
+            --height=40% --reverse --border
+            --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8
+            --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc
+            --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8
+            --preview-window=right:60%:wrap
+            --bind 'tab:down,btab:up'
+            --bind 'ctrl-j:down,ctrl-k:up'
+            --bind 'space:toggle'
+            --cycle
+            --multi
+          "
+        '';
     };
     ghostty = {
       enable = true;

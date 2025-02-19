@@ -13,7 +13,6 @@
       gnome-calculator
       gnome-disk-utility
       fragments
-      nautilus-open-in-blackbox
       gnome-tweaks
       protonup-rs
       solaar
@@ -53,6 +52,8 @@
       virglrenderer
       lazygit
       gedit
+      carapace
+      file
 
       gnomeExtensions.dash-to-dock
       gnomeExtensions.blur-my-shell
@@ -135,8 +136,9 @@
   #    extraArgs = "";
   #  };
   fonts.packages = with pkgs; [
-    jetbrains-mono
+    inter
     nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
   ];
 
   services.gnome.core-utilities.enable = false;
