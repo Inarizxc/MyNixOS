@@ -55,12 +55,7 @@
       plugins = [
         {
           name = "fzf.fish";
-          src = pkgs.fetchFromGitHub {
-            owner = "PatrickF1";
-            repo = "fzf.fish";
-            rev = "8920367cf85eee5218cc25a11e209d46e2591e7a";
-            sha256 = "sha256-T8KYLA/r/gOKvAivKRoeqIwE2pINlxFQtZJHpOy9GMM=";
-          };
+          src = pkgs.fishPlugins.fzf-fish.src;
         }
         {
           name = "fifc";
@@ -72,31 +67,12 @@
           };
         }
         {
-          name = "puffer-fish";
-          src = pkgs.fetchFromGitHub {
-            owner = "nickeb96";
-            repo = "puffer-fish";
-            rev = "12d062eae0ad24f4ec20593be845ac30cd4b5923";
-            sha256 = "sha256-Ynb0Yd5EMoz7tXwqF8NNKqCGbzTZn/CwLsZRQXIAVp4=";
-          };
-        }
-        {
-          name = "pisces";
-          src = pkgs.fetchFromGitHub {
-            owner = "laughedelic";
-            repo = "pisces";
-            rev = "e45e0869855d089ba1e628b6248434b2dfa709c4";
-            sha256 = "sha256-Ynb0Yd5EMoz7tXwqF8NNKqCGbzTZn/CwLsZRQXIAVp4=";
-          };
+          name = "puffer";
+          src = pkgs.fishPlugins.puffer.src;
         }
         {
           name = "bass";
-          src = pkgs.fetchFromGitHub {
-            owner = "edc";
-            repo = "bass";
-            rev = "79b62958ecf4e87334f24d6743e5766475bcf4d0";
-            sha256 = "sha256-Ynb0Yd5EMoz7tXwqF8NNKqCGbzTZn/CwLsZRQXIAVp4=";
-          };
+          src = pkgs.fishPlugins.bass.src;
         }
       ];
       shellAliases = let

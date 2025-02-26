@@ -17,7 +17,7 @@
       protonup-rs
       solaar
       heroic
-      # ollama-cuda
+      ollama-cuda
       bat
       ripgrep
       fzf
@@ -121,13 +121,15 @@
         to = 1764;
       }
     ];
+    allowedUDPPorts = [5900];
     allowedUDPPortRanges = allowedTCPPortRanges;
   };
 
-  # services.ollama.enable = true;
+  services.ollama.enable = true;
   services.ratbagd.enable = true;
   services.solaar.enable = true;
   services.flatpak.enable = true;
+  services.gnome.gnome-remote-desktop.enable = true;
   # services.solaar = {
   #    enable = true;
   #   package = pkgs.solaar;
