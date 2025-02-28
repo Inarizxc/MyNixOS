@@ -17,7 +17,7 @@
       protonup-rs
       solaar
       heroic
-      ollama-cuda
+      # ollama-cuda
       bat
       ripgrep
       fzf
@@ -125,7 +125,7 @@
     allowedUDPPortRanges = allowedTCPPortRanges;
   };
 
-  services.ollama.enable = true;
+  # services.ollama.enable = true;
   services.ratbagd.enable = true;
   services.solaar.enable = true;
   services.flatpak.enable = true;
