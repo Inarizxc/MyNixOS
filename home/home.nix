@@ -17,10 +17,6 @@
 
   catppuccin = {
     enable = true;
-    bat.enable = true;
-    fzf.enable = true;
-    fish.enable = true;
-    lazygit.enable = true;
     gtk = {
       enable = true;
       gnomeShellTheme = true;
@@ -43,7 +39,7 @@
         "rounded-window-corners@fxgn"
         "solaar-extension@sidevesh"
         "space-bar@luchrioh"
-        "openbar@neuromorph"
+        # "openbar@neuromorph"
         "just-perfection-desktop@just-perfection"
       ];
     };
@@ -88,8 +84,8 @@
         less = "bat";
         ls = "eza --tree --icons always --level 1";
 
-        nv = "nix run ${flakeDir}/NVF/ --";
-        snv = "sudo nix run ${flakeDir}/NVF/ --";
+        nv = "nix run --option warn-dirty false ${flakeDir}/NVF/ --";
+        snv = "sudo nix run --option warn-dirty false ${flakeDir}/NVF/ --";
 
         conf = "sudo nix run ${flakeDir}/NVF ${flakeDir}";
         nd = "nom develop --command fish";

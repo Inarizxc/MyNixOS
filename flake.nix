@@ -11,6 +11,7 @@
     };
     catppuccin.url = "github:catppuccin/nix";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    stylix.url = "github:danth/stylix";
   };
   outputs = {
     nixpkgs,
@@ -18,6 +19,7 @@
     catppuccin,
     solaar,
     zen-browser,
+    stylix,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -31,6 +33,7 @@
       modules = [
         ./conf/configuration.nix
         catppuccin.nixosModules.catppuccin
+        stylix.nixosModules.stylix
         solaar.nixosModules.default
       ];
     };

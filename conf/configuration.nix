@@ -2,18 +2,31 @@
   config,
   pkgs,
   catppuccin,
+  stylix,
   inputs,
   ...
 }: {
   imports = [
     ./hardware-configuration.nix
     ./packages.nix
+    # ./modules/stylix.nix
   ];
 
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
   ];
+
+  stylix.enable = true;
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+  stylix.autoEnable = true;
+  stylix.targets = {
+    grub.enable = false;
+    plymouth.enable = false;
+    console.enable = false;
+    gtk.enable = false;
+    gnome.enable = false;
+  };
 
   nix.gc = {
     automatic = true;

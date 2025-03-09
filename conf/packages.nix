@@ -36,7 +36,6 @@
       qemu_kvm
       NeoHtop
       neovim
-      ModrinthApp
       eog
       git
       wl-clipboard
@@ -54,6 +53,9 @@
       gedit
       carapace
       file
+      lutris
+      xmcl
+      varia
 
       gnomeExtensions.dash-to-dock
       gnomeExtensions.blur-my-shell
@@ -77,6 +79,7 @@
   programs.firefox.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     icu
+    python312Packages.platformdirs
   ];
   programs.nh.enable = true;
 
@@ -107,11 +110,11 @@
   programs.gamemode.enable = true;
 
   nixpkgs.config.packageOverrides = pkgs: {
-    # zen-browser = pkgs.callPackage ../nonNixPackages/zen-browser/default.nix { };
     catnap = pkgs.callPackage ../nonNixPackages/catnap/default.nix {};
     NeoHtop = pkgs.callPackage ../nonNixPackages/NeoHtop/default.nix {};
-    ModrinthApp = pkgs.callPackage ../nonNixPackages/astralrinth/default.nix {};
+    # ModrinthApp = pkgs.callPackage ../nonNixPackages/astralrinth/default.nix {};
     protonup-rs = pkgs.callPackage ../nonNixPackages/protonup-rs/default.nix {};
+    xmcl = pkgs.callPackage ../nonNixPackages/XMCL/default.nix {};
   };
 
   networking.firewall = rec {
