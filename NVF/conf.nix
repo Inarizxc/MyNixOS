@@ -70,7 +70,12 @@
       move.enable = true;
       hipatterns.enable = true;
     };
-    autocomplete.blink-cmp.enable = true;
+    autocomplete.blink-cmp = {
+      enable = true;
+      friendly-snippets.enable = true;
+      sourcePlugins.ripgrep.enable = true;
+      sourcePlugins.spell.enable = true;
+    };
     ui.noice.enable = true;
     binds.whichKey.enable = true;
     ui.colorizer.enable = true;

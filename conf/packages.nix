@@ -79,10 +79,10 @@
   programs.firefox.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     icu
-    python312Packages.platformdirs
   ];
   programs.nh.enable = true;
 
+  # programs.virt-manager.enable = true;
   virtualisation.libvirtd = {
     enable = true;
     qemu = {
@@ -115,6 +115,7 @@
     # ModrinthApp = pkgs.callPackage ../nonNixPackages/astralrinth/default.nix {};
     protonup-rs = pkgs.callPackage ../nonNixPackages/protonup-rs/default.nix {};
     xmcl = pkgs.callPackage ../nonNixPackages/XMCL/default.nix {};
+    varia = pkgs.callPackage ../nonNixPackages/varia/default.nix {};
   };
 
   networking.firewall = rec {
@@ -146,10 +147,6 @@
     nerd-fonts.jetbrains-mono
   ];
 
-  services.gnome.core-utilities.enable = false;
-  environment.gnome.excludePackages = [pkgs.gnome-tour];
-  services.xserver.excludePackages = [pkgs.xterm];
-  services.xserver.desktopManager.xterm.enable = false;
   documentation.nixos.enable = false;
   programs.nano.enable = false;
 }

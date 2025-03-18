@@ -87,6 +87,8 @@
         nv = "nix run --option warn-dirty false ${flakeDir}/NVF/ --";
         snv = "sudo nix run --option warn-dirty false ${flakeDir}/NVF/ --";
 
+        up = "sudo nix flake update --flake /home/inari/NixOS/ && sudo nix flake update --flake /home/inari/NixOS/NVF/";
+
         conf = "sudo nix run ${flakeDir}/NVF ${flakeDir}";
         nd = "nom develop --command fish";
         ns = "nom-shell --command fish";
@@ -132,6 +134,7 @@
             --bind 'space:toggle'
             --cycle
             --multi
+            --ignore-case
           "
         '';
     };
