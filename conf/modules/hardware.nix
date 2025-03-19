@@ -4,9 +4,7 @@
   pkgs,
   modulesPath,
   ...
-}:
-
-{
+}: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
@@ -27,8 +25,8 @@
     "nvidia_drm"
     "nvidia_uvm"
   ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
+  boot.kernelModules = ["kvm-amd"];
+  boot.extraModulePackages = [];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/78657e37-f633-480f-9ff6-1172f749eacc";
@@ -45,7 +43,7 @@
   };
 
   swapDevices = [
-    { device = "/dev/disk/by-uuid/f294c9c7-b577-4ec6-9bad-e6b7111773d6"; }
+    {device = "/dev/disk/by-uuid/f294c9c7-b577-4ec6-9bad-e6b7111773d6";}
   ];
 
   networking.useDHCP = lib.mkDefault true;
@@ -56,7 +54,7 @@
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia.modesetting.enable = true;
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
   hardware.nvidia.open = false;

@@ -31,7 +31,7 @@
       };
       system = system;
       modules = [
-        ./conf/configuration.nix
+        ./conf/conf.nix
         catppuccin.nixosModules.catppuccin
         stylix.nixosModules.stylix
         solaar.nixosModules.default

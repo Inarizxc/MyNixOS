@@ -9,5 +9,6 @@
     ./shell.nix
     ./virtualisation.nix
     ./fonts.nix
+    ./hardware.nix
   ];
 }
