@@ -97,12 +97,12 @@
       libraries = with pkgs; [
         icu
       ];
+    };
 
-      gamemode.enable = true;
-      steam = {
-        enable = true;
-        gamescopeSession.enable = true;
-      };
+    gamemode.enable = true;
+    steam = {
+      enable = true;
+      gamescopeSession.enable = true;
     };
   };
 
