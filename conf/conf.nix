@@ -7,12 +7,16 @@
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
+    "pipe-operators"
   ];
 
   nix.gc = {
     automatic = true;
     dates = "weekly";
+    options = "--delete-older-than 1d";
   };
+
+  nix.settings.trusted-users = ["inari"];
 
   nixpkgs.config.allowUnfree = true;
 

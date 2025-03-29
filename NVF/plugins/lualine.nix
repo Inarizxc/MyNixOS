@@ -171,7 +171,8 @@
               unix = '', -- e712
               dos = '',  -- e70f
               mac = '',  -- e711
-            }
+            },
+            separator = {right = ''}
           }
         ''
       ];

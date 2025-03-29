@@ -31,19 +31,19 @@
         cd = "z";
         c = "clear";
         rmdir = "rm -rf";
-        cat = "bat";
+        cat = "bat --paging=never";
         grep = "rg";
         find = "fd";
         du = "dua i";
         less = "bat";
         ls = "eza --tree --icons always --level 1";
 
-        nv = "nix run --option warn-dirty false ${flakeDir}/NVF/ --";
-        snv = "sudo nix run --option warn-dirty false ${flakeDir}/NVF/ --";
+        nv = "nix run --option warn-dirty false ${flakeDir}NVF/ --";
+        snv = "sudo nix run --option warn-dirty false ${flakeDir}NVF/ --";
 
         up = "sudo nix flake update --flake /home/inari/NixOS/ && sudo nix flake update --flake /home/inari/NixOS/NVF/";
 
-        conf = "sudo nix run ${flakeDir}/NVF ${flakeDir}";
+        conf = "sudo nix run --option warn-dirty false ${flakeDir}NVF ${flakeDir}";
         nd = "nom develop --command fish";
         ns = "nom-shell --command fish";
         nsp = "nom-shell --command fish -p";
@@ -97,6 +97,7 @@
       enableFishIntegration = true;
       settings = {
         theme = "catppuccin-mocha";
+        font-size = "15";
       };
     };
     fzf = {

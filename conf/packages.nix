@@ -17,8 +17,13 @@
       epapirus-icon-theme
       eog
       showtime
-      gedit
       papers
+      cartridges
+      gnome-clocks
+      gnome-weather
+      gnome-maps
+      gnome-calendar
+      decibels
 
       # Games
       protonup-rs
@@ -54,7 +59,7 @@
       # GUI
       NeoHtop
       libreoffice
-      telegram-desktop
+      kotatogram-desktop
       varia
       ghostty
 
@@ -65,9 +70,11 @@
       # Nix
       nix-output-monitor
       nvd
+      comma
+      nix-index
 
       # Git
-      git
+      gitFull
       lazygit
 
       # Gnome extensions
@@ -90,7 +97,12 @@
   programs = {
     firefox.enable = true;
     nh.enable = true;
-    # virt-manager.enable = true;
+    virt-manager.enable = true;
+
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
 
     nix-ld = {
       enable = true;
@@ -110,6 +122,7 @@
     ratbagd.enable = true;
     solaar.enable = true;
     flatpak.enable = true;
+    emacs.enable = true;
   };
 
   nixpkgs.config.packageOverrides = pkgs: {
