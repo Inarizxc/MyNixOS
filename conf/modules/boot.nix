@@ -16,6 +16,8 @@
       enable = true;
       efiSupport = true;
       useOSProber = false;
+      configurationLimit = 10;
+      copyKernels = true;
     };
   };
   boot.plymouth.enable = true;

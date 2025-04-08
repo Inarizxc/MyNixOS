@@ -19,7 +19,23 @@
 
     markdown = {
       enable = true;
-      extensions.render-markdown-nvim.enable = true;
+      extensions.render-markdown-nvim = {
+        enable = true;
+        setupOpts = {
+          render_modes = true;
+        };
+      };
+    };
+  };
+  vim.notes = {
+    neorg = {
+      enable = true;
+      treesitter.enable = true;
+      setupOpts.load = {
+        "core.defaults".enable = true;
+        "core.concealer".enable = true;
+        "core.dirman".config.workspaces.notes = "~/Documents/Notes";
+      };
     };
   };
 }

@@ -9,7 +9,6 @@
 
       # Gnome
       nautilus
-      gnome-boxes
       gnome-calculator
       gnome-disk-utility
       fragments
@@ -51,7 +50,6 @@
       thefuck
 
       # Neovim
-      neovim
       nixd
       wl-clipboard
       alejandra
@@ -95,7 +93,6 @@
     ];
 
   programs = {
-    firefox.enable = true;
     nh.enable = true;
     virt-manager.enable = true;
 
@@ -130,7 +127,9 @@
     NeoHtop = pkgs.callPackage ../myPackages/NeoHtop/default.nix {};
     protonup-rs = pkgs.callPackage ../myPackages/protonup-rs/default.nix {};
     xmcl = pkgs.callPackage ../myPackages/XMCL/default.nix {};
-    varia = pkgs.callPackage ../myPackages/varia/default.nix {};
+    varia = pkgs.varia.overridePythonAttrs (oldAttrs: {
+      version = "2025.1.24";
+    });
   };
 
   documentation.nixos.enable = false;

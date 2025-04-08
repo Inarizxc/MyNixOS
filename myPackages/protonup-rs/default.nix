@@ -2,12 +2,12 @@
   stdenv,
   fetchurl,
 }:
-stdenv.mkDerivation (finalAttrs: {
+stdenv.mkDerivation rec {
   pname = "protonup-rs";
   version = "0.8.5";
 
   src = fetchurl {
-    url = "https://github.com/auyer/Protonup-rs/releases/download/v0.8.5/protonup-rs-linux-amd64.tar.gz";
+    url = "https://github.com/auyer/Protonup-rs/releases/download/v${version}/protonup-rs-linux-amd64.tar.gz";
     sha256 = "sha256-sqeyKH+cdNq+jP9ss70AJsp2cl6sOrFHpr6tDljtYqY=";
   };
   dontUnpack = true;
@@ -19,4 +19,4 @@ stdenv.mkDerivation (finalAttrs: {
 
     cp protonup-rs $out/bin
   '';
-})
+}
