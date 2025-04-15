@@ -72,6 +72,8 @@
               # This function is masked and does nothing
           end
 
+          set -gx SSH_ASKPASS
+
           set -Ux fifc_editor nvim
 
           set -gx fifc_spinner '⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏'
