@@ -40,13 +40,13 @@
 
         nv = "nix run --option warn-dirty false ${flakeDir}NVF/ --";
         snv = "sudo nix run --option warn-dirty false ${flakeDir}NVF/ --";
+        note = "nix run --option warn-dirty false ${flakeDir}NVF/ -- /home/inari/Documents/Notes/index.norg";
 
-        up = "sudo nix flake update --flake /home/inari/NixOS/ && sudo nix flake update --flake /home/inari/NixOS/NVF/";
+        up = "sudo nix flake update --flake ${flakeDir} && sudo nix flake update --flake ${flakeDir}";
 
         conf = "sudo nix run --option warn-dirty false ${flakeDir}NVF ${flakeDir}";
         nd = "nom develop --command fish";
         ns = "nom-shell --command fish";
-        nsp = "nom-shell --command fish -p";
 
         nb = "sudo nom-build -E 'with import <nixpkgs> { }; callPackage ./default.nix { }'";
       };
@@ -60,7 +60,6 @@
           end
           carapace _carapace fish | source
           oh-my-posh init fish --config ~/.config/oh-my-posh/catppuccin.omp.json | source
-          thefuck --alias | source
           zoxide init fish | source
 
           function rerender_on_bind_mode_change --on-variable fish_bind_mode
@@ -99,6 +98,11 @@
         theme = "catppuccin-mocha";
         font-size = "15";
       };
+    };
+    git = {
+      enable = true;
+      userEmail = "veprevmaksim08@gmail.com";
+      userName = "Inarizxc";
     };
     fzf = {
       enable = true;

@@ -39,7 +39,7 @@
     };
     homeConfigurations."inari" = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
-      modules = [./home/home.nix catppuccin.homeManagerModules.catppuccin];
+      modules = [./home/home.nix catppuccin.homeModules.catppuccin];
     };
   };
 }

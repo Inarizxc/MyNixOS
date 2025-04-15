@@ -9,7 +9,7 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
   # boot.kernelPackages = pkgs.linuxPackages_xanmod;
 
   boot.initrd.availableKernelModules = [

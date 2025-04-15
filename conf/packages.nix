@@ -40,14 +40,11 @@
       fzf
       zoxide
       fd
-      dua
-      joshuto
       oh-my-posh
       catnap
       eza
       carapace
       file
-      thefuck
 
       # Neovim
       nixd
