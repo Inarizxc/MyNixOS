@@ -10,6 +10,7 @@
     };
     zig.enable = true;
     python.enable = true;
+    rust.enable = true;
 
     ts.enable = true;
     svelte.enable = true;

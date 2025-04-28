@@ -1,14 +1,20 @@
 {...}: {
   vim.keymaps = [
-    {
-      key = "\\";
-      mode = "n";
-      silent = true;
-      action = ":Neotree toggle position=left<CR>";
-    }
+    # {
+    #   key = "\\";
+    #   mode = "n";
+    #   silent = true;
+    #   action = ":Neotree toggle position=left<CR>";
+    # }
     {
       key = "x";
       mode = "n";
+      silent = true;
+      action = "\"_x";
+    }
+    {
+      key = "x";
+      mode = "v";
       silent = true;
       action = "\"_x";
     }
@@ -83,6 +89,12 @@
       mode = "n";
       silent = true;
       action = "<C-w>s";
+    }
+    {
+      key = "\\";
+      mode = "n";
+      silent = true;
+      action = ":lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>";
     }
   ];
 }

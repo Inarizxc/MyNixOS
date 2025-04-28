@@ -125,7 +125,7 @@
     protonup-rs = pkgs.callPackage ../myPackages/protonup-rs/default.nix {};
     xmcl = pkgs.callPackage ../myPackages/XMCL/default.nix {};
     varia = pkgs.varia.overridePythonAttrs (oldAttrs: {
-      version = "2025.1.24";
+      version = "2025.4.3";
     });
   };
 

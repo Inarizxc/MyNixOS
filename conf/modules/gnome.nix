@@ -9,4 +9,6 @@
   environment.gnome.excludePackages = [pkgs.gnome-tour];
   services.xserver.excludePackages = [pkgs.xterm];
   services.xserver.desktopManager.xterm.enable = false;
+
+  # services.gnome.gnome-remote-desktop.enable = true;
 }

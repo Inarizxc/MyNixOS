@@ -30,7 +30,6 @@
       in {
         cd = "z";
         c = "clear";
-        rmdir = "rm -rf";
         cat = "bat --paging=never";
         grep = "rg";
         find = "fd";
@@ -99,6 +98,7 @@
       settings = {
         theme = "catppuccin-mocha";
         font-size = "15";
+        background-opacity = "0.95";
       };
     };
     git = {

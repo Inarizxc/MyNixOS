@@ -4,7 +4,7 @@
 }:
 stdenv.mkDerivation rec {
   pname = "protonup-rs";
-  version = "0.8.5";
+  version = "0.9.0";
 
   src = fetchurl {
     url = "https://github.com/auyer/Protonup-rs/releases/download/v${version}/protonup-rs-linux-amd64.tar.gz";
