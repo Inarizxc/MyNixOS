@@ -85,6 +85,7 @@
       gnomeExtensions.quick-settings-tweaker
       gnomeExtensions.just-perfection
       gnomeExtensions.quick-settings-tweaker
+      gnomeExtensions.user-themes
     ])
     ++ [
       # Zen Browser

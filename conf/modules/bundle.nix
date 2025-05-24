@@ -6,7 +6,7 @@
     ./gnome.nix
     ./sound.nix
     ./network.nix
-    ./shell.nix
+    ./users.nix
     ./virtualisation.nix
     ./fonts.nix
     ./hardware.nix
