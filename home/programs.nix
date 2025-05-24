@@ -98,7 +98,6 @@
       settings = {
         theme = "catppuccin-mocha";
         font-size = "15";
-        background-opacity = "0.95";
       };
     };
     git = {

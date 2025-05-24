@@ -15,6 +15,7 @@
         "solaar-extension@sidevesh"
         "space-bar@luchrioh"
         "just-perfection-desktop@just-perfection"
+        "quick-settings-tweaks@qwreey"
       ];
     };
   };

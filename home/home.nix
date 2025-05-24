@@ -16,7 +16,7 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    FLAKE = "/home/inari/NixOS";
+    NH_FLAKE = "/home/inari/NixOS";
     STEAM_EXTRA_COMPAT_TOOLS_PATHS = "/home/inari/.steam/root/compatibilitytools.d";
   };
 

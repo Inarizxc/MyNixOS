@@ -17,6 +17,7 @@
     tailwind.enable = true;
     css.enable = true;
     html.enable = true;
+    bash.enable = true;
 
     markdown = {
       enable = true;

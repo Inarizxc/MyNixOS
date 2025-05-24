@@ -10,7 +10,6 @@
   ];
 
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
-  # boot.kernelPackages = pkgs.linuxPackages_xanmod;
 
   boot.initrd.availableKernelModules = [
     "nvme"
@@ -45,6 +44,8 @@
   swapDevices = [
     {device = "/dev/disk/by-uuid/f294c9c7-b577-4ec6-9bad-e6b7111773d6";}
   ];
+
+  security.sudo-rs.enable = true;
 
   networking.useDHCP = lib.mkDefault true;
 

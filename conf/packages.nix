@@ -29,6 +29,7 @@
       heroic
       lutris
       xmcl
+      hydralauncher
 
       # Configuration
       solaar
@@ -55,7 +56,6 @@
       NeoHtop
       libreoffice
       kotatogram-desktop
-      varia
       ghostty
 
       # Virtualisation
@@ -84,9 +84,18 @@
       gnomeExtensions.space-bar
       gnomeExtensions.quick-settings-tweaker
       gnomeExtensions.just-perfection
+      gnomeExtensions.quick-settings-tweaker
     ])
     ++ [
+      # Zen Browser
       inputs.zen-browser.packages."x86_64-linux".beta
+
+      # Qemu UEFI
+      (pkgs.writeShellScriptBin "qemu-system-x86_64-uefi" ''
+        qemu-system-x86_64 \
+          -bios ${pkgs.OVMF.fd}/FV/OVMF.fd \
+          "$@"
+      '')
     ];
 
   programs = {
@@ -124,9 +133,6 @@
     NeoHtop = pkgs.callPackage ../myPackages/NeoHtop/default.nix {};
     protonup-rs = pkgs.callPackage ../myPackages/protonup-rs/default.nix {};
     xmcl = pkgs.callPackage ../myPackages/XMCL/default.nix {};
-    varia = pkgs.varia.overridePythonAttrs (oldAttrs: {
-      version = "2025.4.3";
-    });
   };
 
   documentation.nixos.enable = false;

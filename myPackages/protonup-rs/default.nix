@@ -8,7 +8,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://github.com/auyer/Protonup-rs/releases/download/v${version}/protonup-rs-linux-amd64.tar.gz";
-    sha256 = "sha256-sqeyKH+cdNq+jP9ss70AJsp2cl6sOrFHpr6tDljtYqY=";
+    sha256 = "sha256-4+oVqIQAyI182slkoEIcO4ysNRFN/WsG2WrfPgSEITo=";
   };
   dontUnpack = true;
 

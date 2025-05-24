@@ -1,11 +1,5 @@
 {...}: {
   vim.keymaps = [
-    # {
-    #   key = "\\";
-    #   mode = "n";
-    #   silent = true;
-    #   action = ":Neotree toggle position=left<CR>";
-    # }
     {
       key = "x";
       mode = "n";
@@ -95,6 +89,12 @@
       mode = "n";
       silent = true;
       action = ":lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>";
+    }
+    {
+      key = "t";
+      mode = "n";
+      silent = true;
+      action = ":Trouble diagnostics toggle<CR>";
     }
   ];
 }
