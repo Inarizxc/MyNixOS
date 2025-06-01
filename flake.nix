@@ -11,6 +11,7 @@
     };
     catppuccin.url = "github:catppuccin/nix";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    nix-alien.url = "github:thiagokokada/nix-alien";
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -21,7 +22,6 @@
     home-manager,
     catppuccin,
     solaar,
-    zen-browser,
     stylix,
     ...
   } @ inputs: let

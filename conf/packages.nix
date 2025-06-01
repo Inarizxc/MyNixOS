@@ -91,6 +91,9 @@
       # Zen Browser
       inputs.zen-browser.packages."x86_64-linux".beta
 
+      # Nix-alien
+      inputs.nix-alien.packages."x86_64-linux".nix-alien
+
       # Qemu UEFI
       (pkgs.writeShellScriptBin "qemu-system-x86_64-uefi" ''
         qemu-system-x86_64 \
@@ -101,7 +104,6 @@
 
   programs = {
     nh.enable = true;
-    virt-manager.enable = true;
 
     direnv = {
       enable = true;

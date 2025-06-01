@@ -1,7 +1,6 @@
 {...}: {
   vim.languages = {
     enableFormat = true;
-    enableLSP = true;
     enableTreesitter = true;
 
     nix = {
@@ -29,15 +28,14 @@
       };
     };
   };
-  vim.notes = {
-    neorg = {
-      enable = true;
-      treesitter.enable = true;
-      setupOpts.load = {
-        "core.defaults".enable = true;
-        "core.concealer".enable = true;
-        "core.dirman".config.workspaces.notes = "~/Documents/Notes";
-      };
-    };
-  };
+  # vim.notes = {
+  #   neorg = {
+  #     enable = true;
+  #     setupOpts.load = {
+  #       "core.defaults".enable = true;
+  #       "core.concealer".enable = true;
+  #       "core.dirman".config.workspaces.notes = "~/Documents/Notes";
+  #     };
+  #   };
+  # };
 }

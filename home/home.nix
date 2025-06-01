@@ -14,6 +14,10 @@
 
   home.stateVersion = "24.05";
 
+  home.file = {
+    ".themes/Catppuccin-Purple-Dark".source = ./.themes/Catppuccin-Purple-Dark;
+  };
+
   home.sessionVariables = {
     EDITOR = "nvim";
     NH_FLAKE = "/home/inari/NixOS";

@@ -23,7 +23,10 @@
 
       wrap = false;
     };
-    useSystemClipboard = true;
+    clipboard = {
+      enable = true;
+      providers.wl-copy.enable = true;
+    };
 
     undoFile.enable = true;
 

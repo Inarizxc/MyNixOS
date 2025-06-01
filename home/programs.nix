@@ -41,7 +41,7 @@
         snv = "sudo nix run --option warn-dirty false ${flakeDir}NVF/ --";
         note = "nix run --option warn-dirty false ${flakeDir}NVF/ -- /home/inari/Documents/Notes/index.norg";
 
-        up = "sudo nix flake update --flake ${flakeDir} && sudo nix flake update --flake ${flakeDir}";
+        up = "sudo nix flake update --flake ${flakeDir} && sudo nix flake update --flake ${flakeDir}NVF";
 
         conf = "sudo nix run --option warn-dirty false ${flakeDir}NVF ${flakeDir}";
         nd = "nom develop --command fish";
