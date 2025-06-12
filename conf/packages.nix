@@ -6,10 +6,11 @@
   environment.systemPackages =
     (with pkgs; [
       home-manager
+      catppuccin-cursors
 
       # Gnome
       nautilus
-      gnome-calculator
+      sums
       gnome-disk-utility
       fragments
       gnome-tweaks

@@ -5,7 +5,6 @@
 }: {
   vim.statusline.lualine = {
     enable = true;
-    ignoreFocus = ["Neotree"];
     activeSection = {
       a = [
         ''

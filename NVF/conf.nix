@@ -6,7 +6,7 @@
 : {
   imports = [
     ./keymaps.nix
-    ./plugins/bundle.nix
+    ./modules/bundle.nix
   ];
   vim = {
     package = pkgs.neovim-unwrapped;

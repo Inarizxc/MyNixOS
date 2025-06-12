@@ -1,5 +1,10 @@
 {...}: {
-  gtk.enable = true;
+  gtk = { 
+    enable = true;
+    cursorTheme.name = "Catppuccin-mocha-mauve";
+    iconTheme.name = "Papirus-Dark";
+    theme.name = "Catppuccin-Purple-Dark"; 
+  };
 
   dconf.settings = {
     "org/gnome/shell" = {
