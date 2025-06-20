@@ -1,12 +1,8 @@
+{ ... }:
 {
-  config,
-  pkgs,
-  catppuccin,
-  ...
-}: {
   imports = [
     ./modules/bundle.nix
-    ./programs.nix
+    ./programs/bundle.nix
   ];
 
   home.username = "inari";

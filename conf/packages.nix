@@ -47,9 +47,11 @@
       eza
       carapace
       file
+      helix
 
       # Neovim
       nixd
+      nil
       wl-clipboard
       alejandra
 
