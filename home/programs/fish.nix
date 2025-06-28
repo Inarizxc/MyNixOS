@@ -22,8 +22,13 @@
         src = pkgs.fishPlugins.puffer.src;
       }
       {
-        name = "bass";
-        src = pkgs.fishPlugins.bass.src;
+        name = "replay.fish";
+        src = pkgs.fetchFromGitHub {
+          owner = "jorgebucaran";
+          repo = "replay.fish";
+          rev = "d2ecacd3fe7126e822ce8918389f3ad93b14c86c";
+          sha256 = "sha256-TzQ97h9tBRUg+A7DSKeTBWLQuThicbu19DHMwkmUXdg=";
+        };
       }
     ];
     shellAliases =
@@ -36,19 +41,18 @@
         cat = "bat --paging=never";
         grep = "rg";
         find = "fd";
-        du = "dua i";
         less = "bat";
-        ls = "eza --tree --icons always --level 0";
+        ls = "eza --tree --icons always --level 1";
+        rm = "rmt";
+        rmd = "rmt --destroy";
 
-        nv = "nix run --option warn-dirty false ${flakeDir}NVF/ --";
-        snv = "sudo nix run --option warn-dirty false ${flakeDir}NVF/ --";
-        note = "nix run --option warn-dirty false ${flakeDir}NVF/ -- /home/inari/Documents/Notes/index.norg";
+        shx = "sudo env \"HOME=$HOME\" hx";
 
-        shx = " sudo -E env \"HOME=$HOME\" hx";
+        nos = "nh os switch";
+        nhs = "nh home switch";
+        up = "sudo nix flake update --flake ${flakeDir}";
 
-        up = "sudo nix flake update --flake ${flakeDir} && sudo nix flake update --flake ${flakeDir}NVF";
-
-        conf = "sudo nix run --option warn-dirty false ${flakeDir}NVF ${flakeDir}";
+        conf = "sudo env \"HOME=$HOME\" hx ${flakeDir}";
         nd = "nom develop --command fish";
         ns = "nom-shell --command fish";
 
@@ -76,7 +80,7 @@
 
         set -gx SSH_ASKPASS
 
-        set -Ux fifc_editor nvim
+        set -Ux fifc_editor hx
 
         set -gx fifc_spinner '⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏'
 

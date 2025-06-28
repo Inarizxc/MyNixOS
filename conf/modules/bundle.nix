@@ -1,6 +1,5 @@
 {...}: {
   imports = [
-    ./stylix.nix
     ./boot.nix
     ./locale.nix
     ./gnome.nix

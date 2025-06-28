@@ -1,15 +1,17 @@
-{ stdenv }:
-stdenv.mkDerivation {
-	pname = "catnap";
-	version = "2623f97443b21fae3fd6a2974f6ce3a12d4c6ca6";
-	src = ./bin;
+{ stdenvNoCC }:
+stdenvNoCC.mkDerivation {
+  pname = "catnap";
+  version = "2623f97443b21fae3fd6a2974f6ce3a12d4c6ca6";
+  src = ./catnap;
 
-	dontCheck = true;
-	dontUnpack = true;
-	doBuild = false;
+  dontUnpack = true;
+  dontConfigure = true;
+  dontBuild = true;
+  dontCheck = true;
+  dontFixup = true;
 
-	installPhase = ''
-		mkdir -p $out/bin
-		cp $src/catnap $out/bin
-	'';
+  installPhase = ''
+    		mkdir -p $out/bin
+    		install -Dm755 $src $out/bin/catnap
+    	'';
 }

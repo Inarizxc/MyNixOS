@@ -12,17 +12,12 @@
     catppuccin.url = "github:catppuccin/nix";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     nix-alien.url = "github:thiagokokada/nix-alien";
-    stylix = {
-      url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
   outputs = {
     nixpkgs,
     home-manager,
     catppuccin,
     solaar,
-    stylix,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -36,7 +31,6 @@
       modules = [
         ./conf/conf.nix
         catppuccin.nixosModules.catppuccin
-        stylix.nixosModules.stylix
         solaar.nixosModules.default
       ];
     };

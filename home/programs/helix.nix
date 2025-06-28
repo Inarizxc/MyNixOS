@@ -10,7 +10,6 @@
             "fish"
             "-c"
           ];
-          line-number = "relative";
           gutters = [
             "diagnostics"
             "line-numbers"
@@ -22,6 +21,7 @@
           color-modes = true;
           popup-border = "all";
           end-of-line-diagnostics = "info";
+          continue-comments = false;
 
           indent-guides.render = true;
           inline-diagnostics.cursor-line = "warning";
@@ -42,7 +42,7 @@
               "register"
               "file-type"
               "selections"
-              "position"
+              "position-percentage"
               "file-encoding"
             ];
             mode.normal = "N";

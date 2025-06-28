@@ -14,7 +14,7 @@
       gnome-disk-utility
       fragments
       gnome-tweaks
-      epapirus-icon-theme
+      papirus-icon-theme
       eog
       showtime
       papers
@@ -47,9 +47,13 @@
       eza
       carapace
       file
-      helix
+      python313Packages.downloader-cli
+      fzfm
+      rmt
 
-      # Neovim
+      # Editor
+      helix
+      emacs-gtk
       nixd
       nil
       wl-clipboard
@@ -131,7 +135,10 @@
     ratbagd.enable = true;
     solaar.enable = true;
     flatpak.enable = true;
-    emacs.enable = true;
+    ollama = {
+      enable = true;
+      package = pkgs.ollama-cuda;
+    };
   };
 
   nixpkgs.config.packageOverrides = pkgs: {
@@ -139,7 +146,9 @@
     NeoHtop = pkgs.callPackage ../myPackages/NeoHtop/default.nix {};
     protonup-rs = pkgs.callPackage ../myPackages/protonup-rs/default.nix {};
     xmcl = pkgs.callPackage ../myPackages/XMCL/default.nix {};
-  };
+    fzfm = pkgs.callPackage ../myPackages/fzfm/default.nix {};
+    rmt = pkgs.callPackage ../myPackages/rmt/default.nix {};
+    };
 
   documentation.nixos.enable = false;
   programs.nano.enable = false;

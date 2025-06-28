@@ -1,8 +1,8 @@
 {
-  stdenv,
+  stdenvNoCC,
   fetchurl,
 }:
-stdenv.mkDerivation rec {
+stdenvNoCC.mkDerivation rec {
   pname = "protonup-rs";
   version = "0.9.0";
 

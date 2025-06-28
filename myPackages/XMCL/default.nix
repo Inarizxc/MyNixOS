@@ -2,7 +2,8 @@
   appimageTools,
   fetchurl,
   ...
-}: let
+}:
+let
   pname = "xmcl";
   version = "0.51.1";
 
@@ -15,18 +16,16 @@
     inherit pname version src;
   };
 in
-  appimageTools.wrapType2 {
-    inherit pname version src;
+appimageTools.wrapType2 {
+  inherit pname version src;
 
-    extraInstallCommands =
-      /*
-      BASH
-      */
-      ''
-        mkdir -p $out/share/applications $out/share/pixmaps
-        cp ${appimageContents}/xmcl.png $out/share/pixmaps/
+  extraInstallCommands =
+    # BASH
+    ''
+      mkdir -p $out/share/applications $out/share/pixmaps
+      cp ${appimageContents}/xmcl.png $out/share/pixmaps/
 
-        substitute ${appimageContents}/xmcl.desktop $out/share/applications/xmcl.desktop \
-           --replace 'Exec=AppRun' 'Exec=nvidia-offload gamemoderun xmcl'
-      '';
-  }
+      substitute ${appimageContents}/xmcl.desktop $out/share/applications/xmcl.desktop \
+         --replace 'Exec=AppRun' 'Exec=nvidia-offload gamemoderun xmcl'
+    '';
+}
