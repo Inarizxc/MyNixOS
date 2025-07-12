@@ -80,6 +80,8 @@
 
         set -gx SSH_ASKPASS
 
+        set -gx fish_greeting
+
         set -Ux fifc_editor hx
 
         set -gx fifc_spinner '⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏'

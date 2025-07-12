@@ -5,7 +5,7 @@
     enableFishIntegration = true;
     settings = {
       theme = "catppuccin-mocha";
-      font-size = "15";
+      font-size = "18";
       confirm-close-surface = false;
     };
   };

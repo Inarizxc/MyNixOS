@@ -16,6 +16,7 @@
             "spacer"
             "diff"
           ];
+          scrolloff = 0;
           bufferline = "multiple";
           completion-replace = true;
           color-modes = true;

@@ -2,7 +2,8 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   environment.systemPackages =
     (with pkgs; [
       home-manager
@@ -10,12 +11,11 @@
 
       # Gnome
       nautilus
-      sums
       gnome-disk-utility
       fragments
       gnome-tweaks
       papirus-icon-theme
-      eog
+      loupe
       showtime
       papers
       cartridges
@@ -111,17 +111,11 @@
 
   programs = {
     nh.enable = true;
+    nix-ld.enable = true;
 
     direnv = {
       enable = true;
       nix-direnv.enable = true;
-    };
-
-    nix-ld = {
-      enable = true;
-      libraries = with pkgs; [
-        icu
-      ];
     };
 
     gamemode.enable = true;
@@ -139,16 +133,59 @@
       enable = true;
       package = pkgs.ollama-cuda;
     };
+    zapret = {
+      enable = true;
+      params = [
+        "--filter-tcp=80 ˂HOSTLIST˃"
+        "--dpi-desync=fake,fakedsplit"
+        "--dpi-desync-autottl=2"
+        "--dpi-desync-fooling=md5sig"
+        "--new"
+        "--filter-tcp=443"
+        "--dpi-desync=fake,multidisorder"
+        "--dpi-desync-fooling=badseq"
+        "--dpi-desync-split-pos=midsld"
+        "--dpi-desync-fake-tls=0x00000000"
+      ];
+      whitelist = [
+        "googleusercontent.com"
+        "accounts.google.com"
+        "googleadservices.com"
+        "googlevideo.com"
+        "gvt1.com"
+        "jnn-pa.googleapis.com"
+        "play.google.com"
+        "wide-youtube.l.google.com"
+        "youtu.be"
+        "youtube-nocookie.com"
+        "youtube-ui.l.google.com"
+        "youtube.com"
+        "youtube.googleapis.com"
+        "youtubeembeddedplayer.googleapis.com"
+        "youtubei.googleapis.com"
+        "yt-video-upload.l.google.com"
+        "yt.be"
+        "ytimg.com"
+        "ggpht.com"
+      ];
+    };
   };
 
   nixpkgs.config.packageOverrides = pkgs: {
-    catnap = pkgs.callPackage ../myPackages/catnap/default.nix {};
-    NeoHtop = pkgs.callPackage ../myPackages/NeoHtop/default.nix {};
-    protonup-rs = pkgs.callPackage ../myPackages/protonup-rs/default.nix {};
-    xmcl = pkgs.callPackage ../myPackages/XMCL/default.nix {};
-    fzfm = pkgs.callPackage ../myPackages/fzfm/default.nix {};
-    rmt = pkgs.callPackage ../myPackages/rmt/default.nix {};
-    };
+    catnap = pkgs.callPackage ../myPackages/catnap/default.nix { };
+    NeoHtop = pkgs.callPackage ../myPackages/NeoHtop/default.nix { };
+    protonup-rs = pkgs.callPackage ../myPackages/protonup-rs/default.nix { };
+    xmcl = pkgs.callPackage ../myPackages/XMCL/default.nix { };
+    fzfm = pkgs.callPackage ../myPackages/fzfm/default.nix { };
+    rmt = pkgs.callPackage ../myPackages/rmt/default.nix { };
+    ghostty = pkgs.ghostty.overrideAttrs (_: {
+      preBuild = ''
+        shopt -s globstar
+        sed -i 's/^const xev = @import("xev");$/const xev = @import("xev").Epoll;/' **/*.zig
+        shopt -u globstar
+      '';
+    });
+  };
 
   documentation.nixos.enable = false;
   programs.nano.enable = false;
