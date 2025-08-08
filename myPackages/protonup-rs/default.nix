@@ -1,22 +1,18 @@
-{
-  stdenvNoCC,
-  fetchurl,
-}:
-stdenvNoCC.mkDerivation rec {
+{ fetchFromGitHub, rustPlatform, ... }:
+rustPlatform.buildRustPackage rec{
   pname = "protonup-rs";
-  version = "0.9.0";
-
-  src = fetchurl {
-    url = "https://github.com/auyer/Protonup-rs/releases/download/v${version}/protonup-rs-linux-amd64.tar.gz";
-    sha256 = "sha256-4+oVqIQAyI182slkoEIcO4ysNRFN/WsG2WrfPgSEITo=";
+  version = "0.9.1";
+  src = fetchFromGitHub {
+    owner = "auyer";
+    repo = "Protonup-rs";
+    rev = "v${version}";
+    sha256 = "sha256-FaWSiFTaYGK5Izbe+Xj3v1E1saDTgPWmLrIr8e6Atis=";
   };
-  dontUnpack = true;
 
-  installPhase = ''
-    mkdir -p $out/bin
+  cargoHash = "sha256-8agfPwbcMjdnqqXZ3w+dUhS2XzZNgZg39pbb6z9tpMc=";
 
-    tar xf $src
-
-    cp protonup-rs $out/bin
-  '';
+  checkFlags = [
+    "--skip=downloads::tests::test_list_releases"
+    "--skip=downloads::tests::test_get_release"
+  ];
 }

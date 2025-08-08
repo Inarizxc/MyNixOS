@@ -2,7 +2,7 @@
   imports = [
     ./boot.nix
     ./locale.nix
-    ./gnome.nix
+    ./display.nix
     ./sound.nix
     ./network.nix
     ./users.nix

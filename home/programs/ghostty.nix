@@ -3,6 +3,7 @@
   programs.ghostty = {
     enable = true;
     enableFishIntegration = true;
+    installVimSyntax = true;
     settings = {
       theme = "catppuccin-mocha";
       font-size = "18";

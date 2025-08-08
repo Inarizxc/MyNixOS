@@ -63,7 +63,9 @@
       NeoHtop
       libreoffice
       kotatogram-desktop
+      zapzap
       ghostty
+      blackbox-terminal
 
       # Virtualisation
       qemu
@@ -178,13 +180,15 @@
     xmcl = pkgs.callPackage ../myPackages/XMCL/default.nix { };
     fzfm = pkgs.callPackage ../myPackages/fzfm/default.nix { };
     rmt = pkgs.callPackage ../myPackages/rmt/default.nix { };
-    ghostty = pkgs.ghostty.overrideAttrs (_: {
-      preBuild = ''
-        shopt -s globstar
-        sed -i 's/^const xev = @import("xev");$/const xev = @import("xev").Epoll;/' **/*.zig
-        shopt -u globstar
-      '';
-    });
+    # ghostty = pkgs.ghostty.overrideAttrs (_: {
+    #   version = "1.1.4-391290a-nix";
+    #   src = pkgs.fetchFromGitHub {
+    #     owner = "ghostty-org";
+    #     repo = "ghostty";
+    #     rev = "f44c24ef88b9a663e760ad3a5a5866eb146b051e";
+    #     hash = "sha256-H/rJ/svNsq8Y7+jXtsOUJVRdWmmQnHXxVZe3wAo4lYo=";
+    #   };
+    # });
   };
 
   documentation.nixos.enable = false;

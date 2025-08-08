@@ -13,30 +13,36 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     nix-alien.url = "github:thiagokokada/nix-alien";
   };
-  outputs = {
-    nixpkgs,
-    home-manager,
-    catppuccin,
-    solaar,
-    ...
-  } @ inputs: let
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
-  in {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      specialArgs = {
-        inherit inputs;
+  outputs =
+    {
+      nixpkgs,
+      home-manager,
+      catppuccin,
+      solaar,
+      ...
+    }@inputs:
+    let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
+    {
+      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs;
+        };
+        system = system;
+        modules = [
+          ./conf/conf.nix
+          catppuccin.nixosModules.catppuccin
+          solaar.nixosModules.default
+        ];
       };
-      system = system;
-      modules = [
-        ./conf/conf.nix
-        catppuccin.nixosModules.catppuccin
-        solaar.nixosModules.default
-      ];
+      homeConfigurations."inari" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          ./home/home.nix
+          catppuccin.homeModules.catppuccin
+        ];
+      };
     };
-    homeConfigurations."inari" = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      modules = [./home/home.nix catppuccin.homeModules.catppuccin];
-    };
-  };
 }
