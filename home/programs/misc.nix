@@ -13,9 +13,9 @@
       enable = true;
       enableFishIntegration = true;
     };
-    oh-my-posh = {
-      enable = true;
-      enableFishIntegration = true;
-    };
+    # oh-my-posh = {
+    #   enable = true;
+    #   enableFishIntegration = true;
+    # };
   };
 }

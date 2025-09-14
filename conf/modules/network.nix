@@ -4,6 +4,8 @@
   networking.networkmanager.enable = true;
 
   networking.firewall = rec {
+    enable = true;
+    allowPing = false;
     allowedTCPPortRanges = [
       {
         from = 1714;

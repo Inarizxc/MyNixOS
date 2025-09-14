@@ -1,20 +1,26 @@
 { pkgs, ... }:
 {
-  services.xserver.enable = true;
+  services.xserver = {
+    enable = true;
+    excludePackages = [ pkgs.xterm ];
+    desktopManager.xterm.enable = false;
+  };
 
-  # services.displayManager.gdm = {
-  #   enable = true;
-  #   wayland = true;
-  # };
-  services.desktopManager.gnome.enable = true;
-  services.desktopManager.cosmic.enable = true;
-  services.desktopManager.cosmic.xwayland.enable = true;
-  services.displayManager.cosmic-greeter.enable = true;
+  services = {
+    desktopManager = {
+      gnome = {
+        enable = true;
+      };
+      cosmic = {
+        enable = true;
+        xwayland.enable = true;
+      };
+    };
+    gnome.core-apps.enable = false;
+    displayManager.cosmic-greeter.enable = true;
+  };
 
-  services.gnome.core-apps.enable = false;
   environment.gnome.excludePackages = [ pkgs.gnome-tour ];
-  services.xserver.excludePackages = [ pkgs.xterm ];
-  services.xserver.desktopManager.xterm.enable = false;
 
   xdg.terminal-exec = {
     enable = true;

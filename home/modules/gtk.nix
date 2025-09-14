@@ -1,8 +1,12 @@
-{...}: {
-  gtk = { 
+{ ... }:
+{
+  gtk = {
     enable = true;
-    iconTheme.name = "Papirus-Dark";
-    theme.name = "Catppuccin-Purple-Dark"; 
+    theme.name = "Catppuccin-Purple-Dark";
+    # gtk2.configLocation = ".themes/Catppuccin-Purple-Dark/gtk-2.0/gtkrc";
+    gtk2.extraConfig = ''
+        gtk-theme-name = "Catppuccin-Purple-Dark"
+      '';
   };
 
   dconf.settings = {

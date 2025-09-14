@@ -43,8 +43,6 @@
         find = "fd";
         less = "bat";
         ls = "eza --tree --icons always --level 1";
-        rm = "rmt";
-        rmd = "rmt --destroy";
 
         shx = "sudo env \"HOME=$HOME\" hx";
 
@@ -62,7 +60,7 @@
       # BASH
       ''
         if status is-interactive
-          catnap
+          fastfetch
         end
         carapace _carapace fish | source
         oh-my-posh init fish --config ~/.config/oh-my-posh/catppuccin.omp.json | source

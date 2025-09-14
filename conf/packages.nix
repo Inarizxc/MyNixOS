@@ -7,30 +7,13 @@
   environment.systemPackages =
     (with pkgs; [
       home-manager
-      catppuccin-cursors
-
-      # Gnome
-      nautilus
-      gnome-disk-utility
-      fragments
-      gnome-tweaks
       papirus-icon-theme
-      loupe
-      showtime
-      papers
-      cartridges
-      gnome-clocks
-      gnome-weather
-      gnome-maps
-      gnome-calendar
-      decibels
 
       # Games
-      protonup-rs
+      protonplus
       heroic
       lutris
       xmcl
-      hydralauncher
 
       # Configuration
       solaar
@@ -43,15 +26,15 @@
       zoxide
       fd
       oh-my-posh
-      catnap
+      fastfetch
       eza
       carapace
       file
       python313Packages.downloader-cli
       fzfm
-      rmt
 
       # Editor
+      zed-editor
       helix
       emacs-gtk
       nixd
@@ -60,12 +43,27 @@
       alejandra
 
       # GUI
-      NeoHtop
+      neohtop
       libreoffice
       kotatogram-desktop
       zapzap
       ghostty
-      blackbox-terminal
+      forecast
+      cosmic-ext-calculator
+      gnome-tweaks
+      tasks
+      gnome-disk-utility
+      fragments
+      loupe
+      showtime
+      papers
+      cartridges
+      decibels
+
+      # kitty
+      # hyprpaper
+      # wofi
+      # nautilus
 
       # Virtualisation
       qemu
@@ -114,6 +112,8 @@
   programs = {
     nh.enable = true;
     nix-ld.enable = true;
+    hyprland.enable = true;
+    # waybar.enable = true;
 
     direnv = {
       enable = true;
@@ -174,21 +174,8 @@
   };
 
   nixpkgs.config.packageOverrides = pkgs: {
-    catnap = pkgs.callPackage ../myPackages/catnap/default.nix { };
-    NeoHtop = pkgs.callPackage ../myPackages/NeoHtop/default.nix { };
-    protonup-rs = pkgs.callPackage ../myPackages/protonup-rs/default.nix { };
     xmcl = pkgs.callPackage ../myPackages/XMCL/default.nix { };
     fzfm = pkgs.callPackage ../myPackages/fzfm/default.nix { };
-    rmt = pkgs.callPackage ../myPackages/rmt/default.nix { };
-    # ghostty = pkgs.ghostty.overrideAttrs (_: {
-    #   version = "1.1.4-391290a-nix";
-    #   src = pkgs.fetchFromGitHub {
-    #     owner = "ghostty-org";
-    #     repo = "ghostty";
-    #     rev = "f44c24ef88b9a663e760ad3a5a5866eb146b051e";
-    #     hash = "sha256-H/rJ/svNsq8Y7+jXtsOUJVRdWmmQnHXxVZe3wAo4lYo=";
-    #   };
-    # });
   };
 
   documentation.nixos.enable = false;

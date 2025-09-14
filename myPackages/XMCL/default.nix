@@ -5,11 +5,11 @@
 }:
 let
   pname = "xmcl";
-  version = "0.51.1";
+  version = "0.51.6";
 
   src = fetchurl {
     url = "https://github.com/Voxelum/x-minecraft-launcher/releases/download/v${version}/xmcl-${version}-x86_64.AppImage";
-    hash = "sha256-dhptGQNKjeCHBkuSCbkcrYJ/F/rx2HicRfAES5VWaxM=";
+    hash = "sha256-YWX8Q4hrHrSzJ63makxia/8rJcR7a3vaBuPwDabPk+E=";
   };
 
   appimageContents = appimageTools.extractType2 {
