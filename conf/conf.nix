@@ -6,6 +6,9 @@
   ];
 
   nix = {
+    extraOptions = ''
+        warn-dirty = false
+      '';
     settings.experimental-features = [
       "nix-command"
       "flakes"

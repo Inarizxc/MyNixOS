@@ -27,11 +27,13 @@
       fd
       oh-my-posh
       fastfetch
-      eza
       carapace
       file
       python313Packages.downloader-cli
-      fzfm
+
+      # Shell
+      nushell
+      nix-your-shell
 
       # Editor
       zed-editor
@@ -46,23 +48,21 @@
       neohtop
       libreoffice
       kotatogram-desktop
-      zapzap
       ghostty
       forecast
       cosmic-ext-calculator
-      gnome-tweaks
       tasks
       gnome-disk-utility
       fragments
+      dialect
       loupe
-      showtime
-      papers
+      cosmic-reader
       cartridges
       decibels
+      impression
 
-      # kitty
       # hyprpaper
-      # wofi
+      # walker
       # nautilus
 
       # Virtualisation
@@ -79,20 +79,6 @@
       gitFull
       lazygit
 
-      # Gnome extensions
-      gnomeExtensions.dash-to-dock
-      gnomeExtensions.blur-my-shell
-      gnomeExtensions.appindicator
-      gnomeExtensions.vitals
-      gnomeExtensions.gsconnect
-      gnomeExtensions.clipboard-indicator
-      gnomeExtensions.rounded-window-corners-reborn
-      gnomeExtensions.solaar-extension
-      gnomeExtensions.space-bar
-      gnomeExtensions.quick-settings-tweaker
-      gnomeExtensions.just-perfection
-      gnomeExtensions.quick-settings-tweaker
-      gnomeExtensions.user-themes
     ])
     ++ [
       # Zen Browser
@@ -112,7 +98,7 @@
   programs = {
     nh.enable = true;
     nix-ld.enable = true;
-    hyprland.enable = true;
+    # hyprland.enable = true;
     # waybar.enable = true;
 
     direnv = {
@@ -169,13 +155,14 @@
         "yt.be"
         "ytimg.com"
         "ggpht.com"
+        "modrinth.com"
+        "rutracker.org"
       ];
     };
   };
 
   nixpkgs.config.packageOverrides = pkgs: {
     xmcl = pkgs.callPackage ../myPackages/XMCL/default.nix { };
-    fzfm = pkgs.callPackage ../myPackages/fzfm/default.nix { };
   };
 
   documentation.nixos.enable = false;

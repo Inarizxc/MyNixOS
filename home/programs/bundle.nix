@@ -1,7 +1,7 @@
 { ... }:
 {
   imports = [
-    ./fish.nix
+    ./nu.nix
     ./helix.nix
     ./git.nix
     ./ghostty.nix

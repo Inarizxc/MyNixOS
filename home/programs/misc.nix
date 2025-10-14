@@ -12,10 +12,25 @@
     zoxide = {
       enable = true;
       enableFishIntegration = true;
+      enableNushellIntegration = true;
     };
-    # oh-my-posh = {
-    #   enable = true;
-    #   enableFishIntegration = true;
-    # };
+    oh-my-posh = {
+      enable = true;
+      configFile = "~/.config/oh-my-posh/catppuccin.omp.json";
+      enableFishIntegration = true;
+      enableNushellIntegration = true;
+    };
+    carapace = {
+      enable = true;
+      enableNushellIntegration = true;
+    };
+    direnv = {
+      enable = true;
+      enableNushellIntegration = true;
+    };
+    nix-your-shell = {
+      enable = true;
+      enableNushellIntegration = true;
+    };
   };
 }
