@@ -13,16 +13,21 @@
       };
     };
     extraConfig = ''
-      fastfetch    
+      def cnos [] {
+        sudo su -c "rm -rf /boot/limine/kernels/*"
+        nh clean all
+        nh os switch
+      }
+      fastfetch
     '';
     environmentVariables = {
       PROMPT_INDICATOR_VI_NORMAL = ": ";
       PROMPT_INDICATOR_VI_INSERT = "> ";
-      NH_FLAKE = "/home/inari/NixOS";
+      SSH_ASKPASS = "";
     };
     plugins = with pkgs.nushellPlugins; [
       formats
-      highlight
+      # highlight
       skim
       semver
       gstat
@@ -47,7 +52,8 @@
         conf = "sudo hx ${flakeDir}";
         ns = "nix-shell";
 
-        nb = "sudo nom-build -E 'with import <nixpkgs> { }; callPackage ./default.nix { }'";
+        nb = "nom-build -E 'with import <nixpkgs> { }; callPackage ./default.nix { }'";
+        snb = "sudo nom-build -E 'with import <nixpkgs> { }; callPackage ./default.nix { }'";
       };
 
   };

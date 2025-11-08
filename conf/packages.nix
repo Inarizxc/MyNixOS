@@ -13,6 +13,7 @@
       protonplus
       heroic
       lutris
+      faugus-launcher
       xmcl
 
       # Configuration
@@ -28,8 +29,8 @@
       oh-my-posh
       fastfetch
       carapace
-      file
-      python313Packages.downloader-cli
+      rawst
+      joshuto
 
       # Shell
       nushell
@@ -45,25 +46,18 @@
       alejandra
 
       # GUI
-      neohtop
+      btop
       libreoffice
       kotatogram-desktop
       ghostty
-      forecast
-      cosmic-ext-calculator
-      tasks
+      gnome-calculator
+      planify
       gnome-disk-utility
-      fragments
       dialect
       loupe
-      cosmic-reader
-      cartridges
       decibels
       impression
-
-      # hyprpaper
-      # walker
-      # nautilus
+      nautilus
 
       # Virtualisation
       qemu
@@ -93,13 +87,35 @@
           -bios ${pkgs.OVMF.fd}/FV/OVMF.fd \
           "$@"
       '')
+
+      # Noctalia Shell
+      inputs.noctalia.packages."x86_64-linux".default
+      inputs.quickshell.packages."x86_64-linux".default
     ];
 
   programs = {
-    nh.enable = true;
     nix-ld.enable = true;
+    nh = {
+      enable = true;
+      package = (
+        pkgs.symlinkJoin {
+          name = "nh";
+          buildInputs = [ pkgs.makeWrapper ];
+          paths = [ pkgs.nh ];
+          postBuild = ''
+            wrapProgram $out/bin/nh \
+            --set NH_FLAKE "/home/inari/NixOS"
+          '';
+        }
+      );
+    };
     # hyprland.enable = true;
     # waybar.enable = true;
+    niri.enable = true;
+    xwayland = {
+      enable = true;
+      package = pkgs.xwayland-satellite;
+    };
 
     direnv = {
       enable = true;
@@ -117,6 +133,10 @@
     ratbagd.enable = true;
     solaar.enable = true;
     flatpak.enable = true;
+    transmission = {
+      enable = true;
+      package = pkgs.transmission_4;
+    };
     ollama = {
       enable = true;
       package = pkgs.ollama-cuda;
@@ -163,6 +183,7 @@
 
   nixpkgs.config.packageOverrides = pkgs: {
     xmcl = pkgs.callPackage ../myPackages/XMCL/default.nix { };
+    rawst = pkgs.callPackage ../myPackages/rawst/default.nix { };
   };
 
   documentation.nixos.enable = false;

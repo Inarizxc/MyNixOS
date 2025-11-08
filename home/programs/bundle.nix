@@ -1,7 +1,7 @@
 { ... }:
 {
   imports = [
-    ./nu.nix
+    ./nushell.nix
     ./helix.nix
     ./git.nix
     ./ghostty.nix
