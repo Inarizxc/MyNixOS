@@ -1,5 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, catppuccin, ... }:
 {
+  catppuccin = {
+    sddm.enable = true;
+  };
+
   services.xserver = {
     enable = true;
     excludePackages = [ pkgs.xterm ];
@@ -7,17 +11,11 @@
   };
 
   services = {
-    desktopManager = {
-      cosmic = {
-        enable = true;
-        xwayland.enable = true;
-        showExcludedPkgsWarning = false;
-      };
+    displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
     };
-    displayManager.cosmic-greeter.enable = true;
   };
-
-  environment.cosmic.excludePackages = [ pkgs.cosmic-applibrary ];
 
   xdg.terminal-exec = {
     enable = true;

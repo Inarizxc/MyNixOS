@@ -59,6 +59,10 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   hardware = {
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
     graphics = {
       enable = true;
       enable32Bit = true;

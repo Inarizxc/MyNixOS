@@ -8,6 +8,7 @@
     (with pkgs; [
       home-manager
       papirus-icon-theme
+      xdg-desktop-portal-gnome
 
       # Games
       protonplus
@@ -46,9 +47,10 @@
       alejandra
 
       # GUI
-      btop
+      fragments
+      mission-center
       libreoffice
-      kotatogram-desktop
+      ayugram-desktop
       ghostty
       gnome-calculator
       planify
@@ -58,6 +60,14 @@
       decibels
       impression
       nautilus
+      showtime
+      papers
+      thunderbird
+
+      # Screenshots
+      grim
+      slurp
+      swappy
 
       # Virtualisation
       qemu
@@ -90,7 +100,6 @@
 
       # Noctalia Shell
       inputs.noctalia.packages."x86_64-linux".default
-      inputs.quickshell.packages."x86_64-linux".default
     ];
 
   programs = {
@@ -133,10 +142,7 @@
     ratbagd.enable = true;
     solaar.enable = true;
     flatpak.enable = true;
-    transmission = {
-      enable = true;
-      package = pkgs.transmission_4;
-    };
+    udisks2.enable = true;
     ollama = {
       enable = true;
       package = pkgs.ollama-cuda;
@@ -177,6 +183,28 @@
         "ggpht.com"
         "modrinth.com"
         "rutracker.org"
+        "discord-attachments-uploads-prd.storage.googleapis.com"
+        "discord.app"
+        "discord.co"
+        "discord.com"
+        "discord.design"
+        "discord.dev"
+        "discord.gift"
+        "discord.gifts"
+        "discord.gg"
+        "discord.media"
+        "discord.new"
+        "discord.store"
+        "discord.status"
+        "discord-activities.com"
+        "discordactivities.com"
+        "discordapp.com"
+        "discordapp.net"
+        "discordcdn.com"
+        "discordmerch.com"
+        "discordpartygames.com"
+        "discordsays.com"
+        "discordsez.com"
       ];
     };
   };

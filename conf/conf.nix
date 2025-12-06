@@ -7,13 +7,17 @@
 
   nix = {
     extraOptions = ''
-        warn-dirty = false
-      '';
-    settings.experimental-features = [
-      "nix-command"
-      "flakes"
-      "pipe-operators"
-    ];
+      warn-dirty = false
+    '';
+    settings = {
+      cores = 8;
+      auto-optimise-store = true;
+      experimental-features = [
+        "nix-command"
+        "flakes"
+        "pipe-operators"
+      ];
+    };
 
     gc = {
       automatic = true;

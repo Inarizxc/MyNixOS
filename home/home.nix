@@ -24,19 +24,4 @@
   };
 
   programs.home-manager.enable = true;
-
-  # wayland.windowManager.hyprland = {
-  #   enable = true;
-  #   settings = {
-  #     general = {
-  #       gaps_out = 10;
-  #       allow_tearing = true;
-  #       "col.active_border" = "rgb(203,166,247)";
-  #       "col.inactive_border" = "rgba(49,50,48,0.85)";
-  #     };
-  #     decoration = {
-        
-  #     };
-  #   };
-  # };
 }
