@@ -1,6 +1,7 @@
 { ... }:
 {
   programs = {
+    bottom.enable = true;
     fzf = {
       enable = true;
       enableFishIntegration = true;

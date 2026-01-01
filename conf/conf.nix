@@ -1,4 +1,4 @@
-{ ... }:
+{ inputs, ... }:
 {
   imports = [
     ./packages.nix
@@ -10,6 +10,7 @@
       warn-dirty = false
     '';
     settings = {
+      max-jobs = 40;
       cores = 8;
       auto-optimise-store = true;
       experimental-features = [
@@ -28,7 +29,10 @@
     settings.trusted-users = [ "inari" ];
   };
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = [ inputs.niri.overlays.niri ];
+  };
 
   system.stateVersion = "24.05";
 }

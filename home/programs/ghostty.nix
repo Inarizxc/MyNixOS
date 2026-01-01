@@ -9,10 +9,6 @@
       confirm-close-surface = false;
       background-blur = true;
       background-opacity = 0.95;
-      keybind = [
-        "ctrl+h=previous_tab"
-        "ctrl+l=next_tab"        
-      ];
     };
   };
 }

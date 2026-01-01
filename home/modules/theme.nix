@@ -7,6 +7,6 @@
     fzf.enable = true;
     skim.enable = true;
     nushell.enable = true;
-    btop.enable = true;
+    bottom.enable = true;
   };
 }

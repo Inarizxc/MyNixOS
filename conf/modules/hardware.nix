@@ -52,8 +52,10 @@
     { device = "/dev/disk/by-uuid/f294c9c7-b577-4ec6-9bad-e6b7111773d6"; }
   ];
 
-  security.sudo-rs.enable = true;
-
+  security = {
+    sudo-rs.enable = true;
+    polkit.enable = true;
+  };
   networking.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
@@ -62,7 +64,17 @@
     bluetooth = {
       enable = true;
       powerOnBoot = true;
+      package = pkgs.bluez-experimental;
+      settings = {
+        General = {
+          Experimental = true;
+        };
+        Policy = {
+          AutoEnable = true;
+        };
+      };
     };
+    xpadneo.enable = true;
     graphics = {
       enable = true;
       enable32Bit = true;

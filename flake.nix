@@ -5,8 +5,8 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    solaar = {
-      url = "github:Svenum/Solaar-Flake/main";
+    niri = {
+      url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin.url = "github:catppuccin/nix";
@@ -16,13 +16,14 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
   };
   outputs =
     {
       nixpkgs,
       home-manager,
+      niri,
       catppuccin,
-      solaar,
       ...
     }@inputs:
     let
@@ -38,7 +39,7 @@
         modules = [
           ./conf/conf.nix
           catppuccin.nixosModules.catppuccin
-          solaar.nixosModules.default
+          # niri.nixosModules.niri
         ];
       };
       homeConfigurations."inari" = home-manager.lib.homeManagerConfiguration {
@@ -46,6 +47,7 @@
         modules = [
           ./home/home.nix
           catppuccin.homeModules.catppuccin
+          niri.homeModules.niri
         ];
       };
     };
