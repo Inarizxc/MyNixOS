@@ -6,21 +6,19 @@
 {
   environment.systemPackages =
     (with pkgs; [
+      # Env
+      noctalia-shell
+      xdg-desktop-portal-gnome
       home-manager
       papirus-icon-theme
-      xdg-desktop-portal-gnome
       catppuccin-cursors.mochaDark
+      wlr-which-key
 
       # Games
       protonplus
       heroic
-      lutris
       faugus-launcher
       xmcl
-
-      # Configuration
-      solaar
-      piper
 
       # Terminal
       bat
@@ -33,17 +31,17 @@
       superfile
       numr
       pingu
-      glow
       bottom
+      skim
+      libarchive
+      tldr
 
       # Shell
       nushell
-      nix-your-shell
       oh-my-posh
       carapace
 
       # Editor
-      zed-editor
       helix
       emacs-gtk
       neovim
@@ -51,9 +49,11 @@
       alejandra
 
       # GUI
+      piper
       fragments
       libreoffice
       ayugram-desktop
+      vesktop
       ghostty
       gnome-disk-utility
       dialect
@@ -61,14 +61,17 @@
       decibels
       impression
       nautilus
+      file-roller
       showtime
       papers
       thunderbird
+      bazaar
 
-      # Screenshots
+      # Screenshots & Screen Recorder
       grim
       slurp
       swappy
+      gpu-screen-recorder
 
       # Virtualisation
       qemu
@@ -78,6 +81,7 @@
       nix-output-monitor
       nvd
       comma
+      hydra-check
       nix-index
 
       # Git
@@ -98,9 +102,6 @@
           -bios ${pkgs.OVMF.fd}/FV/OVMF.fd \
           "$@"
       '')
-
-      # Noctalia Shell
-      inputs.noctalia.packages."x86_64-linux".default
     ];
 
   programs = {
@@ -118,14 +119,6 @@
           '';
         }
       );
-    };
-    niri = {
-      enable = true;
-      package = pkgs.niri-unstable;
-    };
-    xwayland = {
-      enable = true;
-      package = pkgs.xwayland-satellite;
     };
 
     direnv = {

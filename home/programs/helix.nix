@@ -14,7 +14,6 @@
       tombi
       svelte-language-server
       vscode-css-languageserver
-      kdlfmt
     ];
     languages = {
       language-server.rust-analyzer.config = {
@@ -26,7 +25,7 @@
       editor = {
         default-yank-register = "+";
         shell = [
-          "fish"
+          "nu"
           "-c"
         ];
         gutters = [
@@ -72,10 +71,15 @@
 
       };
 
-      keys.normal = {
-        tab = "goto_next_buffer";
-        S-tab = "goto_previous_buffer";
-        space.x = ":buffer-close";
+      keys = {
+        normal = {
+          tab = "goto_next_buffer";
+          S-tab = "goto_previous_buffer";
+          space.x = ":buffer-close";
+        };
+        insert = {
+          Meta-space = "no_op";
+        };
       };
     };
   };

@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ ... }:
 {
   imports = [
     ./packages.nix
@@ -29,10 +29,9 @@
     settings.trusted-users = [ "inari" ];
   };
 
-  nixpkgs = {
-    config.allowUnfree = true;
-    overlays = [ inputs.niri.overlays.niri ];
-  };
+  systemd.user.services.niri-flake-polkit.enable = false;
+
+  nixpkgs.config.allowUnfree = true;
 
   system.stateVersion = "24.05";
 }

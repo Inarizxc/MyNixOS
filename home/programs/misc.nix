@@ -2,6 +2,7 @@
 {
   programs = {
     bottom.enable = true;
+    skim.enable = true;
     fzf = {
       enable = true;
       enableFishIntegration = true;
@@ -26,10 +27,6 @@
       enableNushellIntegration = true;
     };
     direnv = {
-      enable = true;
-      enableNushellIntegration = true;
-    };
-    nix-your-shell = {
       enable = true;
       enableNushellIntegration = true;
     };

@@ -12,10 +12,6 @@
     catppuccin.url = "github:catppuccin/nix";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     nix-alien.url = "github:thiagokokada/nix-alien";
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
   };
   outputs =
@@ -39,7 +35,7 @@
         modules = [
           ./conf/conf.nix
           catppuccin.nixosModules.catppuccin
-          # niri.nixosModules.niri
+          niri.nixosModules.niri
         ];
       };
       homeConfigurations."inari" = home-manager.lib.homeManagerConfiguration {

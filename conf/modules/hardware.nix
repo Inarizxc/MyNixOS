@@ -55,6 +55,7 @@
   security = {
     sudo-rs.enable = true;
     polkit.enable = true;
+    soteria.enable = true;
   };
   networking.useDHCP = lib.mkDefault true;
 

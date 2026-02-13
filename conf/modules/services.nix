@@ -4,7 +4,6 @@
     ratbagd.enable = true;
     flatpak.enable = true;
     udisks2.enable = true;
-    gnome.gnome-keyring.enable = true;
     ollama = {
       enable = false;
       package = pkgs.ollama-cuda;

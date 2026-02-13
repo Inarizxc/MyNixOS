@@ -5,10 +5,12 @@
     installVimSyntax = true;
     settings = {
       theme = "catppuccin-mocha";
-      font-size = 18;
+      font-family = "Iosevka Nerd Font";
+      font-size = 20;
       confirm-close-surface = false;
       background-blur = true;
       background-opacity = 0.95;
+      app-notifications = "no-clipboard-copy";
     };
   };
 }

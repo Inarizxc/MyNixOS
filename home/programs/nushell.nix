@@ -16,65 +16,60 @@
           max_results = 200;
         };
       };
-      extraConfig = let
-        conf = "sudo env HOME=($env.HOME) hx ${flakeDir}";
-      in ''
-        def nix-shell [p?: string] {
-          match $p {
-            null => {nom-shell --command "nu"}
-            _ => {nom-shell -p $p --command "nu"}
-          }
-        }
-        def ns [p?: string] {
-          match $p {
-            null => {nom-shell --command "nu"}
-            _ => {nom-shell -p $p --command "nu"}
-          }
-        }
-        def rb [p?: string] {
-          match $p {
-            "home-manager" | "hm" => {nh home switch}
-            "update" | "up" => {
-              sudo nix flake update --flake ${flakeDir}
-              nh os switch
+      extraConfig =
+        let
+          conf = "sudo env HOME=($env.HOME) hx ${flakeDir}";
+        in
+        /* nu */ ''
+          def ns [...p: string] {
+            match $p {
+              [] => { nom-shell --command "nu" }
+              _ => { nom-shell -p ...$p --command "nu" }
             }
-            "clear" | "c" => {
-              sudo su -c "rm -rf /boot/limine/kernels/*"
-              nh clean all
-              nh os switch
+          }
+          def rb [p?: string] {
+            match $p {
+              "home-manager" | "hm" | "h" => {nh home switch}
+              "update" | "up" | "u" => {
+                sudo nix flake update --flake ${flakeDir}
+                nh os switch
+              }
+              "clear" | "c" => {
+                sudo su -c "rm -rf /boot/limine/kernels/*"
+                nh clean all
+                nh os switch
+              }
+              "boot" | "b" => {nh os boot}
+              _ | "os" => {nh os switch}
             }
-
-            _ | "os" => {nh os switch}
           }
-        }
-        def conf [p?: string] {
-          match $p {
-            "niri" => {hx ~/.config/niri/config.kdl}
-            "nushell" | "nu" => {${conf}/home/programs/nushell.nix}
-            "helix" | "hx" | "h" => {${conf}/home/programs/helix.nix}
-            "ghostty" | "g" => {${conf}/home/programs/ghostty.nix}
-            "packages" | "pkgs" | "p" => {${conf}/conf/packages.nix}
-            "services" | "serv" | "s" => {${conf}/conf/modules/services.nix}
-            "flake" | "f" => {${conf}/flake.nix}
-            _ => {${conf}}
+          def conf [p?: string] {
+            match $p {
+              "niri" | "ni" => {${conf}/home/programs/niri.nix}
+              "nushell" | "nu" => {${conf}/home/programs/nushell.nix}
+              "helix" | "hx" | "h" => {${conf}/home/programs/helix.nix}
+              "ghostty" | "g" => {${conf}/home/programs/ghostty.nix}
+              "packages" | "pkgs" | "p" => {${conf}/conf/packages.nix}
+              "services" | "serv" | "s" => {${conf}/conf/modules/services.nix}
+              "flake" | "f" => {${conf}/flake.nix}
+              _ => {${conf}}
+            }
           }
-        }
-        fastfetch
-        glow ~/Documents/Notes/TODO.md
-      '';
+          fastfetch
+          try {bat ~/Documents/Notes/TODO.md --decorations never --paging never}
+        '';
       environmentVariables = {
-        PROMPT_INDICATOR_VI_NORMAL = ": ";
-        PROMPT_INDICATOR_VI_INSERT = "> ";
+        PROMPT_INDICATOR_VI_NORMAL = "󰘧 ";
+        PROMPT_INDICATOR_VI_INSERT = "  ";
         SSH_ASKPASS = "";
       };
-      plugins = with pkgs.nushellPlugins; [
-        formats
-        highlight
-        skim
-        semver
-        gstat
-        gstat
-      ];
+      # plugins = with pkgs.nushellPlugins; [
+      #   formats
+      #   highlight
+      #   skim
+      #   semver
+      #   gstat
+      # ];
       shellAliases = {
         cd = "z";
         c = "clear";
@@ -84,11 +79,16 @@
         ping = "pingu";
         btm = "btm -c";
         top = "btm -b";
-        rw = "rawst --color always --threads 8 --output-file-path";
+        rw = "rawst --color always --threads 8";
+        rwo = "rawst --color always --threads 8 --output-file-path";
         ze = "zeditor .";
         spf = "superfile";
+        tar = "bsdtar";
+        cpio = "bsdcpio";
+        fzf = "sk";
 
         shx = "sudo env HOME=($env.HOME) hx";
+        todo = "hx ~/Documents/Notes/TODO.md";
 
         up = "sudo nix flake update --flake ${flakeDir}";
 

@@ -4,10 +4,12 @@
     sddm.enable = true;
   };
 
-  services.xserver = {
-    enable = true;
-    excludePackages = [ pkgs.xterm ];
-    desktopManager.xterm.enable = false;
+  programs = {
+    niri.enable = true;
+    xwayland = {
+      enable = true;
+      package = pkgs.xwayland-satellite;
+    };
   };
 
   services = {
@@ -15,6 +17,13 @@
       enable = true;
       wayland.enable = true;
     };
+
+    xserver = {
+      enable = true;
+      excludePackages = [ pkgs.xterm ];
+      desktopManager.xterm.enable = false;
+    };
+
   };
 
   xdg.terminal-exec = {
