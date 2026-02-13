@@ -43,9 +43,15 @@
               _ | "os" => {nh os switch}
             }
           }
-          def conf [p?: string] {
-            match $p {
-              "niri" | "ni" => {${conf}/home/programs/niri.nix}
+          def conf [p1?: string, p2?: string] {
+            match $p1 {
+              "niri" | "ni" => {
+                match $p2 {
+                  "settings" | "s" => {${conf}/home/programs/niri/settings.nix}
+                  "binds" | "b" => {${conf}/home/programs/niri/binds.nix}
+                  _ => {${conf}}
+                }
+              }
               "nushell" | "nu" => {${conf}/home/programs/nushell.nix}
               "helix" | "hx" | "h" => {${conf}/home/programs/helix.nix}
               "ghostty" | "g" => {${conf}/home/programs/ghostty.nix}
@@ -63,13 +69,13 @@
         PROMPT_INDICATOR_VI_INSERT = "  ";
         SSH_ASKPASS = "";
       };
-      # plugins = with pkgs.nushellPlugins; [
-      #   formats
-      #   highlight
-      #   skim
-      #   semver
-      #   gstat
-      # ];
+      plugins = with pkgs.nushellPlugins; [
+        formats
+        highlight
+        skim
+        semver
+        gstat
+      ];
       shellAliases = {
         cd = "z";
         c = "clear";

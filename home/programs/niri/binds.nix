@@ -128,7 +128,7 @@ in
       "Super+B".action.spawn = [
         "ghostty"
         "-e"
-        "bottom"
+        "btm"
       ];
       "Super+Alt+L".action.spawn = [
         "noctalia-shell"
