@@ -11,9 +11,12 @@
         edit_mode = "vi";
         buffer_editor = "hx";
         use_kitty_protocol = true;
-        completions.external = {
-          enable = true;
-          max_results = 200;
+        completions = {
+          algorithm = "fuzzy";
+          external = {
+            enable = true;
+            max_results = 200;
+          };
         };
       };
       extraConfig =
@@ -40,6 +43,10 @@
                 nh os switch
               }
               "boot" | "b" => {nh os boot}
+              "all" | "a" => {
+                nh os switch
+                nh home switch
+              }
               _ | "os" => {nh os switch}
             }
           }
@@ -49,7 +56,7 @@
                 match $p2 {
                   "settings" | "s" => {${conf}/home/programs/niri/settings.nix}
                   "binds" | "b" => {${conf}/home/programs/niri/binds.nix}
-                  _ => {${conf}}
+                  _ => {${conf}/home/programs/niri}
                 }
               }
               "nushell" | "nu" => {${conf}/home/programs/nushell.nix}
@@ -65,16 +72,17 @@
           try {bat ~/Documents/Notes/TODO.md --decorations never --paging never}
         '';
       environmentVariables = {
-        PROMPT_INDICATOR_VI_NORMAL = "󰘧 ";
-        PROMPT_INDICATOR_VI_INSERT = "  ";
+        EDITOR = "hx";
+        PROMPT_INDICATOR_VI_NORMAL = " ";
+        PROMPT_INDICATOR_VI_INSERT = " ";
         SSH_ASKPASS = "";
       };
       plugins = with pkgs.nushellPlugins; [
-        formats
-        highlight
-        skim
-        semver
-        gstat
+        # formats
+        # highlight
+        # skim
+        # semver
+        # gstat
       ];
       shellAliases = {
         cd = "z";
@@ -82,7 +90,7 @@
         cat = "bat --paging=never --decorations=never";
         grep = "rg";
         find = "fd";
-        ping = "pingu";
+        ping = "gping";
         btm = "btm -c";
         top = "btm -b";
         rw = "rawst --color always --threads 8";

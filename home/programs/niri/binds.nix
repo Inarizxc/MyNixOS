@@ -12,7 +12,7 @@ let
       configFile = builtins.toFile "config.yaml" (
         lib.generators.toYAML { } {
           font = "JetBrainsMono Nerd Font 18";
-          anchor = "center";
+          anchor = "bottom-right";
           background = "#1e1e2e";
           color = "#cdd6f4";
           border = "#cba6f7";
@@ -39,19 +39,9 @@ in
       "Mod+T".action.spawn = "ghostty";
       "Mod+D".action.spawn-sh = lib.getExe (mkMenu [
         {
-          key = "z";
-          desc = "Browser";
-          cmd = "zen";
-        }
-        {
-          key = "c";
-          desc = "Calculator";
-          cmd = "ghostty -e numr";
-        }
-        {
-          key = "f";
-          desc = "File Manager";
-          cmd = "ghostty -e superfile";
+          key = "a";
+          desc = "AyuGram";
+          cmd = "AyuGram";
         }
         {
           key = "b";
@@ -59,14 +49,60 @@ in
           cmd = "bazaar";
         }
         {
+          key = "c";
+          desc = "Calculator";
+          cmd = "ghostty -e numr";
+        }
+        {
           key = "d";
-          desc = "Disks";
-          cmd = "gnome-disks";
+          desc = "Dialect";
+          cmd = "dialect";
+        }
+        {
+          key = "f";
+          desc = "File Manager";
+          cmd = "ghostty -e yazi";
+        }
+        {
+          key = "p";
+          desc = "ProtonPlus";
+          cmd = "protonplus";
         }
         {
           key = "t";
           desc = "Thunderbird";
           cmd = "thunderbird";
+        }
+        {
+          key = "z";
+          desc = "Zen Browser";
+          cmd = "zen-beta";
+        }
+        {
+          key = "g";
+          desc = "Games";
+          submenu = [
+            {
+              key = "f";
+              desc = "Faugus";
+              cmd = "faugus-launcher";
+            }
+            {
+              key = "h";
+              desc = "Heroic";
+              cmd = "heroic";
+            }
+            {
+              key = "s";
+              desc = "Steam";
+              cmd = "steam";
+            }
+            {
+              key = "x";
+              desc = "XMCL";
+              cmd = "gamemoderun xmcl";
+            }
+          ];
         }
         {
           key = "n";
@@ -85,28 +121,13 @@ in
           ];
         }
         {
-          key = "g";
-          desc = "Games";
+          key = "T";
+          desc = "Tools";
           submenu = [
             {
-              key = "s";
-              desc = "Steam";
-              cmd = "steam";
-            }
-            {
-              key = "f";
-              desc = "Faugus";
-              cmd = "faugus-launcher";
-            }
-            {
-              key = "h";
-              desc = "Heroic";
-              cmd = "heroic";
-            }
-            {
-              key = "x";
-              desc = "XMCL";
-              cmd = "gamemoderun xmcl";
+              key = "d";
+              desc = "Disks";
+              cmd = "gnome-disks";
             }
           ];
         }
@@ -129,6 +150,7 @@ in
         "ghostty"
         "-e"
         "btm"
+        "-b"
       ];
       "Super+Alt+L".action.spawn = [
         "noctalia-shell"

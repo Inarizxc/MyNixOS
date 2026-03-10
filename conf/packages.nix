@@ -8,7 +8,7 @@
     (with pkgs; [
       # Env
       noctalia-shell
-      xdg-desktop-portal-gnome
+      xdg-desktop-portal-gtk
       home-manager
       papirus-icon-theme
       catppuccin-cursors.mochaDark
@@ -28,9 +28,9 @@
       fd
       fastfetch
       rawst
-      superfile
+      yazi
       numr
-      pingu
+      gping
       bottom
       skim
       libarchive
@@ -53,7 +53,6 @@
       fragments
       libreoffice
       ayugram-desktop
-      vesktop
       ghostty
       gnome-disk-utility
       dialect
@@ -125,8 +124,14 @@
       enable = true;
       nix-direnv.enable = true;
     };
-
-    gamemode.enable = true;
+    gamemode = {
+      enable = true;
+      settings = {
+        general = {
+          renice = 10;
+        };
+      };
+    };
     steam = {
       enable = true;
       gamescopeSession.enable = true;

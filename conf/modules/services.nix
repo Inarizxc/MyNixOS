@@ -3,6 +3,10 @@
   services = {
     ratbagd.enable = true;
     flatpak.enable = true;
+    fstrim = {
+      enable = true;
+      interval = "weekly";
+    };
     udisks2.enable = true;
     ollama = {
       enable = false;
@@ -67,6 +71,7 @@
         "discordsez.com"
         "roblox.com"
         "rbxcdn.com"
+        "sponsor.ajay.app"
       ];
     };
   };

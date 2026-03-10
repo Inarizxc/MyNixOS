@@ -8,5 +8,6 @@
     skim.enable = true;
     nushell.enable = true;
     bottom.enable = true;
+    yazi.enable = true;
   };
 }

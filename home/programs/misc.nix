@@ -1,25 +1,24 @@
 { ... }:
 {
   programs = {
-    bottom.enable = true;
-    skim.enable = true;
-    fzf = {
+    yazi = {
       enable = true;
-      enableFishIntegration = true;
-    };
-    eza = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-    zoxide = {
-      enable = true;
-      enableFishIntegration = true;
       enableNushellIntegration = true;
+      shellWrapperName = "y";
+      settings = {
+        mgr = {
+          sort_by = "mtime";
+          sort_dir_first = true;
+        };
+      };
     };
     oh-my-posh = {
       enable = true;
       configFile = "~/.config/oh-my-posh/catppuccin.omp.json";
-      enableFishIntegration = true;
+      enableNushellIntegration = true;
+    };
+    zoxide = {
+      enable = true;
       enableNushellIntegration = true;
     };
     carapace = {
@@ -30,5 +29,8 @@
       enable = true;
       enableNushellIntegration = true;
     };
+    bottom.enable = true;
+    skim.enable = true;
+    fzf.enable = true;
   };
 }
