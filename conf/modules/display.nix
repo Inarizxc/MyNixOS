@@ -5,7 +5,10 @@
   };
 
   programs = {
-    niri.enable = true;
+    niri = {
+      enable = true;
+      package = pkgs.niri-unstable;
+    };
     xwayland = {
       enable = true;
       package = pkgs.xwayland-satellite;

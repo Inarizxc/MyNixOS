@@ -1,7 +1,8 @@
-{ ... }:
+{ pkgs, ... }:
 {
   programs.niri = {
     enable = true;
+    package = pkgs.niri-unstable;
     settings = {
       prefer-no-csd = true;
       spawn-at-startup = [
@@ -40,9 +41,9 @@
         mode = {
           height = 1080;
           width = 1920;
-          refresh = 120.030;
+          refresh = 60.008;
         };
-        scale = 1.25;
+        scale = 1.2;
       };
       layout = {
         gaps = 5;
@@ -184,10 +185,10 @@
             inactive.color = "#313244";
           };
         }
-        {
-          matches = [ { app-id = "numr"; } ];
-          open-floating = true;
-        }
+        # {
+        #   matches = [ { app-id = "zen-beta"; } ];
+        #   open-maximized-to-edges = true;
+        # }
       ];
     };
   };

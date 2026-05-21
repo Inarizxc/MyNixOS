@@ -12,11 +12,6 @@
         };
       };
     };
-    oh-my-posh = {
-      enable = true;
-      configFile = "~/.config/oh-my-posh/catppuccin.omp.json";
-      enableNushellIntegration = true;
-    };
     zoxide = {
       enable = true;
       enableNushellIntegration = true;

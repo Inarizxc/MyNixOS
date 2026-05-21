@@ -8,10 +8,6 @@
       interval = "weekly";
     };
     udisks2.enable = true;
-    ollama = {
-      enable = false;
-      package = pkgs.ollama-cuda;
-    };
     zapret = {
       enable = true;
       params = [
@@ -71,7 +67,7 @@
         "discordsez.com"
         "roblox.com"
         "rbxcdn.com"
-        "sponsor.ajay.app"
+        "maven.neoforged.net"
       ];
     };
   };

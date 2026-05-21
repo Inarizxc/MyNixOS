@@ -13,6 +13,8 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     nix-alien.url = "github:thiagokokada/nix-alien";
 
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs =
     {
@@ -20,11 +22,18 @@
       home-manager,
       niri,
       catppuccin,
+      nix-index-database,
       ...
     }@inputs:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [
+          niri.overlays.niri
+        ];
+        config.allowUnfree = true;
+      };
     in
     {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
@@ -36,6 +45,7 @@
           ./conf/conf.nix
           catppuccin.nixosModules.catppuccin
           niri.nixosModules.niri
+          nix-index-database.nixosModules.default
         ];
       };
       homeConfigurations."inari" = home-manager.lib.homeManagerConfiguration {

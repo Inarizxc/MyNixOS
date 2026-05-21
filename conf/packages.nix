@@ -28,13 +28,13 @@
       fd
       fastfetch
       rawst
-      yazi
       numr
       gping
       bottom
       skim
       libarchive
       tldr
+      gtt
 
       # Shell
       nushell
@@ -55,16 +55,19 @@
       ayugram-desktop
       ghostty
       gnome-disk-utility
-      dialect
       loupe
       decibels
       impression
-      nautilus
-      file-roller
       showtime
       papers
       thunderbird
       bazaar
+      localsend
+
+      # File Manager
+      nautilus
+      file-roller
+      superfile
 
       # Screenshots & Screen Recorder
       grim
@@ -79,9 +82,6 @@
       # Nix
       nix-output-monitor
       nvd
-      comma
-      hydra-check
-      nix-index
 
       # Git
       gitFull
@@ -105,6 +105,7 @@
 
   programs = {
     nix-ld.enable = true;
+    nix-index-database.comma.enable = true;
     nh = {
       enable = true;
       package = (
@@ -139,8 +140,7 @@
   };
 
   nixpkgs.config.packageOverrides = pkgs: {
-    xmcl = pkgs.callPackage ../myPackages/XMCL/default.nix { };
-    rawst = pkgs.callPackage ../myPackages/rawst/default.nix { };
+    xmcl = pkgs.callPackage ../myPackages/XMCL/package.nix { };
   };
 
   documentation.nixos.enable = false;

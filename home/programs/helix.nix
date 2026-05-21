@@ -14,6 +14,7 @@
       tombi
       svelte-language-server
       vscode-css-languageserver
+      tinymist
     ];
     languages = {
       language-server.rust-analyzer.config = {

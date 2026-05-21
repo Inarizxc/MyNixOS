@@ -1,4 +1,4 @@
-{ ... }:
+{ inputs, catppuccin, ... }:
 {
   imports = [
     ./packages.nix
@@ -10,14 +10,15 @@
       warn-dirty = false
     '';
     settings = {
-      max-jobs = 40;
-      cores = 8;
+      max-jobs = "auto";
+      cores = 0;
       auto-optimise-store = true;
       experimental-features = [
         "nix-command"
         "flakes"
         "pipe-operators"
       ];
+      trusted-users = [ "inari" ];
     };
 
     gc = {
@@ -25,13 +26,21 @@
       dates = "weekly";
       options = "--delete-older-than 7d";
     };
-
-    settings.trusted-users = [ "inari" ];
   };
 
   systemd.user.services.niri-flake-polkit.enable = false;
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+    };
+    overlays = [
+      inputs.niri.overlays.niri
+    ];
+  };
 
-  system.stateVersion = "24.05";
+  # catppuccin.cache.enable = true;
+  niri-flake.cache.enable = false;
+
+  system.stateVersion = "25.11";
 }

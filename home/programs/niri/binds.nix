@@ -55,13 +55,18 @@ in
         }
         {
           key = "d";
-          desc = "Dialect";
-          cmd = "dialect";
+          desc = "Disks";
+          cmd = "gnome-disks";
         }
         {
           key = "f";
-          desc = "File Manager";
-          cmd = "ghostty -e yazi";
+          desc = "FileManager";
+          cmd = "ghostty -e superfile";
+        }
+        {
+          key = "l";
+          desc = "LocalSend";
+          cmd = "localsend_app";
         }
         {
           key = "p";
@@ -75,7 +80,7 @@ in
         }
         {
           key = "z";
-          desc = "Zen Browser";
+          desc = "ZenBrowser";
           cmd = "zen-beta";
         }
         {
@@ -106,29 +111,35 @@ in
         }
         {
           key = "n";
-          desc = "Noctalia Shell";
+          desc = "NoctaliaShell";
           submenu = [
             {
               key = "c";
-              desc = "Clipboard Manager";
+              desc = "ClipboardManager";
               cmd = "noctalia-shell ipc call launcher clipboard";
             }
             {
               key = "e";
-              desc = "Emoji Manager";
+              desc = "EmojiManager";
               cmd = "noctalia-shell ipc call launcher emoji";
             }
           ];
         }
         {
-          key = "T";
-          desc = "Tools";
+          key = "o";
+          desc = "Other";
           submenu = [
             {
-              key = "d";
-              desc = "Disks";
-              cmd = "gnome-disks";
+              key = "f";
+              desc = "Fragments";
+              cmd = "fragments";
             }
+            {
+              key = "g";
+              desc = "GTT";
+              cmd = "ghostty -e gtt";
+            }
+
           ];
         }
       ]);
@@ -330,11 +341,13 @@ in
       "Mod+Comma".action = act.consume-or-expel-window-left;
       "Mod+Period".action = act.consume-or-expel-window-right;
       "Mod+R".action = act.switch-preset-column-width;
-      "Mod+Shift+R".action = act.switch-preset-window-height;
-      "Mod+Ctrl+R".action = act.reset-window-height;
+      "Mod+Shift+R".action = act.switch-preset-column-width-back;
+      "Mod+Ctrl+R".action = act.switch-preset-window-height;
+      "Mod+Ctrl+Shift+R".action = act.reset-window-height;
       "Mod+F".action = act.maximize-column;
       "Mod+Shift+F".action = act.fullscreen-window;
       "Mod+Ctrl+F".action = act.expand-column-to-available-width;
+      "Mod+M".action = act.maximize-window-to-edges;
       "Mod+C".action = act.center-column;
       "Mod+Ctrl+C".action = act.center-visible-columns;
       "Mod+Minus".action.set-column-width = "-10%";

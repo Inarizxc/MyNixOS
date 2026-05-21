@@ -41,6 +41,8 @@
                 sudo su -c "rm -rf /boot/limine/kernels/*"
                 nh clean all
                 nh os switch
+                print ""
+                sudo ls /boot/limine/kernels
               }
               "boot" | "b" => {nh os boot}
               "all" | "a" => {
@@ -93,13 +95,14 @@
         ping = "gping";
         btm = "btm -c";
         top = "btm -b";
-        rw = "rawst --color always --threads 8";
-        rwo = "rawst --color always --threads 8 --output-file-path";
+        rw = "rawst --color always";
+        rwo = "rawst --color always --output-file-path";
         ze = "zeditor .";
         spf = "superfile";
         tar = "bsdtar";
         cpio = "bsdcpio";
         fzf = "sk";
+        ls = "ls -s";
 
         shx = "sudo env HOME=($env.HOME) hx";
         todo = "hx ~/Documents/Notes/TODO.md";
@@ -107,6 +110,7 @@
         up = "sudo nix flake update --flake ${flakeDir}";
 
         nb = "nom-build -E 'with import <nixpkgs> { }; callPackage ./default.nix { }'";
+        nbp = "nom-build -E 'with import <nixpkgs> { }; callPackage ./package.nix { }'";
         snb = "sudo nom-build -E 'with import <nixpkgs> { }; callPackage ./default.nix { }'";
       };
 

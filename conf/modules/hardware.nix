@@ -76,7 +76,6 @@
         };
       };
     };
-    xpadneo.enable = true;
     graphics = {
       enable = true;
       enable32Bit = true;
@@ -84,7 +83,6 @@
     nvidia = {
       open = false;
       modesetting.enable = true;
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
 
       prime = {
         offload = {

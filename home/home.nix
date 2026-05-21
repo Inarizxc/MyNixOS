@@ -9,7 +9,7 @@
     username = "inari";
     homeDirectory = "/home/inari";
 
-    stateVersion = "24.05";
+    stateVersion = "25.11";
 
     file = {
       ".themes/Catppuccin-Purple-Dark".source = ./.themes/Catppuccin-Purple-Dark;
