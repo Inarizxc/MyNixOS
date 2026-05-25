@@ -8,5 +8,6 @@
     ./misc.nix
     ./oh-my-posh.nix
     ./niri/bundle.nix
+    ./mpv.nix
   ];
 }

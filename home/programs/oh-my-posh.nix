@@ -12,10 +12,10 @@
         lavender = "#B4BEFE";
         blue = "#89B4FA";
         wight = "#FFFFFF";
-        text = "#45475a";
-        mauve = "#cba6f7";
-        red = "#f38ba8";
-        green = "#a6e3a1";
+        text = "#45475A";
+        mauve = "#CBA6F7";
+        red = "#F38BA8";
+        green = "#A6E3A1";
       };
 
       blocks = [

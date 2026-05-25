@@ -31,16 +31,13 @@
   systemd.user.services.niri-flake-polkit.enable = false;
 
   nixpkgs = {
-    config = {
-      allowUnfree = true;
-    };
+    config.allowUnfree = true;
     overlays = [
       inputs.niri.overlays.niri
     ];
   };
 
-  # catppuccin.cache.enable = true;
-  niri-flake.cache.enable = false;
+  catppuccin.cache.enable = true;
 
   system.stateVersion = "25.11";
 }

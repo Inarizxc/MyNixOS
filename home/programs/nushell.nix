@@ -12,7 +12,7 @@
         buffer_editor = "hx";
         use_kitty_protocol = true;
         completions = {
-          algorithm = "fuzzy";
+          # algorithm = "fuzzy";
           external = {
             enable = true;
             max_results = 200;
@@ -70,21 +70,27 @@
               _ => {${conf}}
             }
           }
+          def zapret [p: string] {
+            match $p {
+              "restart" | "r" => {systemctl restart zapret}
+              "list" | "l" => {hx ~/NixOS/conf/modules/zapret/.shared/zapret/zapret-latest/lists/list-general-user.txt}
+            }
+          }
           fastfetch
-          try {bat ~/Documents/Notes/TODO.md --decorations never --paging never}
+          ~/Projects/rust/todomgr/result/bin/todomgr --path ~ ls
         '';
       environmentVariables = {
         EDITOR = "hx";
+        NH_FLAKE = "/home/inari/NixOS";
         PROMPT_INDICATOR_VI_NORMAL = " ";
         PROMPT_INDICATOR_VI_INSERT = " ";
         SSH_ASKPASS = "";
       };
       plugins = with pkgs.nushellPlugins; [
-        # formats
-        # highlight
-        # skim
-        # semver
-        # gstat
+        formats
+        skim
+        semver
+        gstat
       ];
       shellAliases = {
         cd = "z";
@@ -92,7 +98,7 @@
         cat = "bat --paging=never --decorations=never";
         grep = "rg";
         find = "fd";
-        ping = "gping";
+        ping = "pingu";
         btm = "btm -c";
         top = "btm -b";
         rw = "rawst --color always";
@@ -104,14 +110,18 @@
         fzf = "sk";
         ls = "ls -s";
 
+        todomgr = "~/Projects/rust/todomgr/result/bin/todomgr";
+        todo = "~/Projects/rust/todomgr/result/bin/todomgr --path ~";
+
         shx = "sudo env HOME=($env.HOME) hx";
-        todo = "hx ~/Documents/Notes/TODO.md";
 
         up = "sudo nix flake update --flake ${flakeDir}";
 
         nb = "nom-build -E 'with import <nixpkgs> { }; callPackage ./default.nix { }'";
         nbp = "nom-build -E 'with import <nixpkgs> { }; callPackage ./package.nix { }'";
         snb = "sudo nom-build -E 'with import <nixpkgs> { }; callPackage ./default.nix { }'";
+
+        emacs = "~/.config/emacs/bin/doom emacs";
       };
 
     };

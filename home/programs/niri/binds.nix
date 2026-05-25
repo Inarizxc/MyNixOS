@@ -79,6 +79,11 @@ in
           cmd = "thunderbird";
         }
         {
+          key = "v";
+          desc = "Vesktop";
+          cmd = "vesktop";
+        }
+        {
           key = "z";
           desc = "ZenBrowser";
           cmd = "zen-beta";
@@ -87,6 +92,11 @@ in
           key = "g";
           desc = "Games";
           submenu = [
+            {
+              key = "e";
+              desc = "ElyPrismLauncher";
+              cmd = "elyprismlauncher";
+            }
             {
               key = "f";
               desc = "Faugus";
@@ -101,11 +111,6 @@ in
               key = "s";
               desc = "Steam";
               cmd = "steam";
-            }
-            {
-              key = "x";
-              desc = "XMCL";
-              cmd = "gamemoderun xmcl";
             }
           ];
         }
@@ -150,14 +155,7 @@ in
         "launcher"
         "toggle"
       ];
-      "Super+Tab".action.spawn = [
-        "noctalia-shell"
-        "ipc"
-        "call"
-        "launcher"
-        "windows"
-      ];
-      "Super+B".action.spawn = [
+      "Mod+B".action.spawn = [
         "ghostty"
         "-e"
         "btm"
@@ -360,12 +358,12 @@ in
       "Print".action.spawn = [
         "sh"
         "-c"
-        ''grim -g "$(slurp)" - | swappy -f -''
+        "wayshot --geometry - | satty --filename - --copy-command \"wl-copy\" --early-exit"
       ];
       "Ctrl+Print".action.spawn = [
         "sh"
         "-c"
-        "grim - | swappy -f -"
+        "wayshot - | satty --filename - --copy-command \"wl-copy\" --early-exit"
       ];
       "Alt+Print".action.screenshot-window.write-to-disk = true;
       "Mod+Escape" = {

@@ -11,5 +11,6 @@
     ./fonts.nix
     ./hardware.nix
     ./services.nix
+    ./zapret/service.nix
   ];
 }

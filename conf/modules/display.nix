@@ -20,21 +20,10 @@
       enable = true;
       wayland.enable = true;
     };
-
-    xserver = {
-      enable = true;
-      excludePackages = [ pkgs.xterm ];
-      desktopManager.xterm.enable = false;
-    };
-
   };
 
-  xdg.terminal-exec = {
+  xdg.portal = {
     enable = true;
-    settings = {
-      default = [
-        "com.mitchellh.ghostty.desktop"
-      ];
-    };
+    extraPortals = with pkgs; [xdg-desktop-portal-gtk xdg-desktop-portal-gnome];
   };
 }

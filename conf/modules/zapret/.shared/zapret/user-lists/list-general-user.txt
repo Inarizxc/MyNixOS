@@ -1,0 +1,8 @@
+modrinth.com
+zen-browser.app
+sponsor.ajay.app
+speedtest.net
+roblox.com
+rbxcdn.com
+maven.neoforged.net
+*.cachix.org

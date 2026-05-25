@@ -27,7 +27,7 @@
         };
         focus-follows-mouse = {
           enable = true;
-          max-scroll-amount = "0%";
+          max-scroll-amount = "5%";
         };
       };
       gestures = {
@@ -73,7 +73,7 @@
         theme = "catppuccin-mocha-dark-cursors";
         size = 20;
 
-        hide-after-inactive-ms = 30000;
+        hide-after-inactive-ms = 5000;
       };
       hotkey-overlay = {
         skip-at-startup = true;
@@ -184,6 +184,20 @@
             active.color = "#F38BA8";
             inactive.color = "#313244";
           };
+        }
+        {
+          matches = [
+            {
+              app-id = "^io.github.elyprismlauncher.ElyPrismLauncher$";
+              is-floating = true;
+            }
+          ];
+          default-column-width.fixed = 1250;
+          default-window-height.fixed = 830;
+        }
+        {
+          matches = [{app-id="com.gabm.satty";}];
+          open-floating = true;
         }
         # {
         #   matches = [ { app-id = "zen-beta"; } ];

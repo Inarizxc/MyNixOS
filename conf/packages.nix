@@ -8,7 +8,6 @@
     (with pkgs; [
       # Env
       noctalia-shell
-      xdg-desktop-portal-gtk
       home-manager
       papirus-icon-theme
       catppuccin-cursors.mochaDark
@@ -18,23 +17,23 @@
       protonplus
       heroic
       faugus-launcher
-      xmcl
+      elyprismlauncher
 
       # Terminal
       bat
       ripgrep
-      fzf
       zoxide
       fd
       fastfetch
       rawst
       numr
-      gping
+      pingu
       bottom
       skim
       libarchive
-      tldr
+      tealdeer
       gtt
+      qemu
 
       # Shell
       nushell
@@ -44,7 +43,6 @@
       # Editor
       helix
       emacs-gtk
-      neovim
       wl-clipboard
       alejandra
 
@@ -55,38 +53,31 @@
       ayugram-desktop
       ghostty
       gnome-disk-utility
-      loupe
-      decibels
-      impression
-      showtime
-      papers
+      imv
+      mpv
+      zathura
       thunderbird
       bazaar
       localsend
+      vesktop
 
       # File Manager
-      nautilus
-      file-roller
+      nemo
       superfile
+      ouch
 
       # Screenshots & Screen Recorder
-      grim
-      slurp
-      swappy
+      wayshot
+      satty
       gpu-screen-recorder
-
-      # Virtualisation
-      qemu
-      qemu_kvm
 
       # Nix
       nix-output-monitor
       nvd
 
       # Git
-      gitFull
+      git
       lazygit
-
     ])
     ++ [
       # Zen Browser
@@ -106,42 +97,23 @@
   programs = {
     nix-ld.enable = true;
     nix-index-database.comma.enable = true;
-    nh = {
-      enable = true;
-      package = (
-        pkgs.symlinkJoin {
-          name = "nh";
-          buildInputs = [ pkgs.makeWrapper ];
-          paths = [ pkgs.nh ];
-          postBuild = ''
-            wrapProgram $out/bin/nh \
-            --set NH_FLAKE "/home/inari/NixOS"
-          '';
-        }
-      );
-    };
-
+    nh.enable = true;
     direnv = {
       enable = true;
       nix-direnv.enable = true;
     };
-    gamemode = {
-      enable = true;
-      settings = {
-        general = {
-          renice = 10;
-        };
-      };
-    };
+    gamemode.enable = true;
     steam = {
       enable = true;
       gamescopeSession.enable = true;
     };
   };
 
-  nixpkgs.config.packageOverrides = pkgs: {
-    xmcl = pkgs.callPackage ../myPackages/XMCL/package.nix { };
-  };
+  nixpkgs.overlays = [
+    (final: prev: {
+      elyprismlauncher = final.callPackage ../myPackages/ElyPrismLauncher/package.nix { };
+    })
+  ];
 
   documentation.nixos.enable = false;
   programs.nano.enable = false;
