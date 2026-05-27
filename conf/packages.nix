@@ -57,7 +57,6 @@
       mpv
       zathura
       thunderbird
-      bazaar
       localsend
       vesktop
 
@@ -107,6 +106,21 @@
       enable = true;
       gamescopeSession.enable = true;
     };
+  };
+
+  services.flatpak = {
+    enable = true;
+    uninstallUnmanaged = true;
+    update.onActivation = true;
+    remotes = [
+      {
+        name = "flathub";
+        location = "https://flathub.org/repo/flathub.flatpakrepo";
+      }
+    ];
+    packages = [
+      "org.vinegarhq.Sober"
+    ];
   };
 
   nixpkgs.overlays = [

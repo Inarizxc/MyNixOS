@@ -8,5 +8,6 @@
     nushell.enable = true;
     bottom.enable = true;
     mpv.enable = true;
+    imv.enable = true;
   };
 }

@@ -6,3 +6,5 @@ roblox.com
 rbxcdn.com
 maven.neoforged.net
 *.cachix.org
+rutracker.org
+chillhop.com

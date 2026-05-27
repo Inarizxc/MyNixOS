@@ -358,12 +358,12 @@ in
       "Print".action.spawn = [
         "sh"
         "-c"
-        "wayshot --geometry - | satty --filename - --copy-command \"wl-copy\" --early-exit"
+        "wayshot --geometry - | satty --filename -"
       ];
       "Ctrl+Print".action.spawn = [
         "sh"
         "-c"
-        "wayshot - | satty --filename - --copy-command \"wl-copy\" --early-exit"
+        "wayshot - | satty --filename -"
       ];
       "Alt+Print".action.screenshot-window.write-to-disk = true;
       "Mod+Escape" = {
