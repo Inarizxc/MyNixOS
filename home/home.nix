@@ -24,7 +24,7 @@
         NH_FLAKE = "${homeDir}/NixOS";
         STEAM_EXTRA_COMPAT_TOOLS_PATHS = "${homeDir}/.steam/root/compatibilitytools.d";
       };
-
+      enableNixpkgsReleaseCheck = false;
     };
 
   programs.home-manager.enable = true;

@@ -21,7 +21,7 @@
       };
       extraConfig =
         let
-          conf = "sudo env HOME=($env.HOME) hx ${flakeDir}";
+          conf = "hx ${flakeDir}";
         in
         /* nu */ ''
           def ns [...p: string] {
@@ -74,10 +74,11 @@
             match $p {
               "restart" | "r" => {systemctl restart zapret}
               "list" | "l" => {hx ~/NixOS/conf/modules/zapret/.shared/zapret/zapret-latest/lists/list-general-user.txt}
+              "conf" | "c" => {hx ~/NixOS/conf/modules/zapret/.shared/zapret/conf.env}
             }
           }
           fastfetch
-          ~/Projects/rust/todomgr/result/bin/todomgr --path ~ ls
+          try {~/Projects/rust/todomgr/target/release/todomgr --path ~ ls}
         '';
       environmentVariables = {
         EDITOR = "hx";
@@ -110,12 +111,15 @@
         fzf = "sk";
         ls = "ls -s";
 
-        todomgr = "~/Projects/rust/todomgr/result/bin/todomgr";
-        todo = "~/Projects/rust/todomgr/result/bin/todomgr --path ~";
+        # todomgr = "~/Projects/rust/todomgr/result/bin/todomgr";
+        # todo = "~/Projects/rust/todomgr/result/bin/todomgr --path ~";
+        td = "~/Projects/rust/todomgr/target/release/todomgr";
+        htd = "~/Projects/rust/todomgr/target/release/todomgr --path ~";
 
         shx = "sudo env HOME=($env.HOME) hx";
+        sjj = "sudo jj";
 
-        up = "sudo nix flake update --flake ${flakeDir}";
+        up = "nix flake update --flake ${flakeDir}";
 
         nb = "nom-build -E 'with import <nixpkgs> { }; callPackage ./default.nix { }'";
         nbp = "nom-build -E 'with import <nixpkgs> { }; callPackage ./package.nix { }'";

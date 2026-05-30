@@ -12,6 +12,9 @@
     settings = {
       max-jobs = "auto";
       cores = 0;
+      connect-timeout = 5;
+      stalled-download-timeout = 10;
+      fallback = true;
       auto-optimise-store = true;
       experimental-features = [
         "nix-command"

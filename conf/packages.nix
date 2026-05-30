@@ -77,6 +77,8 @@
       # Git
       git
       lazygit
+      jujutsu
+      jjui
     ])
     ++ [
       # Zen Browser
@@ -97,11 +99,11 @@
     nix-ld.enable = true;
     nix-index-database.comma.enable = true;
     nh.enable = true;
+    gamemode.enable = true;
     direnv = {
       enable = true;
       nix-direnv.enable = true;
     };
-    gamemode.enable = true;
     steam = {
       enable = true;
       gamescopeSession.enable = true;

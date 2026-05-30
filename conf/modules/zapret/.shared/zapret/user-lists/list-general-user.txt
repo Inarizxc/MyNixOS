@@ -5,6 +5,10 @@ speedtest.net
 roblox.com
 rbxcdn.com
 maven.neoforged.net
-*.cachix.org
+app.cachix.org
+niri.cachix.org
+catppuccin.cachix.org
+cache.nixos.org
 rutracker.org
 chillhop.com
+dl.flathub.org

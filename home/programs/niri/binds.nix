@@ -44,11 +44,6 @@ in
           cmd = "AyuGram";
         }
         {
-          key = "b";
-          desc = "Bazaar";
-          cmd = "bazaar";
-        }
-        {
           key = "c";
           desc = "Calculator";
           cmd = "ghostty -e numr";

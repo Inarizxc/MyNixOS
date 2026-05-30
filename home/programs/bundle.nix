@@ -10,5 +10,6 @@
     ./niri/bundle.nix
     ./mpv.nix
     ./satty.nix
+    ./jj.nix
   ];
 }
