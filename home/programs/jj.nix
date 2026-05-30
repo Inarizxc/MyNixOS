@@ -1,10 +1,12 @@
-{ ... }:
-{
+{...}: {
   programs.jujutsu = {
     enable = true;
-    settings.user = {
-      email = "veprevmaksim08@gmail.com";
-      name = "Inarizxc";
+    settings = {
+      ui.default-command = "log";
+      user = {
+        email = "veprevmaksim08@gmail.com";
+        name = "Inarizxc";
+      };
     };
   };
 }

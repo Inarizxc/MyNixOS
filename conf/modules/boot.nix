@@ -1,5 +1,4 @@
-{ catppuccin, ... }:
-{
+{catppuccin, ...}: {
   catppuccin = {
     tty.enable = true;
     limine.enable = true;

@@ -12,3 +12,4 @@ cache.nixos.org
 rutracker.org
 chillhop.com
 dl.flathub.org
+nix.dev

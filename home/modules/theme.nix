@@ -1,7 +1,7 @@
-{ ... }:
-{
+{...}: {
   catppuccin = {
     enable = true;
+    autoEnable = true;
     lazygit.enable = true;
     bat.enable = true;
     skim.enable = true;

@@ -13,7 +13,7 @@
       }
     ];
     allowedUDPPorts = [5900 53317];
-    allowedTCPPorts = [ 53317 ];
+    allowedTCPPorts = [53317];
     allowedUDPPortRanges = allowedTCPPortRanges;
   };
 }

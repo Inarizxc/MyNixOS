@@ -1,5 +1,8 @@
-{ inputs, catppuccin, ... }:
 {
+  inputs,
+  catppuccin,
+  ...
+}: {
   imports = [
     ./packages.nix
     ./modules/bundle.nix
@@ -21,7 +24,15 @@
         "flakes"
         "pipe-operators"
       ];
-      trusted-users = [ "inari" ];
+      trusted-users = ["inari"];
+
+      substituters = [
+        "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+        "https://cache.nixos.org"
+      ];
+      trusted-public-keys = [
+        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      ];
     };
 
     gc = {

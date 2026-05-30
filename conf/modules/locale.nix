@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   time.timeZone = "Europe/Moscow";
 
   i18n = {

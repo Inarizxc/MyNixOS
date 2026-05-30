@@ -2,8 +2,7 @@
   pkgs,
   inputs,
   ...
-}:
-{
+}: {
   environment.systemPackages =
     (with pkgs; [
       # Env
@@ -113,7 +112,7 @@
   services.flatpak = {
     enable = true;
     uninstallUnmanaged = true;
-    update.onActivation = true;
+    # update.onActivation = true;
     remotes = [
       {
         name = "flathub";
@@ -127,7 +126,7 @@
 
   nixpkgs.overlays = [
     (final: prev: {
-      elyprismlauncher = final.callPackage ../myPackages/ElyPrismLauncher/package.nix { };
+      elyprismlauncher = final.callPackage ../myPackages/ElyPrismLauncher/package.nix {};
     })
   ];
 

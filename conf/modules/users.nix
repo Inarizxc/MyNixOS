@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   users.users.inari = {
     isNormalUser = true;
     description = "Maxim";

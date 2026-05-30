@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+{config, ...}: {
   gtk = {
     enable = true;
     theme.name = "Catppuccin-Purple-Dark";

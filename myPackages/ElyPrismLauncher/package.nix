@@ -2,8 +2,7 @@
   appimageTools,
   fetchurl,
   ...
-}:
-let
+}: let
   pname = "elyprismlauncher";
   version = "11.0.2";
 
@@ -12,6 +11,6 @@ let
     hash = "sha256-CfQQRW7WPAfOqMY3EHrPQXdOr5URbHxzP2Cogar0toA=";
   };
 in
-appimageTools.wrapType2 {
-  inherit pname version src;
-}
+  appimageTools.wrapType2 {
+    inherit pname version src;
+  }

@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.helix = {
     enable = true;
     extraPackages = with pkgs; [
@@ -69,7 +68,6 @@
           mode.insert = "I";
           mode.select = "S";
         };
-
       };
 
       keys = {

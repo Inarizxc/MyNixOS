@@ -1,6 +1,11 @@
-{ pkgs, catppuccin, ... }:
 {
+  pkgs,
+  catppuccin,
+  ...
+}: {
   catppuccin = {
+    enable = true;
+    autoEnable = true;
     sddm.enable = true;
   };
 

@@ -1,13 +1,12 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.niri = {
     enable = true;
     package = pkgs.niri-unstable;
     settings = {
       prefer-no-csd = true;
       spawn-at-startup = [
-        { command = [ "noctalia-shell" ]; }
-        { command = [ "zen-beta" ]; }
+        {command = ["noctalia-shell"];}
+        {command = ["zen-beta"];}
       ];
       input = {
         keyboard = {
@@ -48,15 +47,13 @@
       layout = {
         gaps = 5;
         center-focused-column = "never";
-        preset-column-widths =
-          let
-            g = 1.618033988;
-          in
-          [
-            { proportion = 1 / g / g; }
-            { proportion = 0.5; }
-            { proportion = 1 / g; }
-          ];
+        preset-column-widths = let
+          g = 1.618033988;
+        in [
+          {proportion = 1 / g / g;}
+          {proportion = 0.5;}
+          {proportion = 1 / g;}
+        ];
         focus-ring = {
           enable = true;
           width = 2;
@@ -138,16 +135,14 @@
       window-rules = [
         {
           open-maximized = true;
-          geometry-corner-radius =
-            let
-              round = 15.0;
-            in
-            {
-              bottom-left = round;
-              bottom-right = round;
-              top-left = round;
-              top-right = round;
-            };
+          geometry-corner-radius = let
+            round = 15.0;
+          in {
+            bottom-left = round;
+            bottom-right = round;
+            top-left = round;
+            top-right = round;
+          };
           clip-to-geometry = true;
         }
 
@@ -171,13 +166,13 @@
         }
         {
           matches = [
-            { app-id = "^org\\.keepassxc\\.KeePassXC$"; }
-            { app-id = "^org\\.gnome\\.World\\.Secrets$"; }
+            {app-id = "^org\\.keepassxc\\.KeePassXC$";}
+            {app-id = "^org\\.gnome\\.World\\.Secrets$";}
           ];
           block-out-from = "screen-capture";
         }
         {
-          matches = [ { is-window-cast-target = true; } ];
+          matches = [{is-window-cast-target = true;}];
           focus-ring = {
             enable = true;
             width = 2;
@@ -196,7 +191,7 @@
           default-window-height.fixed = 830;
         }
         {
-          matches = [{app-id="com.gabm.satty";}];
+          matches = [{app-id = "com.gabm.satty";}];
           open-floating = true;
         }
         # {

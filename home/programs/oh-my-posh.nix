@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   programs.oh-my-posh = {
     enable = true;
     settings = {
@@ -30,7 +29,7 @@
               leading_diamond = "";
               background = "p:mauve";
               foreground = "p:wight";
-              template = "{{ if eq .Env.IN_NIX_SHELL \"impure\" }}nix-shell{{else}}{{end}}";
+              template = "{{ if eq .Env.IN_NIX_SHELL \"impure\" }} {{else}}{{end}}";
             }
             {
               type = "os";
@@ -55,8 +54,30 @@
               template = " {{ .Path }}";
             }
             {
+              type = "jujutsu";
+              style = "powerline";
+              powerline_symbol = "";
+              background = "p:lavender";
+              foreground = "p:text";
+              options = {
+                fetch_status = true;
+                ignore_working_copy = true;
+                change_id_min_len = 8;
+                fetch_ahead_counter = false;
+                ahead_icon = "⇡";
+                status_formats = {
+                  Added = "+%d";
+                  Deleted = "-%d";
+                  Modified = "~%d";
+                  Moved = ">%d";
+                };
+              };
+              template = "  {{.ChangeID}}{{if .Working.Changed}} {{ .Working.String }}  {{ end }}";
+            }
+            {
               type = "git";
               style = "powerline";
+              powerline_symbol = "";
               background = "p:lavender";
               foreground = "p:text";
               options = {
@@ -71,8 +92,7 @@
                 revert_icon = "";
                 tag_icon = "";
               };
-              powerline_symbol = "";
-              template = " {{ .HEAD }}";
+              template = "{{ if not .Segments.Jujutsu }} {{ .HEAD }}{{else}}{{end}}";
             }
           ];
         }

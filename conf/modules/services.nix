@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   services = {
     ratbagd.enable = true;
     udisks2.enable = true;
