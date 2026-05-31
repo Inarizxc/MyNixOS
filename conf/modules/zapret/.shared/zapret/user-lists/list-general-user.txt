@@ -13,3 +13,4 @@ rutracker.org
 chillhop.com
 dl.flathub.org
 nix.dev
+fastly.com

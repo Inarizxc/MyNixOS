@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./modules/bundle.nix
     ./programs/bundle.nix
@@ -13,6 +17,10 @@
 
     file = {
       ".themes/Catppuccin-Purple-Dark".source = ./.themes/Catppuccin-Purple-Dark;
+
+      ".cache/devenv/hook.nu".source = pkgs.runCommand "devenv-nu-hook" {nativeBuildInputs = [pkgs.devenv];} ''
+        devenv hook nu > $out
+      '';
     };
 
     sessionVariables = {

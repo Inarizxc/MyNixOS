@@ -9,7 +9,6 @@
       buffer_editor = "hx";
       use_kitty_protocol = true;
       completions = {
-        # algorithm = "fuzzy";
         external = {
           enable = true;
           max_results = 200;
@@ -36,7 +35,7 @@
           match $p {
             "home-manager" | "hm" | "h" => {nh home switch}
             "update" | "up" | "u" => {
-              sudo nix flake update --flake ${flakeDir}
+              nix flake update --flake ${flakeDir}
               nh os switch
             }
             "clear" | "c" => {
@@ -79,8 +78,9 @@
             "conf" | "c" => {hx ~/NixOS/conf/modules/zapret/.shared/zapret/conf.env}
           }
         }
+        source ~/.cache/devenv/hook.nu
         fastfetch
-        try {~/Projects/rust/todomgr/target/release/todomgr --path ~ ls}
+        try {todomgr --path ~ ls}
       '';
     environmentVariables = {
       EDITOR = "hx";
@@ -89,12 +89,6 @@
       PROMPT_INDICATOR_VI_INSERT = " ";
       SSH_ASKPASS = "";
     };
-    plugins = with pkgs.nushellPlugins; [
-      formats
-      skim
-      semver
-      gstat
-    ];
     shellAliases = {
       cd = "z";
       c = "clear";
@@ -113,19 +107,13 @@
       fzf = "sk";
       ls = "ls -s";
 
-      # todomgr = "~/Projects/rust/todomgr/result/bin/todomgr";
-      # todo = "~/Projects/rust/todomgr/result/bin/todomgr --path ~";
-      td = "~/Projects/rust/todomgr/target/release/todomgr";
-      htd = "~/Projects/rust/todomgr/target/release/todomgr --path ~";
+      td = "todomgr";
+      htd = "todomgr --path ~";
 
       shx = "sudo env HOME=($env.HOME) hx";
-      sjj = "sudo jj";
 
       up = "nix flake update --flake ${flakeDir}";
-
-      nb = "nom-build -E 'with import <nixpkgs> { }; callPackage ./default.nix { }'";
-      nbp = "nom-build -E 'with import <nixpkgs> { }; callPackage ./package.nix { }'";
-      snb = "sudo nom-build -E 'with import <nixpkgs> { }; callPackage ./default.nix { }'";
+      nb = "nom-build -E 'with import <nixpkgs> { }; callPackage ./package.nix { }'";
 
       emacs = "~/.config/emacs/bin/doom emacs";
     };

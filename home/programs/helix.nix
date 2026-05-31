@@ -17,8 +17,29 @@
     ];
     languages = {
       language-server.rust-analyzer.config = {
-        command = "clippy";
+        check = {
+          command = "clippy";
+          extraArgs = ["--all-targets"];
+        };
+        cargo = {
+          allFeatures = true;
+          buildScripts = {
+            enable = true;
+          };
+        };
+        procMacro = {
+          enable = true;
+        };
       };
+      language = [
+        {
+          name = "nix";
+          formatter = {
+            command = "${pkgs.alejandra}/bin/alejandra";
+            args = ["--quiet" "-"];
+          };
+        }
+      ];
     };
     settings = {
       theme = "catppuccin-mocha";
@@ -34,7 +55,7 @@
           "spacer"
           "diff"
         ];
-        scrolloff = 0;
+        scrolloff = 5;
         bufferline = "multiple";
         completion-replace = true;
         color-modes = true;
@@ -42,8 +63,11 @@
         end-of-line-diagnostics = "info";
         continue-comments = false;
 
+        auto-format = true;
+
         indent-guides.render = true;
         inline-diagnostics.cursor-line = "warning";
+        lsp.display-messages = true;
 
         statusline = {
           left = [

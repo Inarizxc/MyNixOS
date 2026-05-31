@@ -33,11 +33,13 @@
       tealdeer
       gtt
       qemu
+      todomgr
 
       # Shell
       nushell
       oh-my-posh
       carapace
+      devenv
 
       # Editor
       helix
@@ -99,10 +101,6 @@
     nix-index-database.comma.enable = true;
     nh.enable = true;
     gamemode.enable = true;
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
     steam = {
       enable = true;
       gamescopeSession.enable = true;
@@ -127,6 +125,7 @@
   nixpkgs.overlays = [
     (final: prev: {
       elyprismlauncher = final.callPackage ../myPackages/ElyPrismLauncher/package.nix {};
+      todomgr = final.callPackage ../myPackages/todomgr/package.nix {};
     })
   ];
 

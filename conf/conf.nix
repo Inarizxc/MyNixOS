@@ -1,6 +1,7 @@
 {
   inputs,
   catppuccin,
+  lib,
   ...
 }: {
   imports = [
@@ -15,8 +16,8 @@
     settings = {
       max-jobs = "auto";
       cores = 0;
-      connect-timeout = 5;
-      stalled-download-timeout = 10;
+      connect-timeout = 4;
+      stalled-download-timeout = 4;
       fallback = true;
       auto-optimise-store = true;
       experimental-features = [
@@ -26,12 +27,12 @@
       ];
       trusted-users = ["inari"];
 
-      substituters = [
+      substituters = lib.mkAfter [
+        "https://mirror.yandex.ru/nixos"
+        "https://cache.nixos.kz"
+        "https://ncproxy.vizqq.cc"
+        "https://nixos-cache-proxy.cofob.dev"
         "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
-        "https://cache.nixos.org"
-      ];
-      trusted-public-keys = [
-        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       ];
     };
 
