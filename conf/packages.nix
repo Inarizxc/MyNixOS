@@ -49,7 +49,7 @@
 
       # GUI
       piper
-      fragments
+      qbittorrent
       libreoffice
       ayugram-desktop
       ghostty
@@ -79,7 +79,6 @@
       git
       lazygit
       jujutsu
-      jjui
     ])
     ++ [
       # Zen Browser

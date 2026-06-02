@@ -22,6 +22,10 @@
       nu
       */
       ''
+        $env.config.hooks.display_output = {||
+          table --icons
+        }
+        
         def ns [...p: string] {
           match $p {
             [] => { with-env {IN_NIX_SHELL: "impure"} {nix shell} }
@@ -35,8 +39,7 @@
           match $p {
             "home-manager" | "hm" | "h" => {nh home switch}
             "update" | "up" | "u" => {
-              nix flake update --flake ${flakeDir}
-              nh os switch
+              nh os switch --update
             }
             "clear" | "c" => {
               sudo su -c "rm -rf /boot/limine/kernels/*"
@@ -78,8 +81,8 @@
             "conf" | "c" => {hx ~/NixOS/conf/modules/zapret/.shared/zapret/conf.env}
           }
         }
-        source ~/.cache/devenv/hook.nu
-        fastfetch
+        try {source ~/.cache/devenv/hook.nu}
+        try {fastfetch}
         try {todomgr --path ~ ls}
       '';
     environmentVariables = {
@@ -100,7 +103,6 @@
       top = "btm -b";
       rw = "rawst --color always";
       rwo = "rawst --color always --output-file-path";
-      ze = "zeditor .";
       spf = "superfile";
       tar = "bsdtar";
       cpio = "bsdcpio";

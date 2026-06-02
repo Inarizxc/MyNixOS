@@ -96,6 +96,11 @@ in {
             cmd = "heroic";
           }
           {
+            key = "q";
+            desc = "qBittorrent";
+            cmd = "qbittorrent";
+          }
+          {
             key = "s";
             desc = "Steam";
             cmd = "steam";
@@ -122,11 +127,6 @@ in {
         key = "o";
         desc = "Other";
         submenu = [
-          {
-            key = "f";
-            desc = "Fragments";
-            cmd = "fragments";
-          }
           {
             key = "g";
             desc = "GTT";
