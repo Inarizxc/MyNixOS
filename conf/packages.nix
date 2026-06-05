@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  system,
   ...
 }: {
   environment.systemPackages =
@@ -73,6 +74,7 @@
 
       # Nix
       nix-output-monitor
+      nix-search-tv
       nvd
 
       # Git
@@ -82,10 +84,7 @@
     ])
     ++ [
       # Zen Browser
-      inputs.zen-browser.packages."x86_64-linux".beta
-
-      # Nix-alien
-      inputs.nix-alien.packages."x86_64-linux".nix-alien
+      inputs.zen-browser.packages.${system}.beta
 
       # Qemu UEFI
       (pkgs.writeShellScriptBin "qemu-system-x86_64-uefi" ''

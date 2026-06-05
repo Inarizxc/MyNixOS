@@ -45,12 +45,12 @@
 
   systemd.user.services.niri-flake-polkit.enable = false;
 
-  nixpkgs = {
-    config.allowUnfree = true;
-    overlays = [
-      inputs.niri.overlays.niri
-    ];
-  };
+  # nixpkgs = {
+  #   config.allowUnfree = true;
+  #   overlays = [
+  #     inputs.niri.overlays.niri
+  #   ];
+  # };
 
   catppuccin.cache.enable = true;
 

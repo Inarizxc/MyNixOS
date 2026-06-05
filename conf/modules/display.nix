@@ -14,10 +14,10 @@
       enable = true;
       package = pkgs.niri-unstable;
     };
-    xwayland = {
-      enable = true;
-      package = pkgs.xwayland-satellite;
-    };
+    # xwayland = {
+    #   enable = true;
+    #   package = pkgs.xwayland-satellite;
+    # };
   };
 
   services = {

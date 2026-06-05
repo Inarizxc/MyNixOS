@@ -88,9 +88,11 @@
             "position-percentage"
             "file-encoding"
           ];
-          mode.normal = "N";
-          mode.insert = "I";
-          mode.select = "S";
+          mode = {
+            normal = "N";
+            insert = "I";
+            select = "S";
+          };
         };
       };
 

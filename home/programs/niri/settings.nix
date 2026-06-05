@@ -1,12 +1,23 @@
-{pkgs, ...}: {
-  programs.niri = {
+{
+  pkgs,
+  inputs,
+  lib,
+  ...
+}: {
+  programs.niri = let
+    niriPkgs = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system};
+  in {
     enable = true;
-    package = pkgs.niri-unstable;
+    package = niriPkgs.niri-unstable;
+    settings.xwayland-satellite.path = lib.getExe niriPkgs.xwayland-satellite-unstable;
     settings = {
+      includes = lib.mkAfter [
+        ./other.kdl
+      ];
       prefer-no-csd = true;
       spawn-at-startup = [
-        {command = ["noctalia-shell"];}
-        {command = ["zen-beta"];}
+        {argv = ["noctalia-shell"];}
+        {argv = ["zen-beta"];}
       ];
       input = {
         keyboard = {
@@ -30,7 +41,12 @@
         };
       };
       gestures = {
-        hot-corners.enable = false;
+        hot-corners = {
+          top-left = false;
+          top-right = false;
+          bottom-left = false;
+          bottom-right = false;
+        };
       };
       overview = {
         zoom = 0.70;
@@ -76,7 +92,7 @@
         skip-at-startup = true;
         hide-not-bound = true;
       };
-      screenshot-path = "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
+      screenshot.path = "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
       animations = {
         window-open = {
           kind.easing = {
@@ -132,11 +148,14 @@
           };
         };
       };
+      debug = {
+        honor-xdg-activation-with-invalid-serial = [];
+      };
       window-rules = [
         {
           open-maximized = true;
           geometry-corner-radius = let
-            round = 15.0;
+            round = 20.0;
           in {
             bottom-left = round;
             bottom-right = round;
@@ -194,10 +213,6 @@
           matches = [{app-id = "com.gabm.satty";}];
           open-floating = true;
         }
-        # {
-        #   matches = [ { app-id = "zen-beta"; } ];
-        #   open-maximized-to-edges = true;
-        # }
       ];
     };
   };

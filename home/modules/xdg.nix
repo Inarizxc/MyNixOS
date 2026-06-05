@@ -25,7 +25,7 @@
       enable = true;
       defaultApplications = {
         "application/json" = ["emacs.desktop"];
-        "application/pdf" = ["org.gnome.Papers.desktop"];
+        "application/pdf" = ["org.pwmt.zathura.desktop"];
         "application/x-extension-htm" = ["zen-beta.desktop"];
         "application/x-extension-html" = ["zen-beta.desktop"];
         "application/x-extension-shtml" = ["zen-beta.desktop"];
@@ -42,7 +42,7 @@
         "x-scheme-handler/terminal" = ["com.mitchellh.ghostty.desktop"];
         "x-scheme-handler/tg" = ["userapp-AyuGram Desktop-FR9OG3.desktop"];
         "x-scheme-handler/tonsite" = ["userapp-AyuGram Desktop-QKJQG3.desktop"];
-        "x-scheme-handler/magnet" = ["userapp-transmission-gtk-UCGVF3.desktop"];
+        "x-scheme-handler/magnet" = ["org.qbittorrent.qBittorrent.desktop"];
         "x-scheme-handler/mailto" = ["userapp-Thunderbird-VLCUG3.desktop"];
         "message/rfc822" = ["userapp-Thunderbird-VLCUG3.desktop"];
         "x-scheme-handler/mid" = ["userapp-Thunderbird-VLCUG3.desktop"];
@@ -102,7 +102,7 @@
           "org.telegram.desktop.desktop"
           "userapp-AyuGram Desktop-QKJQG3.desktop"
         ];
-        "x-scheme-handler/magnet" = ["userapp-transmission-gtk-UCGVF3.desktop"];
+        "x-scheme-handler/magnet" = ["org.qbittorrent.qBittorrent.desktop"];
         "x-scheme-handler/mailto" = ["userapp-Thunderbird-VLCUG3.desktop"];
         "x-scheme-handler/mid" = ["userapp-Thunderbird-VLCUG3.desktop"];
       };

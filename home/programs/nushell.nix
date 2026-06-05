@@ -25,7 +25,7 @@
         $env.config.hooks.display_output = {||
           table --icons
         }
-        
+
         def ns [...p: string] {
           match $p {
             [] => { with-env {IN_NIX_SHELL: "impure"} {nix shell} }
@@ -81,6 +81,7 @@
             "conf" | "c" => {hx ~/NixOS/conf/modules/zapret/.shared/zapret/conf.env}
           }
         }
+        def search [] {nix-search-tv print | sk --preview 'nix-search-tv preview {}'}
         try {source ~/.cache/devenv/hook.nu}
         try {fastfetch}
         try {todomgr --path ~ ls}
