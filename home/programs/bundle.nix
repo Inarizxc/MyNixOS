@@ -10,5 +10,6 @@
     ./mpv.nix
     ./satty.nix
     ./jj.nix
+    ./noctalia.nix
   ];
 }

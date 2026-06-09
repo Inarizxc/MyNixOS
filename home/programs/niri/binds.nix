@@ -109,17 +109,17 @@ in {
       }
       {
         key = "n";
-        desc = "NoctaliaShell";
+        desc = "Noctalia";
         submenu = [
           {
             key = "c";
-            desc = "ClipboardManager";
-            cmd = "noctalia-shell ipc call launcher clipboard";
+            desc = "Clipboard";
+            cmd = "noctalia msg panel-toggle clipboard";
           }
           {
             key = "e";
-            desc = "EmojiManager";
-            cmd = "noctalia-shell ipc call launcher emoji";
+            desc = "Emoji";
+            cmd = "noctalia msg panel-toggle launcher /emo";
           }
         ];
       }
@@ -136,11 +136,10 @@ in {
       }
     ]);
     "Mod+X".action.spawn = [
-      "noctalia-shell"
-      "ipc"
-      "call"
+      "noctalia"
+      "msg"
+      "panel-toggle"
       "launcher"
-      "toggle"
     ];
     "Mod+B".action.spawn = [
       "ghostty"
@@ -149,10 +148,9 @@ in {
       "-b"
     ];
     "Super+Alt+L".action.spawn = [
-      "noctalia-shell"
-      "ipc"
-      "call"
-      "lockScreen"
+      "noctalia"
+      "msg"
+      "session"
       "lock"
     ];
     "Super+Alt+S" = {
@@ -165,61 +163,49 @@ in {
     };
     "XF86AudioRaiseVolume" = {
       action.spawn = [
-        "noctalia-shell"
-        "ipc"
-        "call"
-        "volume"
-        "increase"
+        "noctalia"
+        "msg"
+        "volume-up"
       ];
       allow-when-locked = true;
     };
     "XF86AudioLowerVolume" = {
       action.spawn = [
-        "noctalia-shell"
-        "ipc"
-        "call"
-        "volume"
-        "decrease"
+        "noctalia"
+        "msg"
+        "volume-down"
       ];
       allow-when-locked = true;
     };
     "XF86AudioMute" = {
       action.spawn = [
-        "noctalia-shell"
-        "ipc"
-        "call"
-        "volume"
-        "muteOutput"
+        "noctalia"
+        "msg"
+        "volume-mute"
       ];
       allow-when-locked = true;
     };
     "XF86AudioMicMute" = {
       action.spawn = [
-        "noctalia-shell"
-        "ipc"
-        "call"
-        "volume"
-        "muteInput"
+        "noctalia"
+        "msg"
+        "mic-mute"
       ];
       allow-when-locked = true;
     };
     "XF86MonBrightnessUp" = {
       action.spawn = [
-        "noctalia-shell"
-        "ipc"
-        "call"
-        "brightness"
-        "increase"
+        "noctalia"
+        "msg"
+        "brightness-up"
       ];
       allow-when-locked = true;
     };
     "XF86MonBrightnessDown" = {
       action.spawn = [
-        "noctalia-shell"
-        "ipc"
-        "call"
-        "brightness"
-        "decrease"
+        "noctalia"
+        "msg"
+        "brightness-down"
       ];
       allow-when-locked = true;
     };
@@ -343,14 +329,14 @@ in {
     "Mod+Shift+V".action = act.switch-focus-between-floating-and-tiling;
     "Mod+W".action = act.toggle-column-tabbed-display;
     "Print".action.spawn = [
-      "sh"
-      "-c"
-      "wayshot --geometry - | satty --filename -"
+      "noctalia"
+      "msg"
+      "screenshot-region"
     ];
     "Ctrl+Print".action.spawn = [
-      "sh"
-      "-c"
-      "wayshot - | satty --filename -"
+      "noctalia"
+      "msg"
+      "screenshot-fullscreen"
     ];
     "Alt+Print".action.screenshot-window.write-to-disk = true;
     "Mod+Escape" = {

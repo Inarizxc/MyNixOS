@@ -7,11 +7,11 @@
   environment.systemPackages =
     (with pkgs; [
       # Env
-      noctalia-shell
       home-manager
       papirus-icon-theme
       catppuccin-cursors.mochaDark
       wlr-which-key
+      adw-gtk3
 
       # Games
       protonplus
@@ -83,6 +83,9 @@
       jujutsu
     ])
     ++ [
+      # Noctalia
+      inputs.noctalia.packages.${system}.default
+
       # Zen Browser
       inputs.zen-browser.packages.${system}.beta
 

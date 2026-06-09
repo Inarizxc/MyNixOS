@@ -13,6 +13,10 @@
       url = "github:sodiboo/niri-flake/very-refactor";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     catppuccin = {
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -32,6 +36,7 @@
     home-manager,
     niri,
     niri-very-refactor,
+    noctalia,
     catppuccin,
     nix-index-database,
     nix-flatpak,

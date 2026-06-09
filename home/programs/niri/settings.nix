@@ -16,7 +16,7 @@
       ];
       prefer-no-csd = true;
       spawn-at-startup = [
-        {argv = ["noctalia-shell"];}
+        {argv = ["noctalia"];}
         {argv = ["zen-beta"];}
       ];
       input = {
@@ -212,6 +212,12 @@
         {
           matches = [{app-id = "com.gabm.satty";}];
           open-floating = true;
+        }
+        {
+          matches = [{app-id = "dev.noctalia.Noctalia.Settings";}];
+          open-floating = true;
+          default-column-width.fixed = 1050;
+          default-window-height.fixed = 800;
         }
       ];
     };

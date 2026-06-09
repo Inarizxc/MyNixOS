@@ -62,6 +62,7 @@
               match $p2 {
                 "settings" | "s" => {${conf}/home/programs/niri/settings.nix}
                 "binds" | "b" => {${conf}/home/programs/niri/binds.nix}
+                "other" | "o" => {${conf}/home/programs/niri/other.kdl}
                 _ => {${conf}/home/programs/niri}
               }
             }
