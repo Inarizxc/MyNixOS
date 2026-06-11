@@ -17,6 +17,10 @@
       url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    noctalia-greeter = {
+      url = "github:noctalia-dev/noctalia-greeter";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     catppuccin = {
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -30,6 +34,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak";
+    millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
   };
   outputs = {
     nixpkgs,
@@ -37,20 +43,43 @@
     niri,
     niri-very-refactor,
     noctalia,
+    noctalia-greeter,
     catppuccin,
     nix-index-database,
     nix-flatpak,
+    millennium,
+    nix-cachyos-kernel,
     ...
   } @ inputs: let
     system = "x86_64-linux";
-    nixpkgsConf = {
-      inherit system;
-      overlays = [
-        niri.overlays.niri
-      ];
-      config.allowUnfree = true;
+
+    commonOverlays = [
+      (final: prev: {
+        elyprismlauncher = prev.callPackage ./myPackages/ElyPrismLauncher/package.nix {};
+        todomgr = prev.callPackage ./myPackages/todomgr/package.nix {};
+      })
+      (final: prev: {
+        libdisplay-info_0_2 = prev.libdisplay-info.overrideAttrs (old: {
+          name = "libdisplay-info-0.2.0";
+          version = "0.2.0";
+          src = prev.fetchFromGitLab {
+            domain = "gitlab.freedesktop.org";
+            owner = "emersion";
+            repo = "libdisplay-info";
+            rev = "0.2.0";
+            hash = "sha256-6xmWBrPHghjok43eIDGeshpUEQTuwWLXNHg7CnBUt3Q=";
+          };
+        });
+      })
+      niri.overlays.niri
+      millennium.overlays.default
+      nix-cachyos-kernel.overlays.pinned
+    ];
+
+    commonConfig = {
+      problems.handlers.cups.broken = "warn";
+      allowUnfree = true;
     };
-    pkgs = import nixpkgs nixpkgsConf;
   in {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       specialArgs = {
@@ -58,19 +87,29 @@
       };
       inherit system;
       modules = [
-        {nixpkgs = nixpkgsConf;}
+        {
+          nixpkgs.overlays = nixpkgs.lib.mkBefore commonOverlays;
+          nixpkgs.config = commonConfig;
+        }
+
         ./conf/conf.nix
         catppuccin.nixosModules.catppuccin
         niri.nixosModules.niri
         nix-index-database.nixosModules.default
         nix-flatpak.nixosModules.nix-flatpak
+        noctalia.nixosModules.default
+        noctalia-greeter.nixosModules.default
       ];
     };
     homeConfigurations."inari" = home-manager.lib.homeManagerConfiguration {
       extraSpecialArgs = {
         inherit inputs;
       };
-      inherit pkgs;
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = commonOverlays;
+        config = commonConfig;
+      };
       modules = [
         ./home/home.nix
         catppuccin.homeModules.catppuccin

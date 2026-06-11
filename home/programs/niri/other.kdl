@@ -5,8 +5,15 @@ layer-rule {
   }
 }
 
+layer-rule {
+  match namespace="wlr_which_key"
+  background-effect {
+    blur true
+    xray false
+  }
+}
+
 window-rule {
-  match app-id="com.mitchellh.ghostty"
   background-effect {
     blur true
     xray false

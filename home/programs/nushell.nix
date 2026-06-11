@@ -15,6 +15,10 @@
         };
       };
     };
+    plugins = with pkgs.nushellPlugins; [
+      skim
+      formats
+    ];
     extraConfig = let
       conf = "hx ${flakeDir}";
     in
@@ -28,10 +32,10 @@
 
         def ns [...p: string] {
           match $p {
-            [] => { with-env {IN_NIX_SHELL: "impure"} {nix shell} }
+            [] => { with-env {IN_NIX_SHELL: "impure"} {nom shell} }
             _ => {
               let pkgs = ($p | each {|pkg| $"nixpkgs#($pkg)"})
-              with-env {IN_NIX_SHELL: "impure"} {nix shell ...$pkgs}
+              with-env {IN_NIX_SHELL: "impure"} {nom shell ...$pkgs}
             }
           }
         }
@@ -67,6 +71,7 @@
               }
             }
             "nushell" | "nu" => {${conf}/home/programs/nushell.nix}
+            "noctalia" | "no" => {${conf}/home/programs/noctalia.nix}
             "helix" | "hx" | "h" => {${conf}/home/programs/helix.nix}
             "ghostty" | "g" => {${conf}/home/programs/ghostty.nix}
             "packages" | "pkgs" | "p" => {${conf}/conf/packages.nix}
@@ -82,41 +87,56 @@
             "conf" | "c" => {hx ~/NixOS/conf/modules/zapret/.shared/zapret/conf.env}
           }
         }
-        def search [] {nix-search-tv print | sk --preview 'nix-search-tv preview {}'}
-        try {source ~/.cache/devenv/hook.nu}
+        def search [] {
+          let index = (["nixpkgs" "home-manager" "nixos" "noogle" "darwin" "nur"] | input list)
+          let selected = (nix-search-tv print --indexes $index | ^sk --preview $'nix-search-tv preview --indexes ($index) {}' --preview-window right:50% --tiebreak 'index')
+          if ($selected | is-empty) { return }
+
+          let action = (["nix shell" "copy name" "open homepage" "open source"] | input list)
+
+          match $action {
+            "nix shell" => { nom shell nixpkgs#($selected) }
+            "open homepage" => { nix-search-tv homepage $selected | xdg-open }
+            "open source" => { nix-search-tv source $selected | xdg-open }
+            "copy name" => { $selected | wl-copy }
+            _ => {}
+          }
+        }
+        def fetch [url: string, file: path] {http get $url | save --progress $file}
         try {fastfetch}
         try {todomgr --path ~ ls}
       '';
     environmentVariables = {
       EDITOR = "hx";
       NH_FLAKE = "/home/inari/NixOS";
+      SSH_ASKPASS = null;
+
       PROMPT_INDICATOR_VI_NORMAL = " ";
       PROMPT_INDICATOR_VI_INSERT = " ";
-      SSH_ASKPASS = "";
     };
     shellAliases = {
       cd = "z";
       c = "clear";
-      cat = "bat --paging=never --decorations=never";
+      cat = "open";
+      less = "bat --plain";
       grep = "rg";
       find = "fd";
       ping = "pingu";
       btm = "btm -c";
       top = "btm -b";
-      rw = "rawst --color always";
-      rwo = "rawst --color always --output-file-path";
       spf = "superfile";
       tar = "bsdtar";
       cpio = "bsdcpio";
       fzf = "sk";
       ls = "ls -s";
+      rqbitdw = "rqbit download -e -o /run/media/inari/Games/";
 
       td = "todomgr";
       htd = "todomgr --path ~";
 
       shx = "sudo env HOME=($env.HOME) hx";
 
-      up = "nix flake update --flake ${flakeDir}";
+      up = "nom flake update --flake ${flakeDir}";
       nb = "nom-build -E 'with import <nixpkgs> { }; callPackage ./package.nix { }'";
 
       emacs = "~/.config/emacs/bin/doom emacs";

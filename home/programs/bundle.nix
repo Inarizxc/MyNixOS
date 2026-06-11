@@ -1,4 +1,4 @@
-{...}: {
+{
   imports = [
     ./nushell.nix
     ./helix.nix

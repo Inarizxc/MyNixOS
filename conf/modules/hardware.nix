@@ -10,7 +10,12 @@
   ];
 
   boot = {
-    kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-x86_64-v3;
+
+    kernel.sysctl = {
+      "vm.swappiness" = 20;
+      "vm.vfs_cache_pressure" = 50;
+    };
 
     initrd = {
       availableKernelModules = [
@@ -21,13 +26,11 @@
         "sd_mod"
       ];
       kernelModules = [
-        "nvidia"
-        "nvidia_modeset"
-        "nvidia_drm"
-        "nvidia_uvm"
+        "nvidia-uvm"
       ];
     };
     kernelModules = ["kvm-amd"];
+    blacklistedKernelModules = ["tdx"];
     extraModulePackages = [];
   };
 
@@ -55,7 +58,6 @@
   security = {
     sudo-rs.enable = true;
     polkit.enable = true;
-    soteria.enable = true;
   };
   networking.useDHCP = lib.mkDefault true;
 
@@ -80,7 +82,15 @@
       enable32Bit = true;
     };
     nvidia = {
-      open = false;
+      # open = false;
+      open = true;
+      # package = config.boot.kernelPackages.nvidiaPackages.latest;
+      package = let
+        base = config.boot.kernelPackages.nvidiaPackages.latest;
+      in
+        base.overrideAttrs (old: {
+          patches = (old.patches or []) ++ [./patches/nvidia-proprietary-gpio-const.patch];
+        });
       modesetting.enable = true;
 
       prime = {

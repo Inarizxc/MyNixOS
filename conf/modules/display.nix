@@ -6,7 +6,6 @@
   catppuccin = {
     enable = true;
     autoEnable = true;
-    sddm.enable = true;
   };
 
   programs = {
@@ -14,16 +13,9 @@
       enable = true;
       package = pkgs.niri-unstable;
     };
-    # xwayland = {
-    #   enable = true;
-    #   package = pkgs.xwayland-satellite;
-    # };
-  };
-
-  services = {
-    displayManager.sddm = {
+    noctalia-greeter = {
       enable = true;
-      wayland.enable = true;
+      greeter-args = "--session niri";
     };
   };
 

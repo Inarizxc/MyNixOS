@@ -1,9 +1,4 @@
-{
-  inputs,
-  catppuccin,
-  lib,
-  ...
-}: {
+{lib, ...}: {
   imports = [
     ./packages.nix
     ./modules/bundle.nix
@@ -20,6 +15,8 @@
       stalled-download-timeout = 4;
       fallback = true;
       auto-optimise-store = true;
+      min-free = 1 * 1024 * 1024 * 1024;
+      max-free = 5 * 1024 * 1024 * 1024;
       experimental-features = [
         "nix-command"
         "flakes"
@@ -29,10 +26,17 @@
 
       substituters = lib.mkAfter [
         "https://mirror.yandex.ru/nixos"
-        "https://cache.nixos.kz"
         "https://ncproxy.vizqq.cc"
         "https://nixos-cache-proxy.cofob.dev"
         "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+        "https://cache.nixos.kz"
+        "https://nixos-cache-proxy.sweetdogs.ru"
+
+        "https://noctalia.cachix.org"
+      ];
+
+      trusted-public-keys = lib.mkAfter [
+        "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
       ];
     };
 
@@ -44,13 +48,6 @@
   };
 
   systemd.user.services.niri-flake-polkit.enable = false;
-
-  # nixpkgs = {
-  #   config.allowUnfree = true;
-  #   overlays = [
-  #     inputs.niri.overlays.niri
-  #   ];
-  # };
 
   catppuccin.cache.enable = true;
 

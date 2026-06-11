@@ -13,6 +13,7 @@
       };
       limine.enable = true;
     };
+    tmp.cleanOnBoot = true;
     plymouth.enable = true;
   };
 }

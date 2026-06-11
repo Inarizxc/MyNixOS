@@ -6,7 +6,7 @@
 }: {
   imports = [
     inputs.noctalia.homeModules.default
-    
+
     ./modules/bundle.nix
     ./programs/bundle.nix
   ];
@@ -18,17 +18,16 @@
 
     stateVersion = "25.11";
 
-    file = {
-      ".cache/devenv/hook.nu".source = pkgs.runCommand "devenv-nu-hook" {nativeBuildInputs = [pkgs.devenv];} ''
-        devenv hook nu > $out
-      '';
-    };
+    file.".steam/root/compatibilitytools.d/Proton-GE".source = pkgs.proton-ge-bin.steamcompattool;
+
+    shell.enableNushellIntegration = true;
 
     sessionVariables = {
       EDITOR = "hx";
       VISUAL = "${homeDir}/.config/emacs/bin/doom emacs";
       NH_FLAKE = "${homeDir}/NixOS";
       STEAM_EXTRA_COMPAT_TOOLS_PATHS = "${homeDir}/.steam/root/compatibilitytools.d";
+      SSH_ASKPASS = null;
     };
     enableNixpkgsReleaseCheck = false;
   };

@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   programs.helix = {
     enable = true;
     extraPackages = with pkgs; [
@@ -16,27 +20,48 @@
       tinymist
     ];
     languages = {
-      language-server.rust-analyzer.config = {
-        check = {
-          command = "clippy";
-          extraArgs = ["--all-targets"];
-        };
-        cargo = {
-          allFeatures = true;
-          buildScripts = {
+      language-server = {
+        rust-analyzer.config = {
+          check = {
+            command = "clippy";
+          };
+          cargo = {
+            allFeatures = true;
+            buildScripts = {
+              enable = true;
+            };
+          };
+          procMacro = {
             enable = true;
           };
+          diagnostics = {
+            enable = true;
+            experimental.enable = true;
+          };
+          completion = {
+            autoimport.enable = true;
+            autoself.enable = true;
+            postfix.enable = true;
+          };
         };
-        procMacro = {
-          enable = true;
-        };
+        lua-language-server.config.telemetry = false;
+        nixd.args = ["--semantic-tokens=true"];
+        bash-language-server.config.bashIde.highlightParsingErrors = true;
       };
       language = [
         {
           name = "nix";
+          auto-format = true;
           formatter = {
-            command = "${pkgs.alejandra}/bin/alejandra";
+            command = lib.getExe pkgs.alejandra;
             args = ["--quiet" "-"];
+            language-servers = [
+              "nixd"
+              {
+                name = "nil";
+                except-features = ["hover"];
+              }
+            ];
           };
         }
       ];
@@ -58,16 +83,34 @@
         scrolloff = 5;
         bufferline = "multiple";
         completion-replace = true;
+        completion-trigger-len = 1;
         color-modes = true;
         popup-border = "all";
         end-of-line-diagnostics = "info";
         continue-comments = false;
-
+        auto-save = true;
+        true-color = true;
+        idle-timeout = 50;
+        soft-wrap.enable = true;
         auto-format = true;
 
-        indent-guides.render = true;
+        indent-guides = {
+          render = true;
+          character = "┃";
+        };
         inline-diagnostics.cursor-line = "warning";
-        lsp.display-messages = true;
+        lsp = {
+          display-messages = true;
+          display-inlay-hints = true;
+          snippets = true;
+          auto-signature-help = true;
+          display-signature-help-docs = true;
+        };
+
+        search = {
+          smart-case = true;
+          wrap-around = true;
+        };
 
         statusline = {
           left = [

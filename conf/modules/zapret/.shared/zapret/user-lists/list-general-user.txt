@@ -9,8 +9,11 @@ app.cachix.org
 niri.cachix.org
 catppuccin.cachix.org
 cache.nixos.org
+channels.nixos.org
+releases.nixos.org
 rutracker.org
 chillhop.com
 dl.flathub.org
 nix.dev
 fastly.com
+build.lwjgl.org

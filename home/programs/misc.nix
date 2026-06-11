@@ -1,15 +1,11 @@
-{pkgs, ...}: {
+{
   programs = {
-    zoxide = {
-      enable = true;
-      enableNushellIntegration = true;
-    };
-    carapace = {
-      enable = true;
-      enableNushellIntegration = true;
-    };
+    zoxide.enable = true;
+    carapace.enable = true;
     imv.enable = true;
     bottom.enable = true;
     skim.enable = true;
+    nix-index.enable = true;
+    devenv.enable = true;
   };
 }

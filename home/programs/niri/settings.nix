@@ -169,11 +169,11 @@
           matches = [
             {
               app-id = "zen-beta";
-              title = "^Картинка в картинке";
+              title = "Картинка в картинке";
             }
             {
               app-id = "zen";
-              title = "^Картинка в картинке";
+              title = "Картинка в картинке";
             }
           ];
           open-floating = true;
@@ -214,7 +214,12 @@
           open-floating = true;
         }
         {
-          matches = [{app-id = "dev.noctalia.Noctalia.Settings";}];
+          matches = [
+            {
+              app-id = "dev.noctalia.Noctalia";
+              title = "Настройки Noctalia";
+            }
+          ];
           open-floating = true;
           default-column-width.fixed = 1050;
           default-window-height.fixed = 800;

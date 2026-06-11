@@ -12,21 +12,20 @@
       catppuccin-cursors.mochaDark
       wlr-which-key
       adw-gtk3
+      udiskie
 
       # Games
-      protonplus
       heroic
       faugus-launcher
       elyprismlauncher
 
       # Terminal
+      ghostty
       bat
       ripgrep
       zoxide
       fd
       fastfetch
-      rawst
-      numr
       pingu
       bottom
       skim
@@ -35,6 +34,7 @@
       gtt
       qemu
       todomgr
+      rqbit
 
       # Shell
       nushell
@@ -46,15 +46,11 @@
       helix
       emacs-gtk
       wl-clipboard
-      alejandra
 
       # GUI
       piper
-      qbittorrent
       libreoffice
       ayugram-desktop
-      ghostty
-      gnome-disk-utility
       imv
       mpv
       zathura
@@ -63,12 +59,10 @@
       vesktop
 
       # File Manager
-      nemo
       superfile
       ouch
 
       # Screenshots & Screen Recorder
-      wayshot
       satty
       gpu-screen-recorder
 
@@ -79,13 +73,9 @@
 
       # Git
       git
-      lazygit
       jujutsu
     ])
     ++ [
-      # Noctalia
-      inputs.noctalia.packages.${system}.default
-
       # Zen Browser
       inputs.zen-browser.packages.${system}.beta
 
@@ -102,8 +92,17 @@
     nix-index-database.comma.enable = true;
     nh.enable = true;
     gamemode.enable = true;
+    noctalia = {
+      enable = true;
+      recommendedServices.enable = true;
+    };
+    gamescope = {
+      enable = true;
+      capSysNice = true;
+    };
     steam = {
       enable = true;
+      package = pkgs.millennium-steam;
       gamescopeSession.enable = true;
     };
   };
@@ -122,13 +121,6 @@
       "org.vinegarhq.Sober"
     ];
   };
-
-  nixpkgs.overlays = [
-    (final: prev: {
-      elyprismlauncher = final.callPackage ../myPackages/ElyPrismLauncher/package.nix {};
-      todomgr = final.callPackage ../myPackages/todomgr/package.nix {};
-    })
-  ];
 
   documentation.nixos.enable = false;
   programs.nano.enable = false;

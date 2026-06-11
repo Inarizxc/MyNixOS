@@ -9,7 +9,7 @@
       lib.generators.toYAML {} {
         font = "JetBrainsMono Nerd Font 18";
         anchor = "bottom-right";
-        background = "#1e1e2e";
+        background = "#1e1e2ecc";
         color = "#cdd6f4";
         border = "#cba6f7";
         separator = " ➜ ";
@@ -39,12 +39,12 @@ in {
       {
         key = "c";
         desc = "Calculator";
-        cmd = "ghostty -e numr";
+        cmd = "noctalia msg panel-toggle yuuto/calculator:panel";
       }
       {
         key = "d";
         desc = "Disks";
-        cmd = "gnome-disks";
+        cmd = "noctalia msg panel-toggle aristides/udiskie:manager";
       }
       {
         key = "f";
@@ -55,11 +55,6 @@ in {
         key = "l";
         desc = "LocalSend";
         cmd = "localsend_app";
-      }
-      {
-        key = "p";
-        desc = "ProtonPlus";
-        cmd = "protonplus";
       }
       {
         key = "t";
@@ -96,11 +91,6 @@ in {
             cmd = "heroic";
           }
           {
-            key = "q";
-            desc = "qBittorrent";
-            cmd = "qbittorrent";
-          }
-          {
             key = "s";
             desc = "Steam";
             cmd = "steam";
@@ -120,6 +110,11 @@ in {
             key = "e";
             desc = "Emoji";
             cmd = "noctalia msg panel-toggle launcher /emo";
+          }
+          {
+            key = "s";
+            desc = "Settings";
+            cmd = "noctalia msg settings-toggle";
           }
         ];
       }
