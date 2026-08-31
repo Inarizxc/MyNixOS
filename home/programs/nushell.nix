@@ -5,7 +5,7 @@
     enable = true;
     settings = {
       show_banner = false;
-      edit_mode = "vi";
+      edit_mode = "helix";
       buffer_editor = "hx";
       use_kitty_protocol = true;
       completions = {
@@ -16,8 +16,8 @@
       };
     };
     plugins = with pkgs.nushellPlugins; [
-      skim
-      formats
+      # skim
+      # formats
     ];
     extraConfig = let
       conf = "hx ${flakeDir}";

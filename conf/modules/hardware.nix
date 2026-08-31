@@ -82,15 +82,9 @@
       enable32Bit = true;
     };
     nvidia = {
-      # open = false;
       open = true;
-      # package = config.boot.kernelPackages.nvidiaPackages.latest;
-      package = let
-        base = config.boot.kernelPackages.nvidiaPackages.latest;
-      in
-        base.overrideAttrs (old: {
-          patches = (old.patches or []) ++ [./patches/nvidia-proprietary-gpio-const.patch];
-        });
+      package = config.boot.kernelPackages.nvidiaPackages.latest;
+
       modesetting.enable = true;
 
       prime = {

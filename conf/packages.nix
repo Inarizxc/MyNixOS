@@ -31,7 +31,6 @@
       skim
       libarchive
       tealdeer
-      gtt
       qemu
       todomgr
       rqbit
@@ -78,6 +77,9 @@
     ++ [
       # Zen Browser
       inputs.zen-browser.packages.${system}.beta
+
+      # Zapret
+      inputs.zapret-rust.packages.x86_64-linux.default
 
       # Qemu UEFI
       (pkgs.writeShellScriptBin "qemu-system-x86_64-uefi" ''

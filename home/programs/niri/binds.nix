@@ -116,16 +116,10 @@ in {
             desc = "Settings";
             cmd = "noctalia msg settings-toggle";
           }
-        ];
-      }
-      {
-        key = "o";
-        desc = "Other";
-        submenu = [
           {
-            key = "g";
-            desc = "GTT";
-            cmd = "ghostty -e gtt";
+            key = "t";
+            desc = "Translator";
+            cmd = "noctalia msg panel-toggle launcher \"/tr \"";
           }
         ];
       }

@@ -6,11 +6,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri = {
-      url = "github:sodiboo/niri-flake";
+      url = "github:epireyn/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri-very-refactor = {
-      url = "github:sodiboo/niri-flake/very-refactor";
+      url = "github:epireyn/niri-flake/very-refactor";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     noctalia = {
@@ -36,6 +36,7 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+    zapret-rust.url = "github:Sergeydigl3/zapret-discord-youtube-rust";
   };
   outputs = {
     nixpkgs,
@@ -49,6 +50,7 @@
     nix-flatpak,
     millennium,
     nix-cachyos-kernel,
+    zapret-rust,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -57,19 +59,6 @@
       (final: prev: {
         elyprismlauncher = prev.callPackage ./myPackages/ElyPrismLauncher/package.nix {};
         todomgr = prev.callPackage ./myPackages/todomgr/package.nix {};
-      })
-      (final: prev: {
-        libdisplay-info_0_2 = prev.libdisplay-info.overrideAttrs (old: {
-          name = "libdisplay-info-0.2.0";
-          version = "0.2.0";
-          src = prev.fetchFromGitLab {
-            domain = "gitlab.freedesktop.org";
-            owner = "emersion";
-            repo = "libdisplay-info";
-            rev = "0.2.0";
-            hash = "sha256-6xmWBrPHghjok43eIDGeshpUEQTuwWLXNHg7CnBUt3Q=";
-          };
-        });
       })
       niri.overlays.niri
       millennium.overlays.default
