@@ -16,8 +16,8 @@
       };
     };
     plugins = with pkgs.nushellPlugins; [
-      # skim
-      # formats
+      skim
+      formats
     ];
     extraConfig = let
       conf = "hx ${flakeDir}";
@@ -80,14 +80,7 @@
             _ => {${conf}}
           }
         }
-        def zapret [p: string] {
-          match $p {
-            "restart" | "r" => {systemctl restart zapret}
-            "list" | "l" => {hx ~/NixOS/conf/modules/zapret/.shared/zapret/zapret-latest/lists/list-general-user.txt}
-            "conf" | "c" => {hx ~/NixOS/conf/modules/zapret/.shared/zapret/conf.env}
-          }
-        }
-        def search [] {
+        def nix-search [] {
           let index = (["nixpkgs" "home-manager" "nixos" "noogle" "darwin" "nur"] | input list)
           let selected = (nix-search-tv print --indexes $index | ^sk --preview $'nix-search-tv preview --indexes ($index) {}' --preview-window right:50% --tiebreak 'index')
           if ($selected | is-empty) { return }
@@ -130,6 +123,7 @@
       fzf = "sk";
       ls = "ls -s";
       rqbitdw = "rqbit download -e -o /run/media/inari/Games/";
+      zapret-rust = "sudo zapret-rust -d ~/.cache/zapret-rust/";
 
       td = "todomgr";
       htd = "todomgr --path ~";

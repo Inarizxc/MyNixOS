@@ -3,7 +3,7 @@
     enable = true;
     installVimSyntax = true;
     settings = {
-      theme = "catppuccin-mocha";
+      theme = "noctalia";
       font-family = "Iosevka Nerd Font";
       font-size = 20;
       confirm-close-surface = false;

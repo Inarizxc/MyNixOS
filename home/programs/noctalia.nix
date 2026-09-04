@@ -194,6 +194,7 @@
           builtin_ids = [
             "gtk3"
             "gtk4"
+            "ghostty"
             "qt"
           ];
           community_ids = [

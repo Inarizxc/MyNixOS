@@ -7,6 +7,12 @@
       sponsorblock
     ];
 
+    scriptOpts = {
+      thumbfast = {
+        network = "yes";
+      };
+    };
+
     config = {
       osc = "no";
       border = "no";
@@ -29,15 +35,15 @@
 
       cache = "yes";
       cache-secs = 120;
-      demuxer-max-bytes = "800M";
-      demuxer-max-back-bytes = "200M";
+      demuxer-max-bytes = "800Mib";
+      demuxer-max-back-bytes = "200Mib";
 
       save-position-on-quit = "yes";
       force-window = "immediate";
       watch-later-options = "start,mute,volume,pause";
 
       ytdl-format = "bestvideo[height<=?1080][vcodec!=?av01]+bestaudio/best";
-      ytdl-raw-options = "embed-subs=,sub-langs=ru";
+      ytdl-raw-options = "sub-langs=ru";
 
       slang = "ru,en";
       sub-font = "Iosevka Nerd Font";

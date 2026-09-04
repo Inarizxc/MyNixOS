@@ -9,8 +9,8 @@
   in {
     enable = true;
     package = niriPkgs.niri-unstable;
-    settings.xwayland-satellite.path = lib.getExe niriPkgs.xwayland-satellite-unstable;
     settings = {
+      xwayland-satellite.path = lib.getExe niriPkgs.xwayland-satellite-unstable;
       includes = lib.mkAfter [
         ./other.kdl
       ];
@@ -153,7 +153,6 @@
       };
       window-rules = [
         {
-          open-maximized = true;
           geometry-corner-radius = let
             round = 20.0;
           in {
@@ -163,6 +162,12 @@
             top-right = round;
           };
           clip-to-geometry = true;
+        }
+        {
+          matches = [
+            {is-floating = false;}
+          ];
+          open-maximized = true;
         }
 
         {

@@ -1,12 +1,9 @@
 {
   config,
   pkgs,
-  inputs,
   ...
 }: {
   imports = [
-    inputs.noctalia.homeModules.default
-
     ./modules/bundle.nix
     ./programs/bundle.nix
   ];

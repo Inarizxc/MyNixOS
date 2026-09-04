@@ -13,14 +13,6 @@
       url = "github:epireyn/niri-flake/very-refactor";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    noctalia = {
-      url = "github:noctalia-dev/noctalia";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    noctalia-greeter = {
-      url = "github:noctalia-dev/noctalia-greeter";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     catppuccin = {
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -43,8 +35,6 @@
     home-manager,
     niri,
     niri-very-refactor,
-    noctalia,
-    noctalia-greeter,
     catppuccin,
     nix-index-database,
     nix-flatpak,
@@ -86,8 +76,6 @@
         niri.nixosModules.niri
         nix-index-database.nixosModules.default
         nix-flatpak.nixosModules.nix-flatpak
-        noctalia.nixosModules.default
-        noctalia-greeter.nixosModules.default
       ];
     };
     homeConfigurations."inari" = home-manager.lib.homeManagerConfiguration {
