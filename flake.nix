@@ -5,14 +5,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    niri = {
-      url = "github:epireyn/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    niri-very-refactor = {
-      url = "github:epireyn/niri-flake/very-refactor";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     catppuccin = {
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,8 +25,6 @@
   outputs = {
     nixpkgs,
     home-manager,
-    niri,
-    niri-very-refactor,
     catppuccin,
     nix-index-database,
     nix-flatpak,
@@ -50,7 +40,6 @@
         elyprismlauncher = prev.callPackage ./myPackages/ElyPrismLauncher/package.nix {};
         todomgr = prev.callPackage ./myPackages/todomgr/package.nix {};
       })
-      niri.overlays.niri
       millennium.overlays.default
       nix-cachyos-kernel.overlays.pinned
     ];
@@ -71,11 +60,11 @@
           nixpkgs.config = commonConfig;
         }
 
-        ./conf/conf.nix
+        ./conf.nix
         catppuccin.nixosModules.catppuccin
-        niri.nixosModules.niri
         nix-index-database.nixosModules.default
         nix-flatpak.nixosModules.nix-flatpak
+        zapret-rust.nixosModules.zapret-rust
       ];
     };
     homeConfigurations."inari" = home-manager.lib.homeManagerConfiguration {
@@ -88,9 +77,8 @@
         config = commonConfig;
       };
       modules = [
-        ./home/home.nix
+        ./home-manager/home.nix
         catppuccin.homeModules.catppuccin
-        niri-very-refactor.homeModules.niri
       ];
     };
   };

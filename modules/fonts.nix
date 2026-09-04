@@ -1,8 +1,7 @@
 {pkgs, ...}: {
   fonts.packages = with pkgs; [
-    inter
     nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono
-    nerd-fonts.iosevka
+    maple-mono.NF
   ];
 }

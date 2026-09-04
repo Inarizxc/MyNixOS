@@ -18,6 +18,9 @@
       svelte-language-server
       vscode-css-languageserver
       tinymist
+      gopls
+      golangci-lint-langserver
+      golangci-lint
     ];
     languages = {
       language-server = {
@@ -52,16 +55,16 @@
         {
           name = "nix";
           auto-format = true;
+          language-servers = [
+            "nixd"
+            {
+              name = "nil";
+              except-features = ["hover"];
+            }
+          ];
           formatter = {
             command = lib.getExe pkgs.alejandra;
             args = ["--quiet" "-"];
-            language-servers = [
-              "nixd"
-              {
-                name = "nil";
-                except-features = ["hover"];
-              }
-            ];
           };
         }
       ];
@@ -83,14 +86,14 @@
         scrolloff = 5;
         bufferline = "multiple";
         completion-replace = true;
-        completion-trigger-len = 1;
+        completion-trigger-len = 2;
         color-modes = true;
         popup-border = "all";
         end-of-line-diagnostics = "info";
         continue-comments = false;
         auto-save = true;
         true-color = true;
-        idle-timeout = 50;
+        idle-timeout = 100;
         soft-wrap.enable = true;
         auto-format = true;
 

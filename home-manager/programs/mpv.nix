@@ -5,11 +5,17 @@
       uosc
       thumbfast
       sponsorblock
+      chapterskip
     ];
 
     scriptOpts = {
       thumbfast = {
         network = "yes";
+      };
+
+      chapterskip = {
+        skip-op = "yes";
+        skip-ed = "yes";
       };
     };
 

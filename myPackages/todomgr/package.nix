@@ -1,7 +1,8 @@
-{ rustPlatform, fetchFromGitHub }:
-rustPlatform.buildRustPackage (finalAttrs:{
-  __structuredAttrs = true;
-
+{
+  rustPlatform,
+  fetchFromGitHub,
+}:
+rustPlatform.buildRustPackage (finalAttrs: {
   pname = "todomgr";
   version = "0.1.4";
   src = fetchFromGitHub {

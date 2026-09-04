@@ -5,8 +5,9 @@
       logo = {
         type = "kitty";
         source = "./logo.png";
-        width = 23;
+        width = 21;
         height = 9;
+        padding.right = 1;
       };
       display = {
         separator = " │ ";
@@ -16,42 +17,42 @@
       };
       modules = [
         {
+          format = "╭───╮";
           type = "custom";
-          format = "╭────╮";
         }
         {
-          type = "title";
-          key = "│  ";
           format = "{user-name}";
+          key = "│ ";
+          type = "title";
         }
         {
-          type = "os";
-          key = "│ 󰯵 ";
           format = "{name}";
+          key = "│ 󰯵";
+          type = "os";
         }
         {
+          key = "│ 󰰊";
           type = "kernel";
-          key = "│ 󰰊 ";
         }
         {
+          key = "│ 󰥔";
           type = "uptime";
-          key = "│ 󰥔 ";
         }
         {
+          key = "│ 󰰢";
           type = "shell";
-          key = "│ 󰰢 ";
         }
         {
+          key = "│ 󰰥";
           type = "terminal";
-          key = "│ 󰰥 ";
         }
         {
+          key = "│ 󰯲";
           type = "cpu";
-          key = "│ 󰯲 ";
         }
         {
+          format = "╰───╯";
           type = "custom";
-          format = "╰────╯";
         }
       ];
     };

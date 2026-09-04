@@ -3,9 +3,9 @@
     enable = true;
     installVimSyntax = true;
     settings = {
-      theme = "noctalia";
-      font-family = "Iosevka Nerd Font";
-      font-size = 20;
+      theme = "catppuccin-mocha";
+      font-family = "Maple Mono NF";
+      font-size = 19;
       confirm-close-surface = false;
       app-notifications = "no-clipboard-copy";
       cursor-click-to-move = true;

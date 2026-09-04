@@ -6,7 +6,6 @@
       final_space = true;
 
       palette = {
-        os = "#ACB0BE";
         pink = "#F5C2E7";
         lavender = "#B4BEFE";
         blue = "#89B4FA";
@@ -15,6 +14,9 @@
         mauve = "#CBA6F7";
         red = "#F38BA8";
         green = "#A6E3A1";
+        maroon = "#EBA0AC";
+        sky = "#89DCEB";
+        yellow = "#F9E2AF";
       };
 
       blocks = [
@@ -28,7 +30,7 @@
               powerline_symbol = "";
               leading_diamond = "";
               background = "p:mauve";
-              foreground = "p:wight";
+              foreground = "p:text";
               template = "{{ if eq .Env.IN_NIX_SHELL \"impure\" }} {{else}}{{end}}";
             }
             {
@@ -37,7 +39,7 @@
               powerline_symbol = "";
               leading_diamond = "";
               background = "p:mauve";
-              foreground = "p:wight";
+              foreground = "p:text";
               template = "{{.Icon}} ";
             }
             {
@@ -50,6 +52,22 @@
                 home_icon = "~";
                 style = "mixed";
                 mixed_threshold = 15;
+                mapped_locations = {
+                  "~/Documents" = "~/󰈙";
+                  "~/Downloads" = "~/󰇚";
+                  "~/Music" = "~/";
+                  "~/NixOS" = "~/";
+                  "~/Pictures" = "~/";
+                  "~/Projects" = "~/󱁤";
+                  "~/Videos" = "~/";
+                  "~/Virtualization" = "~/";
+
+                  "~/Projects/rust" = "~/󱁤/";
+                  "~/Projects/go" = "~/󱁤/󰟓";
+                  "~/Projects/zig" = "~/󱁤/";
+                  "~/Projects/nix" = "~/󱁤/";
+                  "~/Projects/python" = "~/󱁤/";
+                };
               };
               template = " {{ .Path }}";
             }
@@ -60,7 +78,6 @@
               background = "p:lavender";
               foreground = "p:text";
               options = {
-                fetch_status = true;
                 ignore_working_copy = true;
                 change_id_min_len = 8;
                 fetch_ahead_counter = false;
@@ -93,6 +110,38 @@
                 tag_icon = "";
               };
               template = "{{ if not .Segments.Jujutsu }} {{ .HEAD }}{{else}}{{end}}";
+            }
+            {
+              type = "rust";
+              style = "powerline";
+              powerline_symbol = "";
+              background = "p:maroon";
+              foreground = "p:text";
+              template = "  {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}";
+            }
+            {
+              type = "golang";
+              style = "powerline";
+              powerline_symbol = "";
+              background = "p:sky";
+              foreground = "p:text";
+              template = " 󰟓 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}";
+            }
+            {
+              type = "zig";
+              style = "powerline";
+              powerline_symbol = "";
+              background = "p:yellow";
+              foreground = "p:text";
+              template = "  {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}";
+            }
+            {
+              type = "python";
+              style = "powerline";
+              powerline_symbol = "";
+              background = "p:blue";
+              foreground = "p:text";
+              template = "  {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}";
             }
           ];
         }

@@ -21,6 +21,8 @@
 
     sessionVariables = {
       EDITOR = "hx";
+      BROWSER = "zen-beta";
+      TERMINAL = "ghostty";
       VISUAL = "${homeDir}/.config/emacs/bin/doom emacs";
       NH_FLAKE = "${homeDir}/NixOS";
       STEAM_EXTRA_COMPAT_TOOLS_PATHS = "${homeDir}/.steam/root/compatibilitytools.d";

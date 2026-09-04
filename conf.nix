@@ -11,8 +11,8 @@
     settings = {
       max-jobs = "auto";
       cores = 0;
-      connect-timeout = 4;
-      stalled-download-timeout = 4;
+      connect-timeout = 10;
+      stalled-download-timeout = 10;
       fallback = true;
       auto-optimise-store = true;
       min-free = 1 * 1024 * 1024 * 1024;
@@ -46,8 +46,6 @@
       options = "--delete-older-than 7d";
     };
   };
-
-  systemd.user.services.niri-flake-polkit.enable = false;
 
   catppuccin.cache.enable = true;
 

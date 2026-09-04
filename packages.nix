@@ -11,12 +11,13 @@
       papirus-icon-theme
       catppuccin-cursors.mochaDark
       wlr-which-key
+      gpu-screen-recorder
       adw-gtk3
       udiskie
 
       # Games
       heroic
-      faugus-launcher
+      # faugus-launcher
       elyprismlauncher
 
       # Terminal
@@ -61,13 +62,8 @@
       superfile
       ouch
 
-      # Screenshots & Screen Recorder
-      satty
-      gpu-screen-recorder
-
       # Nix
       nix-output-monitor
-      nix-search-tv
       nvd
 
       # Git
@@ -77,9 +73,6 @@
     ++ [
       # Zen Browser
       inputs.zen-browser.packages.${system}.beta
-
-      # Zapret
-      inputs.zapret-rust.packages.x86_64-linux.default
 
       # Qemu UEFI
       (pkgs.writeShellScriptBin "qemu-system-x86_64-uefi" ''

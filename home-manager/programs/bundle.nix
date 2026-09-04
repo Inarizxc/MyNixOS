@@ -6,9 +6,9 @@
     ./ghostty.nix
     ./misc.nix
     ./oh-my-posh.nix
-    ./niri/bundle.nix
+    ./niri/settings.nix
+    ./niri/binds.nix
     ./mpv.nix
-    ./satty.nix
     ./jj.nix
     ./noctalia.nix
   ];
