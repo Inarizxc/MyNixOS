@@ -49,7 +49,6 @@
 
       # GUI
       piper
-      libreoffice
       ayugram-desktop
       imv
       mpv
